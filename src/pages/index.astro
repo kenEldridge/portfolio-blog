@@ -3,6 +3,14 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+).slice(0, 3);
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -32,6 +40,62 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			a:hover {
 				text-decoration: underline;
 			}
+			.recent-posts {
+				margin-top: 3rem;
+			}
+			.recent-posts h2 {
+				font-size: 1.75rem;
+				margin-bottom: 1.5rem;
+				color: var(--text-heading);
+			}
+			.recent-posts ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+			.recent-posts li {
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				overflow: hidden;
+				transition: transform 0.2s, border-color 0.2s;
+			}
+			.recent-posts li:hover {
+				transform: translateY(-2px);
+				border-color: var(--accent);
+			}
+			.recent-posts li a {
+				display: block;
+				padding: 1.5rem;
+				text-decoration: none;
+				color: inherit;
+			}
+			.recent-posts li a:hover {
+				text-decoration: none;
+			}
+			.recent-posts h3 {
+				margin: 0 0 0.5rem 0;
+				font-size: 1.5rem;
+				color: var(--text-heading);
+			}
+			.recent-posts .post-date {
+				font-size: 0.875rem;
+				color: var(--text-secondary);
+				margin: 0 0 0.75rem 0;
+			}
+			.recent-posts .description {
+				margin: 0;
+				font-size: 1rem;
+				color: var(--text-primary);
+			}
+			.view-all {
+				display: inline-block;
+				margin-top: 1.5rem;
+				font-size: 1.125rem;
+				font-weight: 600;
+			}
 		</style>
 		<script is:inline>
 			// Load saved theme or default to dark
@@ -49,6 +113,24 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			<p>
 				Exploring music, data, and code.
 			</p>
+
+			<section class="recent-posts">
+				<h2>Recent Posts</h2>
+				<ul>
+					{posts.map((post) => (
+						<li>
+							<a href={`${base}blog/${post.id}/`}>
+								<h3>{post.data.title}</h3>
+								<p class="post-date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+								<p class="description">{post.data.description}</p>
+							</a>
+						</li>
+					))}
+				</ul>
+				<a href={`${base}blog`} class="view-all">View all posts →</a>
+			</section>
 		</main>
 		<Footer />
 	</body>

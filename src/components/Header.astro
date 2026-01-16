@@ -1,14 +1,15 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <header>
 	<nav class="container">
-		<h2><a href="/">the derple-dex</a></h2>
+		<h2><a href={base}>the derple-dex</a></h2>
 		<div class="nav-right">
 			<div class="internal-links">
-				<HeaderLink href="/">Home</HeaderLink>
-				<HeaderLink href="/blog">Blog</HeaderLink>
+				<HeaderLink href={base}>Home</HeaderLink>
+				<HeaderLink href={`${base}blog`}>Blog</HeaderLink>
 			</div>
 			<div class="header-actions">
 				<a href="https://github.com/kenEldridge" target="_blank" rel="noopener" aria-label="GitHub" title="View my GitHub">
