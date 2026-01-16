@@ -1,0 +1,238 @@
+---
+// Interactive Dissonance Visualization Component
+---
+
+<div id="plot-container">
+	<div id="plot-a"></div>
+	<div id="plot-b"></div>
+	<div id="plot-c"></div>
+</div>
+
+<script>
+	import Plotly from 'plotly.js-dist-min';
+
+	// ============================================================
+	// Roughness kernel (Plomp-Levelt / Sethares-style)
+	// ============================================================
+	function roughness(deltaF, cbw = 100) {
+		const x = deltaF / cbw;
+		return Math.exp(-3.5 * x) - Math.exp(-5.75 * x);
+	}
+
+	// ============================================================
+	// Gaussian KDE implementation
+	// ============================================================
+	function gaussianKDE(data, points, bandwidth) {
+		const n = data.length;
+		const result = new Array(points.length).fill(0);
+
+		for (let i = 0; i < points.length; i++) {
+			for (let j = 0; j < n; j++) {
+				const diff = (points[i] - data[j]) / bandwidth;
+				result[i] += Math.exp(-0.5 * diff * diff);
+			}
+			result[i] /= (n * bandwidth * Math.sqrt(2 * Math.PI));
+		}
+
+		return result;
+	}
+
+	// ============================================================
+	// Parameters
+	// ============================================================
+	const f0 = 200.0;
+	const numPartials = 30;
+	const partials = Array.from({length: numPartials}, (_, i) => i + 1);
+
+	const intervals = [
+		{name: 'Major third (5:4)', ratio: 5/4, color: '#ff6b6b'},
+		{name: 'Perfect fourth (4:3)', ratio: 4/3, color: '#ffb74d'},
+		{name: 'Perfect fifth (3:2)', ratio: 3/2, color: '#81c784'},
+		{name: 'Octave (2:1)', ratio: 2.0, color: '#64b5f6'}
+	];
+
+	// ============================================================
+	// Panel A: Ear-level roughness
+	// ============================================================
+	const ratiosA = Array.from({length: 600}, (_, i) => 1.0 + i * (1.0 / 599));
+	const deltaFRatio = ratiosA.map(r => f0 * (r - 1));
+	const roughnessVals = deltaFRatio.map(df => roughness(df));
+
+	const traceA = {
+		x: ratiosA,
+		y: roughnessVals,
+		type: 'scatter',
+		mode: 'lines',
+		line: {color: '#64b5f6', width: 2},
+		name: 'Roughness'
+	};
+
+	const shapesA = intervals.map(interval => ({
+		type: 'line',
+		x0: interval.ratio,
+		x1: interval.ratio,
+		y0: 0,
+		y1: 1,
+		yref: 'paper',
+		line: {color: 'rgba(255,255,255,0.4)', width: 1, dash: 'dot'}
+	}));
+
+	const layoutA = {
+		title: 'A. Ear-level roughness for a single frequency difference',
+		xaxis: {title: 'Frequency ratio (interval)', gridcolor: 'rgba(255,255,255,0.2)'},
+		yaxis: {title: 'Sensory roughness', gridcolor: 'rgba(255,255,255,0.2)'},
+		paper_bgcolor: '#000000',
+		plot_bgcolor: '#000000',
+		font: {color: 'white'},
+		shapes: shapesA,
+		showlegend: false
+	};
+
+	// ============================================================
+	// Panel B: Total dissonance
+	// ============================================================
+	const ratiosB = Array.from({length: 600}, (_, i) => 1.0 + i * (1.0 / 599));
+	const fA = partials.map(p => p * f0);
+
+	const dissonance = ratiosB.map(r => {
+		const fB = partials.map(p => p * f0 * r);
+		let sum = 0;
+		for (let i = 0; i < fA.length; i++) {
+			for (let j = 0; j < fB.length; j++) {
+				sum += roughness(Math.abs(fA[i] - fB[j]));
+			}
+		}
+		return sum;
+	});
+
+	const traceB = {
+		x: ratiosB,
+		y: dissonance,
+		type: 'scatter',
+		mode: 'lines',
+		line: {color: '#64b5f6', width: 2},
+		name: 'Total dissonance'
+	};
+
+	const shapesB = intervals.map(interval => ({
+		type: 'line',
+		x0: interval.ratio,
+		x1: interval.ratio,
+		y0: 0,
+		y1: 1,
+		yref: 'paper',
+		line: {color: 'rgba(255,255,255,0.4)', width: 1, dash: 'dot'}
+	}));
+
+	const layoutB = {
+		title: 'B. Total dissonance from all harmonic partial interactions',
+		xaxis: {title: 'Frequency ratio (interval)', gridcolor: 'rgba(255,255,255,0.2)'},
+		yaxis: {title: 'Summed dissonance', gridcolor: 'rgba(255,255,255,0.2)'},
+		paper_bgcolor: '#000000',
+		plot_bgcolor: '#000000',
+		font: {color: 'white'},
+		shapes: shapesB,
+		showlegend: false
+	};
+
+	// ============================================================
+	// Panel C: Interaction density (KDE)
+	// ============================================================
+	const xRangeC = Array.from({length: 600}, (_, i) => i * (200 / 599));
+	const rCurve = xRangeC.map(x => roughness(x));
+	const rCurveMax = Math.max(...rCurve);
+
+	const tracesC = [];
+	let yMax = 0;
+
+	// Create KDE traces for each interval
+	for (const interval of intervals.reverse()) {
+		const fB = partials.map(p => p * f0 * interval.ratio);
+		const deltaVals = [];
+
+		for (let i = 0; i < fA.length; i++) {
+			for (let j = 0; j < fB.length; j++) {
+				const delta = Math.abs(fA[i] - fB[j]);
+				if (delta <= 200) {
+					deltaVals.push(delta);
+				}
+			}
+		}
+
+		const y = gaussianKDE(deltaVals, xRangeC, 3.5); // bandwidth = 3.5 (0.035 * 100)
+		const yScaled = y.map(val => val * deltaVals.length);
+		yMax = Math.max(yMax, ...yScaled);
+
+		tracesC.push({
+			x: xRangeC,
+			y: yScaled,
+			type: 'scatter',
+			mode: 'lines',
+			line: {color: interval.color, width: 2},
+			name: interval.name
+		});
+
+		// Add vertical line for fundamental Δf
+		const deltaFFund = Math.abs(f0 - interval.ratio * f0);
+		tracesC.push({
+			x: [deltaFFund, deltaFFund],
+			y: [0, yMax],
+			type: 'scatter',
+			mode: 'lines',
+			line: {color: interval.color, width: 1, dash: 'dot'},
+			opacity: 0.5,
+			showlegend: false,
+			hoverinfo: 'skip'
+		});
+	}
+
+	// Add ear roughness sensitivity curve (scaled)
+	const rCurveScaled = rCurve.map(val => (val / rCurveMax) * yMax);
+	tracesC.push({
+		x: xRangeC,
+		y: rCurveScaled,
+		type: 'scatter',
+		mode: 'lines',
+		line: {color: 'white', width: 2, dash: 'dash'},
+		name: 'Ear roughness sensitivity',
+		opacity: 0.8
+	});
+
+	const layoutC = {
+		title: 'C. Partial-partial frequency differences (interaction density)',
+		xaxis: {title: 'Frequency difference Δf (Hz, within one octave)', gridcolor: 'rgba(255,255,255,0.2)'},
+		yaxis: {title: 'Interaction density', gridcolor: 'rgba(255,255,255,0.2)'},
+		paper_bgcolor: '#000000',
+		plot_bgcolor: '#000000',
+		font: {color: 'white'},
+		legend: {
+			x: 0.65,
+			y: 0.95,
+			bgcolor: 'rgba(26,26,26,0.9)',
+			bordercolor: 'white',
+			borderwidth: 1
+		}
+	};
+
+	// ============================================================
+	// Render plots
+	// ============================================================
+	const config = {responsive: true};
+
+	Plotly.newPlot('plot-a', [traceA], layoutA, config);
+	Plotly.newPlot('plot-b', [traceB], layoutB, config);
+	Plotly.newPlot('plot-c', tracesC, layoutC, config);
+</script>
+
+<style>
+	#plot-container {
+		width: 100%;
+		margin: 2rem 0;
+	}
+
+	#plot-a, #plot-b, #plot-c {
+		width: 100%;
+		height: 400px;
+		margin-bottom: 2rem;
+	}
+</style>

@@ -1,15 +1,15 @@
-# Astro Starter Kit: Blog
+# the derple-dex
 
-```sh
-npm create astro@latest -- --template blog
-```
+Ken Eldridge's technical blog and project showcase.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with Astro, deployed to GitHub Pages.
 
-Features:
+## Features
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
+- ✅ Dark mode (toggle in header)
+- ✅ Blog posts with dates and tags
+- ✅ Syntax highlighting with GitHub Dark theme
+- ✅ Responsive design
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
 - ✅ RSS Feed support
@@ -42,16 +42,53 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project (`/mnt/c/Users/eldri/portfolio-blog` from WSL).
+
+**IMPORTANT:** Use Windows Node.js (not WSL Node) for proper networking and base path handling.
+
+### Start the dev server
+
+```bash
+"/mnt/c/Program Files/nodejs/npm" run dev --host
+```
+
+The site will be available at: **http://localhost:4321/portfolio-blog**
+
+### Stop the dev server
+
+Press `Ctrl+C` in the terminal where the server is running.
+
+### Restart the dev server
+
+1. Stop it with `Ctrl+C`
+2. Run the start command again
+
+### Other commands
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 📝 Adding New Blog Posts
+
+1. Create a new `.md` file in `src/content/blog/`
+2. Add frontmatter:
+   ```markdown
+   ---
+   title: 'Your Post Title'
+   description: 'Brief description'
+   pubDate: 2026-01-16
+   heroImage: '/optional-image.png'  # Place images in public/
+   ---
+
+   Your content here...
+   ```
+3. The post will automatically appear in the blog list
+4. Images go in the `public/` folder and are referenced as `/image.png` (no `/portfolio-blog/` prefix needed)
 
 ## 👀 Want to learn more?
 

@@ -1,0 +1,67 @@
+---
+// Panel A: Ear-level roughness
+---
+
+<div id="plot-a"></div>
+
+<script>
+	import Plotly from 'plotly.js-dist-min';
+
+	function roughness(deltaF, cbw = 100) {
+		const x = deltaF / cbw;
+		return Math.exp(-3.5 * x) - Math.exp(-5.75 * x);
+	}
+
+	const f0 = 200.0;
+	const intervals = [
+		{name: 'Major third (5:4)', ratio: 5/4},
+		{name: 'Perfect fourth (4:3)', ratio: 4/3},
+		{name: 'Perfect fifth (3:2)', ratio: 3/2},
+		{name: 'Octave (2:1)', ratio: 2.0}
+	];
+
+	const ratiosA = Array.from({length: 600}, (_, i) => 1.0 + i * (1.0 / 599));
+	const deltaFRatio = ratiosA.map(r => f0 * (r - 1));
+	const roughnessVals = deltaFRatio.map(df => roughness(df));
+
+	const traceA = {
+		x: ratiosA,
+		y: roughnessVals,
+		type: 'scatter',
+		mode: 'lines',
+		line: {color: '#64b5f6', width: 2},
+		name: 'Roughness'
+	};
+
+	const shapesA = intervals.map(interval => ({
+		type: 'line',
+		x0: interval.ratio,
+		x1: interval.ratio,
+		y0: 0,
+		y1: 1,
+		yref: 'paper',
+		line: {color: 'rgba(255,255,255,0.4)', width: 1, dash: 'dot'}
+	}));
+
+	const layoutA = {
+		xaxis: {title: 'Frequency ratio (interval)', gridcolor: 'rgba(255,255,255,0.2)'},
+		yaxis: {title: 'Sensory roughness', gridcolor: 'rgba(255,255,255,0.2)'},
+		paper_bgcolor: '#000000',
+		plot_bgcolor: '#000000',
+		font: {color: 'white'},
+		shapes: shapesA,
+		showlegend: false,
+		margin: {l: 60, r: 20, t: 20, b: 60}
+	};
+
+	const config = {responsive: true};
+	Plotly.newPlot('plot-a', [traceA], layoutA, config);
+</script>
+
+<style>
+	#plot-a {
+		width: 100%;
+		height: 400px;
+		margin: 1.5rem 0;
+	}
+</style>
