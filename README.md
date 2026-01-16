@@ -73,22 +73,50 @@ Press `Ctrl+C` in the terminal where the server is running.
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 🌐 Deployment
+
+- **Live site:** https://keneldridge.github.io/portfolio-blog/
+- **GitHub repo:** https://github.com/kenEldridge/portfolio-blog
+- **Deploys automatically** via GitHub Actions on push to master
+
 ## 📝 Adding New Blog Posts
 
+### Simple posts (Markdown)
 1. Create a new `.md` file in `src/content/blog/`
-2. Add frontmatter:
-   ```markdown
-   ---
-   title: 'Your Post Title'
-   description: 'Brief description'
-   pubDate: 2026-01-16
-   heroImage: '/optional-image.png'  # Place images in public/
-   ---
+2. Add frontmatter and content
 
-   Your content here...
-   ```
-3. The post will automatically appear in the blog list
-4. Images go in the `public/` folder and are referenced as `/image.png` (no `/portfolio-blog/` prefix needed)
+### Posts with interactive components (MDX)
+1. Create a folder: `src/content/blog/your-post-name/`
+2. Add `index.mdx` with frontmatter
+3. Place images in the same folder, reference as `./image.png`
+4. Import and use Astro components for interactive content
+
+Example with local image:
+```markdown
+---
+title: 'Your Post Title'
+description: 'Brief description'
+pubDate: 2026-01-16
+heroImage: ./thumbnail.png
+---
+
+Your content here...
+```
+
+### Frontmatter options
+- `title` (required)
+- `description` (required)
+- `pubDate` (required)
+- `heroImage` (optional) - use `./image.png` for local, `/image.png` for public/
+
+## 📊 Interactive Visualizations
+
+The blog uses Plotly.js for interactive plots. See `src/components/PlotA.astro`, `PlotB.astro`, `PlotC.astro` for examples.
+
+To add to a post:
+1. Create component in `src/components/`
+2. Import in your `.mdx` file: `import MyPlot from '../../../components/MyPlot.astro';`
+3. Use in content: `<MyPlot />`
 
 ## 👀 Want to learn more?
 
