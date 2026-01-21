@@ -42,7 +42,7 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
-All commands are run from the root of the project (`/mnt/c/Users/eldri/portfolio-blog` from WSL).
+All commands are run from the root of the project (`/mnt/c/Users/eldri/projects/the-derple-dex` from WSL).
 
 **IMPORTANT:** Use Windows Node.js (not WSL Node) for proper networking and base path handling.
 
@@ -52,7 +52,7 @@ All commands are run from the root of the project (`/mnt/c/Users/eldri/portfolio
 "/mnt/c/Program Files/nodejs/npm" run dev --host
 ```
 
-The site will be available at: **http://localhost:4321/portfolio-blog**
+The site will be available at: **http://localhost:4321/the-derple-dex**
 
 ### Stop the dev server
 
@@ -75,8 +75,8 @@ Press `Ctrl+C` in the terminal where the server is running.
 
 ## 🌐 Deployment
 
-- **Live site:** https://keneldridge.github.io/portfolio-blog/
-- **GitHub repo:** https://github.com/kenEldridge/portfolio-blog
+- **Live site:** https://keneldridge.github.io/the-derple-dex/
+- **GitHub repo:** https://github.com/kenEldridge/the-derple-dex
 - **Deploys automatically** via GitHub Actions on push to master
 
 ## 📝 Adding New Blog Posts

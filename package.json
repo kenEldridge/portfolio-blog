@@ -1,8 +1,9 @@
 {
-  "name": "portfolio-blog",
+  "name": "the-derple-dex",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "prepare-data": "python3 scripts/prepare-data.py",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

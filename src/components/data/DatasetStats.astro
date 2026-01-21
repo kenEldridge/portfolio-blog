@@ -1,0 +1,189 @@
+---
+interface Props {
+  stats: any;
+  type: 'ohlcv' | 'rss';
+  meta: any;
+}
+
+const { stats, type, meta } = Astro.props;
+
+const formatNumber = (n: number) => {
+  if (n >= 1e9) return (n / 1e9).toFixed(2) + 'B';
+  if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M';
+  if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K';
+  return n.toLocaleString();
+};
+
+const formatDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+};
+---
+
+<div class="stats-panel">
+  <h3>Summary Statistics</h3>
+
+  <div class="date-range">
+    <span class="range-label">Date Range:</span>
+    <span class="range-value">
+      {formatDate(stats.date_range.min)} — {formatDate(stats.date_range.max)}
+      <span class="range-days">({stats.date_range.days} days)</span>
+    </span>
+  </div>
+
+  {type === 'ohlcv' && stats.by_symbol && (
+    <div class="symbol-table-wrapper">
+      <table class="symbol-table">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Records</th>
+            <th>Close (Avg)</th>
+            <th>Close (Min)</th>
+            <th>Close (Max)</th>
+            <th>Std Dev</th>
+            <th>Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(stats.by_symbol).map(([symbol, s]: [string, any]) => (
+            <tr>
+              <td class="symbol">{symbol}</td>
+              <td>{s.count}</td>
+              <td>{s.close_mean.toFixed(2)}</td>
+              <td>{s.close_min.toFixed(2)}</td>
+              <td>{s.close_max.toFixed(2)}</td>
+              <td>{s.close_std.toFixed(2)}</td>
+              <td>{formatNumber(s.volume_total)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+
+  {type === 'rss' && stats.articles_by_feed && (
+    <div class="feed-stats">
+      <h4>Articles by Feed</h4>
+      <div class="feed-list">
+        {Object.entries(stats.articles_by_feed).map(([feed, count]: [string, any]) => (
+          <div class="feed-item">
+            <span class="feed-name">{feed}</span>
+            <span class="feed-count">{count}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .stats-panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: var(--text-heading);
+  }
+
+  h4 {
+    margin: 1rem 0 0.75rem 0;
+    font-size: 0.9rem;
+    color: var(--text-heading);
+  }
+
+  .date-range {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .range-label {
+    color: var(--text-secondary);
+    margin-right: 0.5rem;
+  }
+
+  .range-value {
+    color: var(--text-primary);
+  }
+
+  .range-days {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  .symbol-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .symbol-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .symbol-table th,
+  .symbol-table td {
+    padding: 0.625rem 0.75rem;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .symbol-table th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+
+  .symbol-table td {
+    color: var(--text-primary);
+    font-family: monospace;
+  }
+
+  .symbol-table td.symbol {
+    text-align: left;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .symbol-table th:first-child,
+  .symbol-table td:first-child {
+    text-align: left;
+  }
+
+  .symbol-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .feed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-primary);
+    border-radius: 4px;
+  }
+
+  .feed-name {
+    color: var(--text-primary);
+  }
+
+  .feed-count {
+    font-family: monospace;
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>

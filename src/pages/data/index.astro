@@ -1,0 +1,157 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import DatasetCard from '../../components/data/DatasetCard.astro';
+import datasets from '../../data/datasets.json';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + '/';
+
+// Sort datasets: OHLCV first, then RSS, alphabetically within each group
+const sortedDatasets = [...datasets].sort((a, b) => {
+  if (a.type !== b.type) {
+    return a.type === 'ohlcv' ? -1 : 1;
+  }
+  return a.name.localeCompare(b.name);
+});
+
+// Calculate totals
+const totalRecords = datasets.reduce((sum, d) => sum + d.meta.record_count, 0);
+const ohlcvCount = datasets.filter(d => d.type === 'ohlcv').length;
+const rssCount = datasets.filter(d => d.type === 'rss').length;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <BaseHead title="Data | the derple-dex" description="Financial data explorer - US and global markets, monetary policy, macroeconomics" />
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="header-section">
+        <h1>Data Explorer</h1>
+        <p class="subtitle">
+          Financial and economic data collected via <a href="https://github.com/kenEldridge/cdata" target="_blank" rel="noopener">cdata</a>.
+          Data accumulates over time with each fetch.
+        </p>
+        <div class="summary-stats">
+          <div class="stat-item">
+            <span class="stat-value">{datasets.length}</span>
+            <span class="stat-label">datasets</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">{totalRecords.toLocaleString()}</span>
+            <span class="stat-label">total records</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">{ohlcvCount}</span>
+            <span class="stat-label">price datasets</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">{rssCount}</span>
+            <span class="stat-label">news feeds</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="dataset-grid">
+        {sortedDatasets.map((ds) => (
+          <DatasetCard
+            name={ds.name}
+            description={ds.description}
+            type={ds.type}
+            recordCount={ds.meta.record_count}
+            lastUpdated={ds.meta.last_updated}
+            href={`${base}data/${ds.name}/`}
+          />
+        ))}
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .header-section {
+    margin-bottom: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--text-heading);
+  }
+
+  .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+  }
+
+  .subtitle a {
+    color: var(--accent);
+  }
+
+  .summary-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-family: monospace;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .dataset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 720px) {
+    main {
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .summary-stats {
+      gap: 1.5rem;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+    }
+  }
+</style>

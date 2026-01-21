@@ -7,7 +7,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://keneldridge.github.io',
-	base: '/portfolio-blog',
+	base: '/the-derple-dex',
 	output: 'static',
 	integrations: [mdx(), sitemap()],
 	markdown: {

@@ -1,0 +1,154 @@
+---
+interface Props {
+  firstFetched: string;
+  lastUpdated: string;
+  lastRecordDate: string | null;
+  fetchCount: number;
+}
+
+const { firstFetched, lastUpdated, lastRecordDate, fetchCount } = Astro.props;
+
+const formatDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+};
+
+const formatShortDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+
+// Calculate data age
+const now = new Date();
+const lastRecord = lastRecordDate ? new Date(lastRecordDate) : null;
+const dataAgeDays = lastRecord ? Math.floor((now.getTime() - lastRecord.getTime()) / (1000 * 60 * 60 * 24)) : null;
+
+// Freshness indicator
+let freshnessClass = 'fresh';
+let freshnessLabel = 'Fresh';
+if (dataAgeDays !== null) {
+  if (dataAgeDays > 7) {
+    freshnessClass = 'stale';
+    freshnessLabel = 'Stale';
+  } else if (dataAgeDays > 2) {
+    freshnessClass = 'aging';
+    freshnessLabel = 'Aging';
+  }
+}
+---
+
+<div class="freshness-panel">
+  <div class="freshness-header">
+    <h3>Data Freshness</h3>
+    <span class={`freshness-badge ${freshnessClass}`}>{freshnessLabel}</span>
+  </div>
+  <div class="freshness-grid">
+    <div class="freshness-item">
+      <span class="label">First Fetched</span>
+      <span class="value">{formatDate(firstFetched)}</span>
+    </div>
+    <div class="freshness-item">
+      <span class="label">Last Updated</span>
+      <span class="value">{formatDate(lastUpdated)}</span>
+    </div>
+    {lastRecordDate && (
+      <div class="freshness-item">
+        <span class="label">Latest Data Point</span>
+        <span class="value">
+          {formatShortDate(lastRecordDate)}
+          {dataAgeDays !== null && (
+            <span class="age">({dataAgeDays === 0 ? 'today' : `${dataAgeDays}d ago`})</span>
+          )}
+        </span>
+      </div>
+    )}
+    <div class="freshness-item">
+      <span class="label">Fetch Count</span>
+      <span class="value">{fetchCount} {fetchCount === 1 ? 'fetch' : 'fetches'}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .freshness-panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .freshness-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-heading);
+  }
+
+  .freshness-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+
+  .freshness-badge.fresh {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+  }
+
+  .freshness-badge.aging {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+  }
+
+  .freshness-badge.stale {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+  }
+
+  .freshness-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .freshness-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .value {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .age {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+</style>

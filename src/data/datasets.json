@@ -1,0 +1,1068 @@
+[
+  {
+    "name": "treasury_yields",
+    "type": "ohlcv",
+    "description": "Treasury yield curve data",
+    "meta": {
+      "record_count": 76,
+      "first_fetched": "2026-01-21T12:05:17.748442",
+      "last_updated": "2026-01-21T12:05:17.748442",
+      "last_record_date": "2026-01-20T00:00:00-06:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "^FVX",
+        "^IRX",
+        "^TNX",
+        "^TYX"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-22T06:00:00+00:00",
+        "max": "2026-01-20T06:00:00+00:00",
+        "days": 29
+      },
+      "by_symbol": {
+        "^FVX": {
+          "count": 19,
+          "date_min": "2025-12-22T06:00:00+00:00",
+          "date_max": "2026-01-20T06:00:00+00:00",
+          "close_mean": 3.7357,
+          "close_min": 3.677,
+          "close_max": 3.858,
+          "close_std": 0.0455,
+          "volume_total": 0
+        },
+        "^IRX": {
+          "count": 19,
+          "date_min": "2025-12-22T06:00:00+00:00",
+          "date_max": "2026-01-20T06:00:00+00:00",
+          "close_mean": 3.5394,
+          "close_min": 3.507,
+          "close_max": 3.572,
+          "close_std": 0.0194,
+          "volume_total": 0
+        },
+        "^TNX": {
+          "count": 19,
+          "date_min": "2025-12-22T06:00:00+00:00",
+          "date_max": "2026-01-20T06:00:00+00:00",
+          "close_mean": 4.1698,
+          "close_min": 4.116,
+          "close_max": 4.295,
+          "close_std": 0.0402,
+          "volume_total": 0
+        },
+        "^TYX": {
+          "count": 19,
+          "date_min": "2025-12-22T06:00:00+00:00",
+          "date_max": "2026-01-20T06:00:00+00:00",
+          "close_mean": 4.8334,
+          "close_min": 4.787,
+          "close_max": 4.92,
+          "close_std": 0.0313,
+          "volume_total": 0
+        }
+      }
+    }
+  },
+  {
+    "name": "us_indices",
+    "type": "ohlcv",
+    "description": "Major US equity indices",
+    "meta": {
+      "record_count": 96,
+      "first_fetched": "2026-01-21T12:05:34.581920",
+      "last_updated": "2026-01-21T12:05:34.581920",
+      "last_record_date": "2026-01-21T00:00:00-06:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "^DJI",
+        "^GSPC",
+        "^IXIC",
+        "^RUT",
+        "^VIX"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-22T05:00:00+00:00",
+        "max": "2026-01-21T06:00:00+00:00",
+        "days": 30
+      },
+      "by_symbol": {
+        "^DJI": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 48892.0831,
+          "close_min": 48063.2891,
+          "close_max": 49590.1992,
+          "close_std": 479.2108,
+          "volume_total": 9140080000
+        },
+        "^GSPC": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 6913.7216,
+          "close_min": 6796.8599,
+          "close_max": 6977.27,
+          "close_std": 44.6646,
+          "volume_total": 85842930000
+        },
+        "^IXIC": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 23482.2116,
+          "close_min": 22954.3203,
+          "close_max": 23733.9004,
+          "close_std": 185.0598,
+          "volume_total": 151349850000
+        },
+        "^RUT": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 2581.3326,
+          "close_min": 2481.9099,
+          "close_max": 2677.74,
+          "close_std": 61.0744,
+          "volume_total": 85842930000
+        },
+        "^VIX": {
+          "count": 20,
+          "date_min": "2025-12-22T06:00:00+00:00",
+          "date_max": "2026-01-21T06:00:00+00:00",
+          "close_mean": 15.398,
+          "close_min": 13.47,
+          "close_max": 20.21,
+          "close_std": 1.8285,
+          "volume_total": 0
+        }
+      }
+    }
+  },
+  {
+    "name": "fed_news",
+    "type": "rss",
+    "description": "Federal Reserve announcements and speeches",
+    "meta": {
+      "record_count": 35,
+      "first_fetched": "2026-01-21T12:05:41.216493",
+      "last_updated": "2026-01-21T12:05:41.216493",
+      "last_record_date": "2026-01-16T20:30:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "feed_name",
+        "feed_url",
+        "title",
+        "link",
+        "summary",
+        "author",
+        "published",
+        "id"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "feeds": [
+        "Fed Speeches",
+        "Federal Reserve Press Releases"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-11-12T03:25:00+00:00",
+        "max": "2026-01-16T20:30:00+00:00",
+        "days": 65
+      },
+      "articles_by_feed": {
+        "Fed Speeches": 15,
+        "Federal Reserve Press Releases": 20
+      },
+      "articles_by_day": {
+        "2025-11-12": 1,
+        "2025-11-17": 2,
+        "2025-11-18": 1,
+        "2025-11-19": 1,
+        "2025-11-20": 1,
+        "2025-11-21": 2,
+        "2025-12-02": 1,
+        "2025-12-11": 2,
+        "2025-12-15": 3,
+        "2025-12-16": 1,
+        "2025-12-17": 1,
+        "2025-12-18": 1,
+        "2025-12-19": 2,
+        "2025-12-23": 1,
+        "2025-12-30": 2,
+        "2026-01-06": 2,
+        "2026-01-07": 1,
+        "2026-01-08": 1,
+        "2026-01-09": 1,
+        "2026-01-12": 2,
+        "2026-01-13": 1,
+        "2026-01-14": 1,
+        "2026-01-15": 1,
+        "2026-01-16": 3
+      }
+    }
+  },
+  {
+    "name": "commodities",
+    "type": "ohlcv",
+    "description": "Key commodity prices",
+    "meta": {
+      "record_count": 120,
+      "first_fetched": "2026-01-21T12:05:59.133267",
+      "last_updated": "2026-01-21T12:05:59.133267",
+      "last_record_date": "2026-01-21T00:00:00-05:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "BZ=F",
+        "CL=F",
+        "GC=F",
+        "HG=F",
+        "NG=F",
+        "SI=F"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-22T05:00:00+00:00",
+        "max": "2026-01-21T05:00:00+00:00",
+        "days": 30
+      },
+      "by_symbol": {
+        "BZ=F": {
+          "count": 20,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-21T05:00:00+00:00",
+          "close_mean": 62.7055,
+          "close_min": 59.96,
+          "close_max": 66.52,
+          "close_std": 1.8244,
+          "volume_total": 855785
+        },
+        "CL=F": {
+          "count": 20,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-21T05:00:00+00:00",
+          "close_mean": 58.628,
+          "close_min": 55.99,
+          "close_max": 62.02,
+          "close_std": 1.5184,
+          "volume_total": 4589022
+        },
+        "GC=F": {
+          "count": 20,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-21T05:00:00+00:00",
+          "close_mean": 4511.505,
+          "close_min": 4314.3999,
+          "close_max": 4865.2998,
+          "close_std": 141.556,
+          "volume_total": 170485
+        },
+        "HG=F": {
+          "count": 20,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-21T05:00:00+00:00",
+          "close_mean": 5.7672,
+          "close_min": 5.4375,
+          "close_max": 6.0105,
+          "close_std": 0.1865,
+          "volume_total": 40767
+        },
+        "NG=F": {
+          "count": 20,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-21T05:00:00+00:00",
+          "close_mean": 3.7318,
+          "close_min": 3.103,
+          "close_max": 4.687,
+          "close_std": 0.5126,
+          "volume_total": 3214665
+        },
+        "SI=F": {
+          "count": 20,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-21T05:00:00+00:00",
+          "close_mean": 79.5648,
+          "close_min": 67.906,
+          "close_max": 94.51,
+          "close_std": 8.7878,
+          "volume_total": 47247
+        }
+      }
+    }
+  },
+  {
+    "name": "currencies",
+    "type": "ohlcv",
+    "description": "Dollar strength and major currency pairs",
+    "meta": {
+      "record_count": 104,
+      "first_fetched": "2026-01-21T12:06:06.820277",
+      "last_updated": "2026-01-21T12:06:06.820277",
+      "last_record_date": "2026-01-21T00:00:00-05:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "DX-Y.NYB",
+        "EURUSD=X",
+        "GBPUSD=X",
+        "USDCNY=X",
+        "USDJPY=X"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-22T00:00:00+00:00",
+        "max": "2026-01-21T05:00:00+00:00",
+        "days": 30
+      },
+      "by_symbol": {
+        "DX-Y.NYB": {
+          "count": 20,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-21T05:00:00+00:00",
+          "close_mean": 98.5929,
+          "close_min": 97.94,
+          "close_max": 99.39,
+          "close_std": 0.465,
+          "volume_total": 0
+        },
+        "EURUSD=X": {
+          "count": 21,
+          "date_min": "2025-12-22T00:00:00+00:00",
+          "date_max": "2026-01-21T00:00:00+00:00",
+          "close_mean": 1.1701,
+          "close_min": 1.1609,
+          "close_max": 1.1796,
+          "close_std": 0.0059,
+          "volume_total": 0
+        },
+        "GBPUSD=X": {
+          "count": 21,
+          "date_min": "2025-12-22T00:00:00+00:00",
+          "date_max": "2026-01-21T00:00:00+00:00",
+          "close_mean": 1.3454,
+          "close_min": 1.3377,
+          "close_max": 1.3534,
+          "close_std": 0.0046,
+          "volume_total": 0
+        },
+        "USDCNY=X": {
+          "count": 21,
+          "date_min": "2025-12-22T00:00:00+00:00",
+          "date_max": "2026-01-21T00:00:00+00:00",
+          "close_mean": 6.994,
+          "close_min": 6.9638,
+          "close_max": 7.0409,
+          "close_std": 0.0252,
+          "volume_total": 0
+        },
+        "USDJPY=X": {
+          "count": 21,
+          "date_min": "2025-12-22T00:00:00+00:00",
+          "date_max": "2026-01-21T00:00:00+00:00",
+          "close_mean": 157.2494,
+          "close_min": 156.013,
+          "close_max": 159.179,
+          "close_std": 0.9127,
+          "volume_total": 0
+        }
+      }
+    }
+  },
+  {
+    "name": "financial_news",
+    "type": "rss",
+    "description": "Market and economic news feeds",
+    "meta": {
+      "record_count": 77,
+      "first_fetched": "2026-01-21T12:06:13.758470",
+      "last_updated": "2026-01-21T12:06:13.758470",
+      "last_record_date": "2026-01-21T12:02:58",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "feed_name",
+        "feed_url",
+        "title",
+        "link",
+        "summary",
+        "author",
+        "published",
+        "id"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "feeds": [
+        "CNBC Top News",
+        "Seeking Alpha Market News",
+        "Yahoo Finance"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2024-01-26T22:46:12+00:00",
+        "max": "2026-01-21T12:02:58+00:00",
+        "days": 725
+      },
+      "articles_by_feed": {
+        "CNBC Top News": 30,
+        "Seeking Alpha Market News": 7,
+        "Yahoo Finance": 40
+      },
+      "articles_by_day": {
+        "2024-01-26": 1,
+        "2024-03-25": 1,
+        "2024-10-03": 1,
+        "2024-10-04": 1,
+        "2025-04-22": 1,
+        "2025-05-14": 1,
+        "2025-06-04": 1,
+        "2025-07-02": 1,
+        "2026-01-20": 22,
+        "2026-01-21": 47
+      }
+    }
+  },
+  {
+    "name": "global_indices",
+    "type": "ohlcv",
+    "description": "Major international equity indices",
+    "meta": {
+      "record_count": 152,
+      "first_fetched": "2026-01-21T12:06:27.685164",
+      "last_updated": "2026-01-21T12:06:27.685164",
+      "last_record_date": "2026-01-21T00:00:00Z",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "EEM",
+        "FXI",
+        "^FCHI",
+        "^FTSE",
+        "^GDAXI",
+        "^HSI",
+        "^N225",
+        "^STOXX50E"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-21T15:00:00+00:00",
+        "max": "2026-01-21T00:00:00+00:00",
+        "days": 30
+      },
+      "by_symbol": {
+        "EEM": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 56.2895,
+          "close_min": 54.01,
+          "close_max": 58.09,
+          "close_std": 1.4487,
+          "volume_total": 577545400
+        },
+        "FXI": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 39.3084,
+          "close_min": 38.29,
+          "close_max": 40.64,
+          "close_std": 0.6999,
+          "volume_total": 574662300
+        },
+        "^FCHI": {
+          "count": 20,
+          "date_min": "2025-12-21T23:00:00+00:00",
+          "date_max": "2026-01-20T23:00:00+00:00",
+          "close_mean": 8203.1025,
+          "close_min": 8036.6699,
+          "close_max": 8362.0898,
+          "close_std": 102.6878,
+          "volume_total": 863345300
+        },
+        "^FTSE": {
+          "count": 20,
+          "date_min": "2025-12-22T00:00:00+00:00",
+          "date_max": "2026-01-21T00:00:00+00:00",
+          "close_mean": 10050.7631,
+          "close_min": 9866.0,
+          "close_max": 10238.9004,
+          "close_std": 127.1878,
+          "volume_total": 12225623400
+        },
+        "^GDAXI": {
+          "count": 18,
+          "date_min": "2025-12-21T23:00:00+00:00",
+          "date_max": "2026-01-20T23:00:00+00:00",
+          "close_mean": 24897.6395,
+          "close_min": 24283.9707,
+          "close_max": 25420.6602,
+          "close_std": 405.9859,
+          "volume_total": 855184100
+        },
+        "^HSI": {
+          "count": 20,
+          "date_min": "2025-12-21T16:00:00+00:00",
+          "date_max": "2026-01-20T16:00:00+00:00",
+          "close_mean": 26330.6615,
+          "close_min": 25630.5391,
+          "close_max": 26999.8105,
+          "close_std": 447.7036,
+          "volume_total": 57266800000
+        },
+        "^N225": {
+          "count": 19,
+          "date_min": "2025-12-21T15:00:00+00:00",
+          "date_max": "2026-01-20T15:00:00+00:00",
+          "close_mean": 51991.5964,
+          "close_min": 50339.4805,
+          "close_max": 54341.2305,
+          "close_std": 1454.7023,
+          "volume_total": 2176200000
+        },
+        "^STOXX50E": {
+          "count": 17,
+          "date_min": "2025-12-21T23:00:00+00:00",
+          "date_max": "2026-01-20T23:00:00+00:00",
+          "close_mean": 5912.0041,
+          "close_min": 5743.6899,
+          "close_max": 6041.1401,
+          "close_std": 103.4464,
+          "volume_total": 283173900
+        }
+      }
+    }
+  },
+  {
+    "name": "bond_etfs",
+    "type": "ohlcv",
+    "description": "Fixed income ETFs across durations and types",
+    "meta": {
+      "record_count": 152,
+      "first_fetched": "2026-01-21T12:06:34.127454",
+      "last_updated": "2026-01-21T12:06:34.127454",
+      "last_record_date": "2026-01-20T00:00:00-05:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "AGG",
+        "HYG",
+        "IEF",
+        "LQD",
+        "MUB",
+        "SHY",
+        "TIP",
+        "TLT"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-22T05:00:00+00:00",
+        "max": "2026-01-20T05:00:00+00:00",
+        "days": 29
+      },
+      "by_symbol": {
+        "AGG": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 100.0289,
+          "close_min": 99.67,
+          "close_max": 100.35,
+          "close_std": 0.1705,
+          "volume_total": 164783800
+        },
+        "HYG": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 80.8174,
+          "close_min": 80.43,
+          "close_max": 81.09,
+          "close_std": 0.208,
+          "volume_total": 549784700
+        },
+        "IEF": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 96.2489,
+          "close_min": 95.55,
+          "close_max": 96.58,
+          "close_std": 0.2381,
+          "volume_total": 139582400
+        },
+        "LQD": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 110.4968,
+          "close_min": 109.9,
+          "close_max": 111.03,
+          "close_std": 0.293,
+          "volume_total": 482843200
+        },
+        "MUB": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 107.3126,
+          "close_min": 106.73,
+          "close_max": 107.77,
+          "close_std": 0.3323,
+          "volume_total": 79152400
+        },
+        "SHY": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 82.8211,
+          "close_min": 82.68,
+          "close_max": 82.9,
+          "close_std": 0.0596,
+          "volume_total": 67201700
+        },
+        "TIP": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 110.0668,
+          "close_min": 109.69,
+          "close_max": 110.4,
+          "close_std": 0.1846,
+          "volume_total": 43143100
+        },
+        "TLT": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 87.6389,
+          "close_min": 86.65,
+          "close_max": 88.33,
+          "close_std": 0.4354,
+          "volume_total": 694184100
+        }
+      }
+    }
+  },
+  {
+    "name": "sector_etfs",
+    "type": "ohlcv",
+    "description": "S&P 500 sector performance",
+    "meta": {
+      "record_count": 190,
+      "first_fetched": "2026-01-21T12:06:41.729835",
+      "last_updated": "2026-01-21T12:06:41.729835",
+      "last_record_date": "2026-01-20T00:00:00-05:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "XLB",
+        "XLE",
+        "XLF",
+        "XLI",
+        "XLK",
+        "XLP",
+        "XLRE",
+        "XLU",
+        "XLV",
+        "XLY"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-22T05:00:00+00:00",
+        "max": "2026-01-20T05:00:00+00:00",
+        "days": 29
+      },
+      "by_symbol": {
+        "XLB": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 47.0874,
+          "close_min": 45.35,
+          "close_max": 48.96,
+          "close_std": 1.3088,
+          "volume_total": 230179700
+        },
+        "XLE": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 45.9158,
+          "close_min": 44.2,
+          "close_max": 48.06,
+          "close_std": 1.3289,
+          "volume_total": 758259800
+        },
+        "XLF": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 55.1447,
+          "close_min": 53.2,
+          "close_max": 56.4,
+          "close_std": 0.7924,
+          "volume_total": 743599900
+        },
+        "XLI": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 160.3021,
+          "close_min": 155.12,
+          "close_max": 166.9,
+          "close_std": 3.5538,
+          "volume_total": 166011100
+        },
+        "XLK": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 145.3984,
+          "close_min": 141.84,
+          "close_max": 146.79,
+          "close_std": 1.2381,
+          "volume_total": 248195000
+        },
+        "XLP": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 79.1068,
+          "close_min": 76.62,
+          "close_max": 82.37,
+          "close_std": 1.9582,
+          "volume_total": 330739100
+        },
+        "XLRE": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 40.73,
+          "close_min": 40.14,
+          "close_max": 42.21,
+          "close_std": 0.5599,
+          "volume_total": 175809000
+        },
+        "XLU": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 42.7847,
+          "close_min": 41.87,
+          "close_max": 43.61,
+          "close_std": 0.4195,
+          "volume_total": 356922300
+        },
+        "XLV": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 156.4337,
+          "close_min": 154.8,
+          "close_max": 159.66,
+          "close_std": 1.3324,
+          "volume_total": 205525100
+        },
+        "XLY": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 121.7274,
+          "close_min": 118.35,
+          "close_max": 124.52,
+          "close_std": 1.7467,
+          "volume_total": 181473900
+        }
+      }
+    }
+  },
+  {
+    "name": "macro_proxies",
+    "type": "ohlcv",
+    "description": "ETFs that track macro themes",
+    "meta": {
+      "record_count": 133,
+      "first_fetched": "2026-01-21T12:06:48.429550",
+      "last_updated": "2026-01-21T12:06:48.429550",
+      "last_record_date": "2026-01-20T00:00:00-05:00",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "symbol",
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "primary_keys": [
+        "symbol",
+        "date"
+      ],
+      "symbols": [
+        "DBA",
+        "GLD",
+        "GOVT",
+        "IWM",
+        "QQQ",
+        "SPY",
+        "UUP"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2025-12-22T05:00:00+00:00",
+        "max": "2026-01-20T05:00:00+00:00",
+        "days": 29
+      },
+      "by_symbol": {
+        "DBA": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 25.6463,
+          "close_min": 25.44,
+          "close_max": 26.01,
+          "close_std": 0.1566,
+          "volume_total": 5478400
+        },
+        "GLD": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 413.2316,
+          "close_min": 396.31,
+          "close_max": 437.23,
+          "close_std": 10.7115,
+          "volume_total": 266647900
+        },
+        "GOVT": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 23.0474,
+          "close_min": 22.95,
+          "close_max": 23.1,
+          "close_std": 0.0363,
+          "volume_total": 176978400
+        },
+        "IWM": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 256.0695,
+          "close_min": 246.16,
+          "close_max": 265.76,
+          "close_std": 6.1302,
+          "volume_total": 617748200
+        },
+        "QQQ": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 620.7095,
+          "close_min": 608.06,
+          "close_max": 627.17,
+          "close_std": 4.8367,
+          "volume_total": 884721000
+        },
+        "SPY": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 688.7837,
+          "close_min": 677.58,
+          "close_max": 695.16,
+          "close_std": 4.4533,
+          "volume_total": 1355139500
+        },
+        "UUP": {
+          "count": 19,
+          "date_min": "2025-12-22T05:00:00+00:00",
+          "date_max": "2026-01-20T05:00:00+00:00",
+          "close_mean": 27.1642,
+          "close_min": 26.94,
+          "close_max": 27.43,
+          "close_std": 0.1646,
+          "volume_total": 18773300
+        }
+      }
+    }
+  },
+  {
+    "name": "economics_news",
+    "type": "rss",
+    "description": "Economic analysis and policy coverage",
+    "meta": {
+      "record_count": 40,
+      "first_fetched": "2026-01-21T12:06:53.950911",
+      "last_updated": "2026-01-21T12:06:53.950911",
+      "last_record_date": "2026-01-21T08:19:06",
+      "fetch_count": 1,
+      "columns": [
+        "_source_id",
+        "_fetched_at",
+        "feed_name",
+        "feed_url",
+        "title",
+        "link",
+        "summary",
+        "author",
+        "published",
+        "id"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "feeds": [
+        "Calculated Risk",
+        "Marginal Revolution"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2026-01-06T15:54:00+00:00",
+        "max": "2026-01-21T08:19:06+00:00",
+        "days": 14
+      },
+      "articles_by_feed": {
+        "Calculated Risk": 25,
+        "Marginal Revolution": 15
+      },
+      "articles_by_day": {
+        "2026-01-06": 2,
+        "2026-01-07": 6,
+        "2026-01-08": 5,
+        "2026-01-09": 7,
+        "2026-01-10": 2,
+        "2026-01-11": 1,
+        "2026-01-12": 2,
+        "2026-01-18": 3,
+        "2026-01-19": 5,
+        "2026-01-20": 5,
+        "2026-01-21": 2
+      }
+    }
+  }
+]
