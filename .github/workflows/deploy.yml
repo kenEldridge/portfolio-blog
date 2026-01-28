@@ -35,13 +35,14 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Create .env file
+      - name: Create .env file (optional - for incremental updates)
         run: echo "FRED_API_KEY=${{ secrets.FRED_API_KEY }}" > .env
 
-      - name: Fetch data with cdata
+      - name: Fetch latest data updates (optional)
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python3 -m cdata fetch all || true
+        continue-on-error: true
 
       - name: Install dependencies
         run: npm ci
