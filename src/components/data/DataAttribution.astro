@@ -1,0 +1,184 @@
+---
+interface Props {
+  dataset: string;
+}
+
+const { dataset } = Astro.props;
+
+// Attribution information for each data source type
+const attributions: Record<string, {
+  source: string;
+  sourceUrl: string;
+  license: string;
+  licenseUrl?: string;
+  attribution: string;
+  notes?: string;
+}> = {
+  yfinance: {
+    source: "Yahoo Finance",
+    sourceUrl: "https://finance.yahoo.com",
+    license: "Personal/Research Use",
+    licenseUrl: "https://legal.yahoo.com/us/en/yahoo/terms/product-atos/apiforydn/index.html",
+    attribution: "Data provided by Yahoo Finance via yfinance library (unofficial API)",
+    notes: "For personal and research purposes. Not affiliated with or endorsed by Yahoo, Inc."
+  },
+  fred: {
+    source: "Federal Reserve Economic Data (FRED)",
+    sourceUrl: "https://fred.stlouisfed.org",
+    license: "Public Domain - Citation Required",
+    licenseUrl: "https://fred.stlouisfed.org/docs/api/terms_of_use.html",
+    attribution: "Data provided by Federal Reserve Bank of St. Louis",
+    notes: "Public domain with citation required. Some series may have additional restrictions from original data owners."
+  },
+  bls: {
+    source: "U.S. Bureau of Labor Statistics",
+    sourceUrl: "https://www.bls.gov",
+    license: "Public Domain - Citation Requested",
+    licenseUrl: "https://www.bls.gov/developers/termsOfService.htm",
+    attribution: "Data provided by U.S. Bureau of Labor Statistics",
+    notes: "U.S. government public domain work. Citation to BLS is requested."
+  },
+  fed_rss: {
+    source: "Federal Reserve Board",
+    sourceUrl: "https://www.federalreserve.gov",
+    license: "Public Domain - Citation Requested",
+    licenseUrl: "https://www.federalreserve.gov/disclaimer.htm",
+    attribution: "Content provided by the Board of Governors of the Federal Reserve System",
+    notes: "U.S. government public domain work. Citation to the Federal Reserve Board is requested."
+  },
+  rss_news: {
+    source: "Various News Sources",
+    sourceUrl: "#",
+    license: "Varies by Source",
+    attribution: "News content is copyrighted by respective publishers. Links provided for access to original content.",
+    notes: "This site provides links and summaries only. Full articles are copyrighted by their respective publishers."
+  },
+  fed_stress: {
+    source: "Federal Reserve Supervisory Stress Tests (DFAST)",
+    sourceUrl: "https://www.federalreserve.gov/supervisionreg/dfa-stress-tests.htm",
+    license: "Public Domain (17 U.S.C. § 105)",
+    licenseUrl: "https://www.federalreserve.gov/disclaimer.htm",
+    attribution: "Stress test scenarios provided by the Board of Governors of the Federal Reserve System",
+    notes: "U.S. government work in the public domain. Citation to the Federal Reserve Board is requested."
+  }
+};
+
+// Map dataset names to attribution types
+function getAttributionType(datasetName: string): string {
+  if (datasetName.startsWith('fred_')) return 'fred';
+  if (datasetName.startsWith('bls_')) return 'bls';
+  if (datasetName === 'fed_news') return 'fed_rss';
+  if (datasetName === 'financial_news' || datasetName === 'economics_news') return 'rss_news';
+  if (datasetName === 'fed_stress_scenarios') return 'fed_stress';
+  // Default to yfinance for market data
+  return 'yfinance';
+}
+
+const attributionType = getAttributionType(dataset);
+const info = attributions[attributionType];
+---
+
+<div class="attribution-box">
+  <h3>📋 Data Attribution</h3>
+
+  <div class="attribution-content">
+    <div class="attribution-row">
+      <strong>Source:</strong>
+      <a href={info.sourceUrl} target="_blank" rel="noopener noreferrer">
+        {info.source}
+      </a>
+    </div>
+
+    <div class="attribution-row">
+      <strong>License:</strong>
+      {info.licenseUrl ? (
+        <a href={info.licenseUrl} target="_blank" rel="noopener noreferrer">
+          {info.license}
+        </a>
+      ) : (
+        <span>{info.license}</span>
+      )}
+    </div>
+
+    <div class="attribution-row">
+      <strong>Attribution:</strong>
+      <span>{info.attribution}</span>
+    </div>
+
+    {info.notes && (
+      <div class="attribution-notes">
+        <em>{info.notes}</em>
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .attribution-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--color-bg-secondary, #f5f5f5);
+    border-left: 4px solid var(--color-accent, #0066cc);
+    border-radius: 4px;
+  }
+
+  .attribution-box h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--color-text-primary, #333);
+  }
+
+  .attribution-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .attribution-row {
+    margin-bottom: 0.75rem;
+  }
+
+  .attribution-row strong {
+    display: inline-block;
+    min-width: 100px;
+    color: var(--color-text-primary, #333);
+  }
+
+  .attribution-row a {
+    color: var(--color-accent, #0066cc);
+    text-decoration: none;
+  }
+
+  .attribution-row a:hover {
+    text-decoration: underline;
+  }
+
+  .attribution-notes {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border, #ddd);
+    color: var(--color-text-secondary, #666);
+    font-size: 0.85rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .attribution-box {
+      background: var(--color-bg-secondary, #2a2a2a);
+      border-left-color: var(--color-accent, #4a9eff);
+    }
+
+    .attribution-row strong,
+    .attribution-box h3 {
+      color: var(--color-text-primary, #e0e0e0);
+    }
+
+    .attribution-row a {
+      color: var(--color-accent, #4a9eff);
+    }
+
+    .attribution-notes {
+      color: var(--color-text-secondary, #a0a0a0);
+      border-top-color: var(--color-border, #444);
+    }
+  }
+</style>
