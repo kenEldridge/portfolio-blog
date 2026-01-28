@@ -243,6 +243,14 @@ def main():
     print("Preparing data for the-derple-dex from cdata storage...")
     print()
 
+    # Clean output directories to remove old data files
+    import shutil
+    if OUTPUT_PUBLIC.exists():
+        shutil.rmtree(OUTPUT_PUBLIC)
+    if not INCLUDE_RESTRICTED_DATA:
+        print("  Note: INCLUDE_RESTRICTED_DATA=false - excluding Yahoo Finance datasets")
+        print()
+
     # Ensure output directories exist
     OUTPUT_PUBLIC.mkdir(parents=True, exist_ok=True)
     OUTPUT_SRC.mkdir(parents=True, exist_ok=True)
