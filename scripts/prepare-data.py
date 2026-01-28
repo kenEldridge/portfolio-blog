@@ -15,10 +15,21 @@ from pathlib import Path
 
 import pandas as pd
 
+# Paths (define early for .env loading)
+SCRIPT_DIR = Path(__file__).parent
+PROJECT_DIR = SCRIPT_DIR.parent
+OUTPUT_PUBLIC = PROJECT_DIR / "public" / "data"
+OUTPUT_SRC = PROJECT_DIR / "src" / "data"
+
 # Load environment variables from .env file
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    # Explicitly load from project root (handles WSL path issues)
+    env_file = PROJECT_DIR / ".env"
+    if env_file.exists():
+        load_dotenv(env_file)
+    else:
+        load_dotenv()  # Try default search
 except ImportError:
     print("Warning: python-dotenv not installed. Environment variables from .env won't be loaded.")
     print("Install with: pip install python-dotenv")
@@ -26,12 +37,6 @@ except ImportError:
 # Import bridge and dataset configuration
 from cdata_bridge import fetch_dataset
 from dataset_config import DATASETS
-
-# Paths
-SCRIPT_DIR = Path(__file__).parent
-PROJECT_DIR = SCRIPT_DIR.parent
-OUTPUT_PUBLIC = PROJECT_DIR / "public" / "data"
-OUTPUT_SRC = PROJECT_DIR / "src" / "data"
 
 # Dataset type mapping (for processing)
 OHLCV_DATASETS = {
