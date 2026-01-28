@@ -121,9 +121,9 @@ To add to a post:
 
 ## 📈 Data Explorer
 
-The site includes a data explorer that displays financial and economic data collected via [cdata](https://github.com/kenEldridge/cdata).
+The site includes a data explorer that displays financial and economic data fetched via [cdata](https://github.com/kenEldridge/cdata) using the bridge pattern. Data is fetched programmatically at build time.
 
-### Data Sources (11 datasets)
+### Data Sources (23 datasets)
 
 **Price Data (OHLCV):**
 - `us_indices` - S&P 500, Dow, NASDAQ, Russell 2000, VIX
@@ -142,14 +142,24 @@ The site includes a data explorer that displays financial and economic data coll
 
 ### Refreshing Data
 
-Data is fetched from cdata and converted to JSON at build time:
+Data is fetched using cdata as a library and converted to JSON at build time:
 
 ```bash
-# Refresh data from cdata (requires cdata project at ../cdata)
+# Install Python dependencies (first time only)
+pip install -r requirements.txt
+
+# Set your FRED API key (get free key at https://fred.stlouisfed.org/docs/api/api_key.html)
+cp .env.example .env
+# Edit .env and add your FRED_API_KEY
+
+# Fetch data and convert to JSON
 python3 scripts/prepare-data.py
 
 # Or use npm script
 npm run prepare-data
+
+# Build site (automatically runs prepare-data first)
+npm run build
 ```
 
 ### Data Page Features
@@ -165,7 +175,9 @@ Each dataset page includes:
 
 ```
 ├── scripts/
-│   └── prepare-data.py          # Converts parquet → JSON
+│   ├── prepare-data.py          # Fetches & converts data → JSON
+│   ├── cdata_bridge.py          # Bridge to cdata library
+│   └── dataset_config.py        # Dataset configurations
 ├── src/
 │   ├── components/data/
 │   │   ├── DatasetCard.astro    # Landing page card
@@ -178,8 +190,10 @@ Each dataset page includes:
 │   └── pages/data/
 │       ├── index.astro          # Landing page
 │       └── [dataset].astro      # Dynamic dataset pages
-└── public/data/
-    └── *.json                   # Generated dataset files
+├── public/data/
+│   └── *.json                   # Generated dataset files
+├── requirements.txt             # Python dependencies
+└── .env                         # API keys (create from .env.example)
 ```
 
 ## 👀 Want to learn more?

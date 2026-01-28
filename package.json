@@ -5,7 +5,7 @@
   "scripts": {
     "prepare-data": "python3 scripts/prepare-data.py",
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run prepare-data && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

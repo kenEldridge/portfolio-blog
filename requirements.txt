@@ -1,0 +1,11 @@
+# Core data fetching framework
+# For CI/CD: installs from git
+# For local dev: pip install -e ../cdata
+cdata @ git+https://github.com/kenEldridge/cdata.git@dev
+
+# Data processing (already used by prepare-data.py)
+pandas>=2.0
+pyarrow>=14.0
+
+# Environment variable management
+python-dotenv>=1.0

@@ -1,29 +1,34 @@
 # the-derple-dex - Project Guide for AI Assistants
 
-This is a technical blog and data showcase site built with Astro. It displays financial and economic data collected via [cdata](https://github.com/kenEldridge/cdata).
+This is a technical blog and data showcase site built with Astro. It displays financial and economic data fetched via [cdata](https://github.com/kenEldridge/cdata) using the **bridge pattern**.
 
 ## Architecture Overview
 
-**Current Approach:** File-based data consumption
-- `cdata` runs as a standalone data pipeline (separate project at `../cdata`)
-- `cdata` fetches data on schedule and writes Parquet files
-- This project reads those Parquet files and converts them to JSON at build time
+**Current Approach:** Bridge Pattern (Implemented)
+- This project uses `cdata` as a library (not as a separate data pipeline)
+- Dataset configurations are owned by this project in Python code
+- Data is fetched programmatically at build time via the cdata registry
 - Static site generation with pre-rendered data pages
 
 **Key Files:**
-- `scripts/prepare-data.py` - Converts cdata Parquet → JSON for Astro
+- `scripts/dataset_config.py` - Dataset configurations (owns the config)
+- `scripts/cdata_bridge.py` - Bridge to cdata library
+- `scripts/prepare-data.py` - Fetches via bridge, transforms to JSON
 - `src/pages/data/[dataset].astro` - Dynamic dataset pages
 - `src/components/data/*` - Data visualization components
 
 ## Current Data Flow
 
 ```
-cdata (separate project)
-  ↓ Fetches data on schedule
-  ↓ Writes to: ../cdata/data/*.parquet
+the-derple-dex (this project)
+  ↓ Owns configuration in dataset_config.py
+  ↓
+cdata_bridge.py
+  ↓ Uses cdata registry to create sources
+  ↓ Fetches data programmatically
+  ↓ Returns DataFrames
   ↓
 prepare-data.py
-  ↓ Reads Parquet files
   ↓ Transforms to JSON
   ↓ Writes to: public/data/*.json + src/data/datasets.json
   ↓
@@ -34,123 +39,96 @@ Astro Build
 GitHub Pages (deployed site)
 ```
 
-## Alternative: Bridge Pattern (Future Enhancement)
+## Bridge Pattern Implementation
 
-Issue [#4](https://github.com/kenEldridge/cdata/issues/4) documents using `cdata` as a **library** rather than reading its output files.
+This project implements the bridge pattern from cdata issue [#4](https://github.com/kenEldridge/cdata/issues/4), using `cdata` as a **library** rather than reading output files.
 
-### Bridge Pattern Benefits
+### Bridge Pattern Benefits (Now Realized)
 
-| Aspect | Current (File-based) | Bridge Pattern |
-|--------|---------------------|----------------|
-| **Separation** | Two projects, file coupling | Single project, API coupling |
-| **Config** | YAML files in cdata | Python code in this project |
-| **Storage** | cdata manages Parquet | This project manages storage |
-| **Scheduling** | cdata's APScheduler | This project's control |
-| **Data Flow** | Fetch → Parquet → JSON | Fetch → Custom processing → Storage |
-| **Testing** | Hard to test data pipeline | Easy to mock fetches |
+| Aspect | Old (File-based) | Current (Bridge Pattern) |
+|--------|------------------|--------------------------|
+| **Separation** | Two projects, file coupling | Single project, API coupling ✓ |
+| **Config** | YAML files in cdata | Python code in this project ✓ |
+| **Storage** | cdata manages Parquet | This project manages storage ✓ |
+| **Scheduling** | cdata's APScheduler | This project's control ✓ |
+| **Data Flow** | Fetch → Parquet → JSON | Fetch → Custom processing → Storage ✓ |
+| **Testing** | Hard to test data pipeline | Easy to mock fetches ✓ |
 
-### Bridge Pattern Example
+### Bridge Pattern Implementation
 
+**Actual Implementation:**
+
+`scripts/cdata_bridge.py` provides the bridge:
 ```python
-# scripts/fetch_with_bridge.py
-from cdata.core.registry import get_registry
-from cdata.config.schema import SourceConfig
+from cdata_bridge import fetch_dataset
+from dataset_config import DATASETS
 
-class CDataBridge:
-    """Bridge to cdata framework - this project owns config and storage."""
+# Fetch data using bridge
+df, meta = fetch_dataset("us_indices", DATASETS["us_indices"])
 
-    def __init__(self):
-        self._registry = None
-
-    @property
-    def registry(self):
-        if self._registry is None:
-            self._registry = get_registry()
-        return self._registry
-
-    def fetch_market_data(self, symbols: list[str]) -> pd.DataFrame:
-        """Fetch market data using cdata, return as DataFrame."""
-        config = SourceConfig(
-            id="custom_market",
-            name="Custom Market Data",
-            type="yfinance",
-            config={"symbols": symbols, "period": "1y"},
-            primary_keys=["symbol", "date"]
-        )
-        source = self.registry.create_source(config)
-        result = source.fetch()
-        return pd.DataFrame([r.data for r in result.records])
-
-    def fetch_fred_indicators(self, series: list[str]) -> pd.DataFrame:
-        """Fetch FRED data using cdata."""
-        config = SourceConfig(
-            id="custom_fred",
-            name="Custom FRED Data",
-            type="fred",
-            config={"series": series},
-            primary_keys=["series_id", "date"]
-        )
-        source = self.registry.create_source(config)
-        result = source.fetch()
-        return pd.DataFrame([r.data for r in result.records])
-
-# Usage in prepare-data.py
-bridge = CDataBridge()
-sp500_data = bridge.fetch_market_data(["^GSPC", "^DJI", "^IXIC"])
-gdp_data = bridge.fetch_fred_indicators(["GDP", "UNRATE"])
-
-# Now process and write JSON as usual
+# df is a pandas DataFrame with the fetched data
+# meta contains record_count, timestamps, columns, etc.
 ```
 
-### When to Use Bridge Pattern
+`scripts/dataset_config.py` defines all datasets:
+```python
+DATASETS = {
+    "us_indices": {
+        "name": "US Market Indices",
+        "type": "yfinance",
+        "description": "Major US equity indices",
+        "config": {
+            "symbols": ["^GSPC", "^DJI", "^IXIC", "^RUT", "^VIX"],
+            "period": "1y",
+            "interval": "1d"
+        },
+        "primary_keys": ["symbol", "date"]
+    },
+    # ... 22 more datasets
+}
+```
 
-✅ **Use Bridge Pattern if:**
-- You want full control over data processing and storage
-- You need custom data transformations
-- You want to integrate cdata into an existing data pipeline
-- You need to test data fetches with mocks
-- You're building a production service that needs programmatic control
+`scripts/prepare-data.py` uses the bridge:
+```python
+for dataset_name, dataset_config in DATASETS.items():
+    df, meta = fetch_dataset(dataset_name, dataset_config)
+    # Transform to JSON as before
+```
 
-⚠️ **Stick with File-based if:**
-- You want a simple, decoupled architecture
-- cdata's scheduling and storage work well for your needs
-- You prefer configuration over code
-- You don't need custom data processing
-- You want to minimize code complexity
-
-## Current Implementation: File-based Approach
-
-**This project currently uses the file-based approach** because:
-1. ✅ Simple and decoupled - blog and data pipeline are separate concerns
-2. ✅ Easy to understand - clear separation of responsibilities
-3. ✅ Works with existing cdata setup - no code changes needed
-4. ✅ Flexible - can switch data sources by editing cdata YAML files
-5. ✅ Cacheable - Parquet files can be versioned/backed up independently
-
-### Working with the Current Approach
+## Working with the Bridge Pattern
 
 **To add a new data source:**
-1. Add source config to `../cdata/config/sources/*.yaml`
-2. Run `cdata fetch source <source_id>`
-3. Add dataset name to appropriate set in `prepare-data.py` (OHLCV_DATASETS, etc.)
-4. Run `python3 scripts/prepare-data.py`
-5. Rebuild site with `npm run build`
+1. Add dataset config to `scripts/dataset_config.py`
+2. Run `python3 scripts/prepare-data.py` to fetch and generate JSON
+3. Rebuild site with `npm run build`
 
 **To refresh data:**
 ```bash
-# From cdata project
-cd ../cdata
-cdata fetch all
+# Ensure you have a FRED API key in .env
+export FRED_API_KEY="your_key"
 
-# From this project
-cd ../the-derple-dex
+# Fetch fresh data and generate JSON
 python3 scripts/prepare-data.py
+
+# Build site (automatically runs prepare-data first)
 npm run build
 ```
 
+**Setup requirements:**
+```bash
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Or for local development, use editable install
+pip install -e ../cdata  # if you have cdata checked out
+
+# Set up API keys
+cp .env.example .env
+# Edit .env and add your FRED_API_KEY
+```
+
 **Data location:**
-- Source: `../cdata/data/*.parquet`
-- Metadata: `../cdata/data/index.json`
+- Configuration: `scripts/dataset_config.py` (source of truth)
 - Build output: `public/data/*.json` (for client-side)
 - Build output: `src/data/datasets.json` (for SSG)
 

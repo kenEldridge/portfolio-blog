@@ -1,23 +1,39 @@
 #!/usr/bin/env python3
 """
-Convert cdata parquet files to JSON for Astro static site.
+Convert cdata sources to JSON for Astro static site.
+
+This script uses the cdata library via the bridge pattern to fetch data
+programmatically, then transforms it to JSON format for the static site.
+
 Run before astro build: python scripts/prepare-data.py
 """
 import json
+import os
 import sys
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
 
-# Paths - adjust if needed
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    print("Warning: python-dotenv not installed. Environment variables from .env won't be loaded.")
+    print("Install with: pip install python-dotenv")
+
+# Import bridge and dataset configuration
+from cdata_bridge import fetch_dataset
+from dataset_config import DATASETS
+
+# Paths
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_DIR = SCRIPT_DIR.parent
-CDATA_PATH = PROJECT_DIR.parent / "cdata" / "data"
 OUTPUT_PUBLIC = PROJECT_DIR / "public" / "data"
 OUTPUT_SRC = PROJECT_DIR / "src" / "data"
 
-# Dataset type mapping
+# Dataset type mapping (for processing)
 OHLCV_DATASETS = {
     "us_indices", "global_indices", "treasury_yields", "bond_etfs",
     "currencies", "commodities", "sector_etfs", "macro_proxies"
@@ -25,18 +41,12 @@ OHLCV_DATASETS = {
 RSS_DATASETS = {"fed_news", "financial_news", "economics_news"}
 FRED_DATASETS = {
     "fred_gdp", "fred_employment", "fred_inflation", "fred_rates",
-    "fred_money", "fred_housing", "fred_consumer"
+    "fred_money", "fred_housing", "fred_consumer", "fred_banking",
+    "fred_stress_index", "fred_mev", "fred_market"
 }
-
-
-def load_index() -> dict:
-    """Load cdata index.json."""
-    index_path = CDATA_PATH / "index.json"
-    if not index_path.exists():
-        print(f"Error: Index not found at {index_path}")
-        sys.exit(1)
-    with open(index_path) as f:
-        return json.load(f)
+BLS_DATASETS = {
+    "bls_cpi", "bls_employment", "bls_wages", "bls_ppi", "bls_jolts"
+}
 
 
 def prepare_ohlcv_dataset(name: str, df: pd.DataFrame, meta: dict) -> dict:
@@ -70,20 +80,15 @@ def prepare_ohlcv_dataset(name: str, df: pd.DataFrame, meta: dict) -> dict:
     sample_df = df.sort_values(['symbol', 'date'])[['symbol', 'date', 'open', 'high', 'low', 'close', 'volume']]
     sample_df['date'] = sample_df['date'].dt.strftime('%Y-%m-%d')
 
+    # Update meta with symbols
+    meta = meta.copy()
+    meta["symbols"] = symbols
+
     return {
         "name": name,
         "type": "ohlcv",
-        "description": meta.get("description", ""),
-        "meta": {
-            "record_count": int(meta.get("record_count", len(df))),
-            "first_fetched": meta.get("first_fetched"),
-            "last_updated": meta.get("last_updated"),
-            "last_record_date": meta.get("last_record_date"),
-            "fetch_count": int(meta.get("fetch_count", 1)),
-            "columns": meta.get("columns", list(df.columns)),
-            "primary_keys": meta.get("primary_keys", []),
-            "symbols": symbols,
-        },
+        "description": DATASETS[name]["description"],
+        "meta": meta,
         "stats": {
             "date_range": {
                 "min": date_min.isoformat(),
@@ -96,8 +101,8 @@ def prepare_ohlcv_dataset(name: str, df: pd.DataFrame, meta: dict) -> dict:
     }
 
 
-def prepare_fred_dataset(name: str, df: pd.DataFrame, meta: dict) -> dict:
-    """Process FRED economic datasets."""
+def prepare_fred_dataset(name: str, df: pd.DataFrame, meta: dict, data_type: str = "fred") -> dict:
+    """Process FRED/BLS economic datasets (same structure)."""
     df = df.copy()
     df['date'] = pd.to_datetime(df['date'], utc=True)
 
@@ -132,20 +137,15 @@ def prepare_fred_dataset(name: str, df: pd.DataFrame, meta: dict) -> dict:
     sample_df = df.sort_values(['series_id', 'date'])[['series_id', 'date', 'value', 'title', 'units']]
     sample_df['date'] = sample_df['date'].dt.strftime('%Y-%m-%d')
 
+    # Update meta with series
+    meta = meta.copy()
+    meta["series"] = series_ids
+
     return {
         "name": name,
-        "type": "fred",
-        "description": meta.get("description", ""),
-        "meta": {
-            "record_count": int(meta.get("record_count", len(df))),
-            "first_fetched": meta.get("first_fetched"),
-            "last_updated": meta.get("last_updated"),
-            "last_record_date": meta.get("last_record_date"),
-            "fetch_count": int(meta.get("fetch_count", 1)),
-            "columns": meta.get("columns", list(df.columns)),
-            "primary_keys": meta.get("primary_keys", []),
-            "series": series_ids,
-        },
+        "type": data_type,
+        "description": DATASETS[name]["description"],
+        "meta": meta,
         "stats": {
             "date_range": {
                 "min": date_min.isoformat(),
@@ -194,20 +194,15 @@ def prepare_rss_dataset(name: str, df: pd.DataFrame, meta: dict) -> dict:
     if 'published' in recent_df.columns:
         recent_df['published'] = recent_df['published'].dt.strftime('%Y-%m-%d %H:%M')
 
+    # Update meta with feeds
+    meta = meta.copy()
+    meta["feeds"] = feeds
+
     return {
         "name": name,
         "type": "rss",
-        "description": meta.get("description", ""),
-        "meta": {
-            "record_count": int(meta.get("record_count", len(df))),
-            "first_fetched": meta.get("first_fetched"),
-            "last_updated": meta.get("last_updated"),
-            "last_record_date": meta.get("last_record_date"),
-            "fetch_count": int(meta.get("fetch_count", 1)),
-            "columns": meta.get("columns", list(df.columns)),
-            "primary_keys": meta.get("primary_keys", []),
-            "feeds": feeds,
-        },
+        "description": DATASETS[name]["description"],
+        "meta": meta,
         "stats": {
             "date_range": {
                 "min": date_min.isoformat() if date_min else None,
@@ -222,65 +217,84 @@ def prepare_rss_dataset(name: str, df: pd.DataFrame, meta: dict) -> dict:
 
 
 def main():
-    print("Preparing data for the-derple-dex...")
+    print("Preparing data for the-derple-dex using cdata bridge...")
+    print()
 
     # Ensure output directories exist
     OUTPUT_PUBLIC.mkdir(parents=True, exist_ok=True)
     OUTPUT_SRC.mkdir(parents=True, exist_ok=True)
 
-    # Load index
-    index = load_index()
-    datasets_info = index.get("datasets", {})
-
     all_datasets = []
+    errors = []
 
-    for key, meta in datasets_info.items():
-        name = meta.get("name")
-        file_path = CDATA_PATH.parent / meta.get("file_path", "")
+    for dataset_name, dataset_config in DATASETS.items():
+        print(f"  Fetching {dataset_name}...")
 
-        if not file_path.exists():
-            print(f"  Skipping {name}: file not found at {file_path}")
+        try:
+            # Fetch data using bridge
+            df, meta = fetch_dataset(dataset_name, dataset_config)
+
+            if df.empty:
+                print(f"    ⚠️  No data returned for {dataset_name}")
+                if meta.get("error"):
+                    print(f"    Error: {meta['error']}")
+                    errors.append(f"{dataset_name}: {meta['error']}")
+                continue
+
+            print(f"    Fetched {len(df)} records")
+
+            # Process based on type
+            if dataset_name in OHLCV_DATASETS:
+                dataset = prepare_ohlcv_dataset(dataset_name, df, meta)
+            elif dataset_name in RSS_DATASETS:
+                dataset = prepare_rss_dataset(dataset_name, df, meta)
+            elif dataset_name in FRED_DATASETS:
+                dataset = prepare_fred_dataset(dataset_name, df, meta, data_type="fred")
+            elif dataset_name in BLS_DATASETS:
+                dataset = prepare_fred_dataset(dataset_name, df, meta, data_type="bls")
+            else:
+                print(f"    ⚠️  Unknown dataset type for {dataset_name}, skipping")
+                continue
+
+            # Write individual dataset JSON for client-side charts
+            output_file = OUTPUT_PUBLIC / f"{dataset_name}.json"
+            with open(output_file, 'w') as f:
+                json.dump(dataset, f, default=str)
+            print(f"    → {output_file}")
+
+            # Add summary for datasets.json (without full data)
+            summary = {
+                "name": dataset["name"],
+                "type": dataset["type"],
+                "description": dataset["description"],
+                "meta": dataset["meta"],
+                "stats": dataset["stats"],
+            }
+            all_datasets.append(summary)
+
+        except Exception as e:
+            print(f"    ✗ Error processing {dataset_name}: {e}")
+            import traceback
+            traceback.print_exc()
+            errors.append(f"{dataset_name}: {str(e)}")
             continue
-
-        print(f"  Processing {name}...")
-
-        # Read parquet
-        df = pd.read_parquet(file_path)
-
-        # Process based on type
-        if name in OHLCV_DATASETS:
-            dataset = prepare_ohlcv_dataset(name, df, meta)
-        elif name in RSS_DATASETS:
-            dataset = prepare_rss_dataset(name, df, meta)
-        elif name in FRED_DATASETS:
-            dataset = prepare_fred_dataset(name, df, meta)
-        else:
-            print(f"  Unknown dataset type for {name}, skipping")
-            continue
-
-        # Write individual dataset JSON for client-side charts
-        output_file = OUTPUT_PUBLIC / f"{name}.json"
-        with open(output_file, 'w') as f:
-            json.dump(dataset, f, default=str)
-        print(f"    -> {output_file}")
-
-        # Add summary for datasets.json (without full data)
-        summary = {
-            "name": dataset["name"],
-            "type": dataset["type"],
-            "description": dataset["description"],
-            "meta": dataset["meta"],
-            "stats": dataset["stats"],
-        }
-        all_datasets.append(summary)
 
     # Write datasets.json for static page generation
     datasets_file = OUTPUT_SRC / "datasets.json"
     with open(datasets_file, 'w') as f:
         json.dump(all_datasets, f, indent=2, default=str)
-    print(f"  -> {datasets_file}")
+    print()
+    print(f"  → {datasets_file}")
 
-    print(f"\nDone! Processed {len(all_datasets)} datasets.")
+    print()
+    print(f"Done! Processed {len(all_datasets)}/{len(DATASETS)} datasets.")
+
+    if errors:
+        print()
+        print("Errors encountered:")
+        for error in errors:
+            print(f"  - {error}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
