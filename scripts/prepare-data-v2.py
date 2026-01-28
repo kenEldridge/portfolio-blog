@@ -10,11 +10,13 @@ Run: python scripts/prepare-data-v2.py
 To update data first: cdata fetch all
 """
 import json
+import os
 import sys
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+from dotenv import load_dotenv
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
@@ -24,6 +26,13 @@ CDATA_RAW_DIR = CDATA_DATA_DIR / "raw"
 CDATA_INDEX = CDATA_DATA_DIR / "index.json"
 OUTPUT_PUBLIC = PROJECT_DIR / "public" / "data"
 OUTPUT_SRC = PROJECT_DIR / "src" / "data"
+
+# Load environment variables
+load_dotenv(PROJECT_DIR / ".env")
+
+# Check if restricted data should be included (Yahoo Finance - Personal/Research Use)
+# Default to True for local development, set to False for public deployments
+INCLUDE_RESTRICTED_DATA = os.getenv("INCLUDE_RESTRICTED_DATA", "true").lower() in ("true", "1", "yes")
 
 # Dataset type mapping (for processing)
 OHLCV_DATASETS = {
@@ -251,6 +260,11 @@ def main():
 
         if not file_path.exists():
             print(f"  Skipping {name}: file not found at {file_path}")
+            continue
+
+        # Skip Yahoo Finance datasets in public builds (Personal/Research Use only)
+        if not INCLUDE_RESTRICTED_DATA and name in OHLCV_DATASETS:
+            print(f"  Skipping {name}: restricted dataset (Yahoo Finance - Personal/Research Use)")
             continue
 
         print(f"  Processing {name}...")

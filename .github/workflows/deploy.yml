@@ -35,8 +35,10 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Create .env file (optional - for incremental updates)
-        run: echo "FRED_API_KEY=${{ secrets.FRED_API_KEY }}" > .env
+      - name: Create .env file
+        run: |
+          echo "FRED_API_KEY=${{ secrets.FRED_API_KEY }}" > .env
+          echo "INCLUDE_RESTRICTED_DATA=false" >> .env
 
       - name: Fetch latest data updates (optional)
         env:
