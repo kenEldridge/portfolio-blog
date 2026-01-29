@@ -27,7 +27,8 @@ const typeLabels: Record<string, string> = {
   ohlcv: 'Price Data',
   fred: 'FRED Data',
   bls: 'BLS Data',
-  rss: 'News Feed'
+  rss: 'News Feed',
+  fed_stress: 'Fed Stress Tests'
 };
 const typeLabel = typeLabels[dataset.type] || dataset.type;
 const typeClass = `type-${dataset.type}`;

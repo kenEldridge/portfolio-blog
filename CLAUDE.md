@@ -4,72 +4,93 @@ This is a technical blog and data showcase site built with Astro. It displays fi
 
 ## Architecture Overview
 
-**Current Approach:** Local cdata Instance with Parquet Storage
+**Current Approach:** Bridge Pattern (cdata as Library)
 
-- cdata is initialized **within** this project (not as a separate pipeline)
-- Dataset configurations are in `config/sources/financial.yaml`
-- Data is stored in `data/raw/*.parquet` files (managed by cdata)
-- Incremental fetching accumulates data over time
-- prepare-data-v2.py reads Parquet files and converts to JSON for the static site
+- cdata is used as a **library** via the bridge pattern (not file-based)
+- Dataset configurations are in `scripts/dataset_config.py` (Python)
+- Data is fetched programmatically at build time (no file storage)
+- Bridge module creates SourceConfig objects and fetches data on-demand
+- prepare-data-v3.py uses bridge to fetch data and converts to JSON for the static site
 
 **Key Files:**
-- `config/sources/financial.yaml` - cdata dataset configurations (28 sources)
-- `data/index.json` - cdata metadata tracking (generated)
-- `data/raw/*.parquet` - cdata Parquet storage (generated, 3.7MB)
-- `scripts/prepare-data-v2.py` - Reads Parquet, transforms to JSON
-- `public/data/*.json` - JSON files for client-side visualization (36MB)
+- `scripts/dataset_config.py` - Dataset definitions (28 sources, Python dicts)
+- `scripts/cdata_bridge.py` - Bridge module connecting to cdata registry
+- `scripts/prepare-data-v3.py` - Uses bridge to fetch data, transforms to JSON
+- `public/data/*.json` - JSON files for client-side visualization (generated)
 - `src/data/datasets.json` - Summary for static site generation
 - `src/pages/data/[dataset].astro` - Dynamic dataset pages
 
-## Current Data Flow
+## Current Data Flow (Bridge Pattern)
 
 ```
-cdata Configuration (config/sources/financial.yaml)
-  ↓ 28 data sources defined
+Dataset Configuration (scripts/dataset_config.py)
+  ↓ 28 data sources defined as Python dicts
   ↓
-cdata fetch all
-  ↓ Fetches from APIs (Yahoo Finance, FRED, BLS, RSS, etc.)
-  ↓ Stores in data/raw/*.parquet (3.7MB)
-  ↓ Updates data/index.json metadata
-  ↓ Incremental: only fetches new records since last update
-  ↓
-prepare-data-v2.py
-  ↓ Reads from Parquet storage
-  ↓ Transforms to JSON
-  ↓ Writes to: public/data/*.json (36MB) + src/data/datasets.json
+prepare-data-v3.py
+  ↓ Imports dataset_config and cdata_bridge
+  ↓ For each dataset:
+  │   ├─→ Bridge creates SourceConfig programmatically
+  │   ├─→ Registry creates source instance (YFinanceSource, FREDSource, etc.)
+  │   ├─→ Source.fetch() retrieves data from API
+  │   └─→ Returns DataFrame directly (no file storage)
+  ↓ Transforms DataFrames to JSON
+  ↓ Writes to: public/data/*.json + src/data/datasets.json
   ↓
 Astro Build
   ↓ Generates 32 static HTML pages from datasets.json
   ↓ Includes full data JSON files for client-side Plotly charts
   ↓
-GitHub Pages (deployed site: 46MB)
+GitHub Pages (deployed site)
 ```
 
-## cdata Integration
+**Key Difference from Previous Approach:**
+- No Parquet file storage
+- No `cdata fetch all` command
+- Data fetched on-demand at build time
+- Configuration owned by the-derple-dex (not YAML files)
 
-This project uses cdata as a **local data management system** rather than as a separate pipeline or library import.
+## cdata Integration (Bridge Pattern)
 
-### Benefits of Local cdata Instance
+This project uses cdata as a **library** via the bridge pattern. Instead of reading files, it programmatically creates data sources and fetches on-demand.
+
+### Benefits of Bridge Pattern
 
 | Aspect | Description |
 |--------|-------------|
-| **Incremental Updates** | cdata tracks `last_record_date` and only fetches new data |
-| **Efficient Storage** | Parquet format compresses 233K records to 3.7MB |
-| **Single Source** | One project manages both data and presentation |
-| **Simple Workflow** | `cdata fetch all` → `npm run build` → deployed |
-| **Data Accumulation** | Data grows over time, not regenerated fresh each build |
+| **Decoupling** | No dependency on cdata's file structure or storage location |
+| **Ownership** | the-derple-dex owns its dataset configuration |
+| **Simplicity** | Single project, one repository |
+| **Flexibility** | Can customize fetching without modifying cdata |
+| **Testing** | Easy to mock the bridge for testing |
+| **No File Storage** | Data fetched on-demand, no Parquet files to manage |
 
-### Storage Structure
+### Bridge Architecture
 
+```python
+# dataset_config.py defines datasets
+DATASETS = {
+    "us_indices": {
+        "type": "yfinance",
+        "config": {"symbols": ["^GSPC", "^DJI"], ...}
+    }
+}
+
+# cdata_bridge.py provides fetch methods
+bridge = get_bridge()
+df = bridge.fetch_yfinance_data(
+    source_id="us_indices",
+    symbols=["^GSPC", "^DJI"],
+    period="1y"
+)
+
+# prepare-data-v3.py uses bridge
+for name, config in DATASETS.items():
+    df = bridge.fetch_*_data(...)  # Fetch on-demand
+    dataset = prepare_*_dataset(name, df, config)
+    write_json(dataset)
 ```
-data/
-├── index.json              # cdata metadata (last_record_date, fetch_count)
-└── raw/
-    ├── us_indices.parquet
-    ├── fred_gdp.parquet
-    ├── bls_employment.parquet
-    └── ... (28 datasets total)
-```
+
+See [cdata issue #4](https://github.com/kenEldridge/cdata/issues/4) for bridge pattern details.
 
 ## Working with Data
 
@@ -83,14 +104,8 @@ pip install -r requirements.txt
 cp .env.example .env
 # Edit .env and add your FRED_API_KEY
 
-# Initialize cdata (already done)
-python3 -m cdata init
-
-# Fetch initial data (233K records, ~2 minutes)
-python3 -m cdata fetch all
-
-# Generate JSON for site
-python3 scripts/prepare-data-v2.py
+# Fetch data and generate JSON (bridge pattern)
+python3 scripts/prepare-data-v3.py
 
 # Build site
 npm run build
@@ -98,59 +113,60 @@ npm run build
 
 ### Updating Data
 
+With the bridge pattern, data is fetched fresh at build time:
+
 ```bash
-# Fetch updates (only new records since last fetch)
-python3 -m cdata fetch all
-# Example: Second run fetched only 1,049 new records
+# Fetch latest data and regenerate JSON (one command)
+python3 scripts/prepare-data-v3.py
 
-# Regenerate JSON
-python3 scripts/prepare-data-v2.py
-
-# Rebuild site
+# Or rebuild site (automatically runs prepare-data-v3.py first)
 npm run build
-# Or use npm script that does both:
-npm run build  # runs prepare-data-v2.py then astro build
+
+# For local development (includes data fetch)
+npm run dev
 ```
+
+**Note:** Unlike the old file-based approach, there's no separate `cdata fetch all` command. The prepare-data script fetches data directly using the bridge.
 
 ### Adding New Data Sources
 
-1. Edit `config/sources/financial.yaml`:
-   ```yaml
-   sources:
-     - id: my_new_source
-       name: "My New Data"
-       type: yfinance  # or fred, bls, rss, etc.
-       enabled: true
-       description: "Description here"
-       primary_keys: ["symbol", "date"]
-       incremental: true
-       config:
-         symbols: [AAPL, MSFT]
-         period: "1y"
-         interval: "1d"
+1. Edit `scripts/dataset_config.py`:
+   ```python
+   DATASETS = {
+       # ... existing datasets ...
+       "my_new_source": {
+           "type": "yfinance",  # or fred, bls, rss, fed_stress
+           "description": "Description here",
+           "primary_keys": ["symbol", "date"],
+           "incremental": True,
+           "config": {
+               "symbols": ["AAPL", "MSFT"],
+               "period": "1y",
+               "interval": "1d"
+           }
+       }
+   }
    ```
 
-2. Fetch the new source:
-   ```bash
-   python3 -m cdata fetch source my_new_source
+2. Add to appropriate dataset category:
+   ```python
+   OHLCV_DATASETS = {"us_indices", ..., "my_new_source"}
    ```
 
-3. Update `scripts/prepare-data-v2.py` if needed:
-   - Add to OHLCV_DATASETS, RSS_DATASETS, FRED_DATASETS, or BLS_DATASETS
-   - Or add new processing function for custom types
-
-4. Regenerate and rebuild:
+3. Regenerate and rebuild:
    ```bash
-   python3 scripts/prepare-data-v2.py
+   python3 scripts/prepare-data-v3.py
    npm run build
    ```
 
+No YAML files to edit, no separate fetch commands. The bridge pattern keeps everything in Python.
+
 ### Data Freshness
 
-- cdata tracks `last_record_date` for each dataset
-- `fetch_count` shows how many times data has been updated
-- Incremental fetching uses `since=last_record_date` parameter
+- Data is fetched fresh at each build
+- Metadata includes `fetched_at` timestamp in JSON output
 - DataFreshness.astro component shows age indicators on site
+- For incremental support, cdata sources can track `last_record_date` internally
 
 ## Dataset Types
 
@@ -294,38 +310,41 @@ python-dotenv>=1.0
 
 ### CI/CD Pipeline
 
-The GitHub Actions workflow should:
-1. Set up Python and install dependencies
-2. Set FRED_API_KEY secret
-3. Run `cdata fetch all` to get latest data
-4. Run `npm run build` (includes prepare-data-v2.py)
+The GitHub Actions workflow (`.github/workflows/deploy.yml`):
+1. Set up Python and install dependencies (`pip install -r requirements.txt`)
+2. Set FRED_API_KEY secret in `.env` file
+3. Run `python3 scripts/prepare-data-v3.py` to fetch data via bridge
+4. Run `npm run build` to build Astro site
 5. Deploy dist/ to GitHub Pages
 
-**Note:** May need to commit Parquet files or regenerate on each build. Current approach regenerates to ensure freshness.
+**Bridge Pattern CI/CD:**
+- No `cdata fetch all` command (bridge fetches on-demand)
+- No Parquet files to commit or cache
+- Fresh data on every build
+- Build time includes API fetch time (~2-5 minutes)
 
 ## File Size Summary
 
 | Location | Size | Description |
 |----------|------|-------------|
-| `data/raw/*.parquet` | 3.7MB | cdata Parquet storage (28 files) |
-| `public/data/*.json` | 36MB | JSON for client-side charts (27 files) |
-| `dist/` | 46MB | Built static site (32 HTML pages) |
+| `public/data/*.json` | ~36MB | JSON for client-side charts (generated, 27 files) |
+| `src/data/datasets.json` | ~50KB | Summary metadata for static generation |
+| `dist/` | ~46MB | Built static site (32 HTML pages) |
 
-**Why JSON is larger than Parquet:**
-- Parquet uses columnar compression
-- JSON includes full metadata and string formatting
-- JSON optimized for client-side JavaScript parsing
-- Trade-off: file size vs. browser compatibility
+**Bridge Pattern - No File Storage:**
+- No Parquet files (data fetched on-demand)
+- JSON generated fresh at each build
+- Trade-off: Longer build time vs. simpler architecture
 
 ## Git Ignore Strategy
 
 **Current approach:**
-- `.gitignore` should exclude `data/raw/*.parquet` (generated)
-- `.gitignore` should exclude `data/index.json` (generated)
-- `public/data/*.json` can be tracked OR regenerated in CI/CD
-- `dist/` is excluded (build output)
+- `public/data/*.json` - Excluded (generated at build time)
+- `src/data/datasets.json` - Excluded (generated at build time)
+- `dist/` - Excluded (build output)
+- No `data/` directory (bridge pattern has no file storage)
 
-**Rationale:** Parquet files grow over time and can be regenerated from sources. JSON files are build artifacts.
+**Rationale:** With bridge pattern, all data files are build artifacts and regenerated fresh each time.
 
 ## Known Issues
 
@@ -357,25 +376,27 @@ The GitHub Actions workflow should:
 
 ## Troubleshooting
 
-**"Error: cdata index not found at data/index.json"**
-- Run `python3 -m cdata fetch all` first to initialize data
+**"ModuleNotFoundError: No module named 'cdata'"**
+- Run `pip install -r requirements.txt` to install dependencies
+- For local development: `pip install -e ../cdata` (editable mode)
 
-**"No such file or directory: data/raw/[dataset].parquet"**
-- Dataset may not be enabled or failed to fetch
-- Check `config/sources/financial.yaml` for `enabled: true`
-- Check cdata fetch output for errors
+**"ImportError: cannot import name 'get_registry'"**
+- Ensure cdata is installed from dev branch: `git+https://github.com/kenEldridge/cdata.git@dev`
+- Check that cdata version supports bridge pattern
 
 **Build fails with memory errors**
 - Large JSON files can cause OOM during build
-- Consider reducing dataset sizes or chunking data
+- Consider reducing dataset sizes or limiting time periods
 - Exit code 137 usually indicates OOM killer
 
-**Missing FRED data**
+**Missing FRED data / 0 records fetched**
 - Ensure `FRED_API_KEY` is set in `.env` file
 - Check that `.env` file is in project root
 - Verify API key is valid at https://fred.stlouisfed.org/
+- Check prepare-data-v3.py output for API errors
 
-**Stale data on site**
-- Run `python3 -m cdata fetch all` to update Parquet files
-- Run `python3 scripts/prepare-data-v2.py` to regenerate JSON
-- Rebuild with `npm run build`
+**Empty datasets or missing JSON files**
+- Check prepare-data-v3.py output for fetch errors
+- Verify dataset is in `DATASETS` dict in `dataset_config.py`
+- Verify dataset is in appropriate category (OHLCV_DATASETS, etc.)
+- API may be rate-limiting or temporarily unavailable

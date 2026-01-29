@@ -152,8 +152,8 @@ pip install -r requirements.txt
 cp .env.example .env
 # Edit .env and add your FRED_API_KEY
 
-# Fetch data and convert to JSON
-python3 scripts/prepare-data.py
+# Fetch data and convert to JSON (using bridge pattern)
+python3 scripts/prepare-data-v3.py
 
 # Or use npm script
 npm run prepare-data
@@ -175,7 +175,7 @@ Each dataset page includes:
 
 ```
 ├── scripts/
-│   ├── prepare-data.py          # Fetches & converts data → JSON
+│   ├── prepare-data-v3.py       # Fetches & converts data → JSON (bridge pattern)
 │   ├── cdata_bridge.py          # Bridge to cdata library
 │   └── dataset_config.py        # Dataset configurations
 ├── src/

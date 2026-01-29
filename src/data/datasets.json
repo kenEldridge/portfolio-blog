@@ -1,227 +1,15 @@
 [
   {
-    "name": "fed_news",
-    "type": "rss",
-    "description": "Federal Reserve announcements and speeches",
-    "meta": {
-      "name": "fed_news",
-      "source_id": "fed_news",
-      "location": "raw",
-      "file_path": "data/raw/fed_news.parquet",
-      "format": "parquet",
-      "record_count": 35,
-      "file_size_bytes": 13461,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "feed_name",
-        "feed_url",
-        "title",
-        "link",
-        "summary",
-        "author",
-        "published",
-        "id"
-      ],
-      "primary_keys": [
-        "id"
-      ],
-      "first_fetched": "2026-01-21T12:05:41.216493",
-      "last_updated": "2026-01-26T22:12:42.204295",
-      "last_record_date": "2026-01-16T20:30:00",
-      "fetch_count": 3,
-      "description": "Federal Reserve announcements and speeches",
-      "feeds": [
-        "Fed Speeches",
-        "Federal Reserve Press Releases"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2025-11-12T03:25:00+00:00",
-        "max": "2026-01-16T20:30:00+00:00",
-        "days": 65
-      },
-      "articles_by_feed": {
-        "Fed Speeches": 15,
-        "Federal Reserve Press Releases": 20
-      },
-      "articles_by_day": {
-        "2025-11-12": 1,
-        "2025-11-17": 2,
-        "2025-11-18": 1,
-        "2025-11-19": 1,
-        "2025-11-20": 1,
-        "2025-11-21": 2,
-        "2025-12-02": 1,
-        "2025-12-11": 2,
-        "2025-12-15": 3,
-        "2025-12-16": 1,
-        "2025-12-17": 1,
-        "2025-12-18": 1,
-        "2025-12-19": 2,
-        "2025-12-23": 1,
-        "2025-12-30": 2,
-        "2026-01-06": 2,
-        "2026-01-07": 1,
-        "2026-01-08": 1,
-        "2026-01-09": 1,
-        "2026-01-12": 2,
-        "2026-01-13": 1,
-        "2026-01-14": 1,
-        "2026-01-15": 1,
-        "2026-01-16": 3
-      }
-    }
-  },
-  {
-    "name": "financial_news",
-    "type": "rss",
-    "description": "Market and economic news feeds",
-    "meta": {
-      "name": "financial_news",
-      "source_id": "financial_news",
-      "location": "raw",
-      "file_path": "data/raw/financial_news.parquet",
-      "format": "parquet",
-      "record_count": 165,
-      "file_size_bytes": 39901,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "feed_name",
-        "feed_url",
-        "title",
-        "link",
-        "summary",
-        "author",
-        "published",
-        "id"
-      ],
-      "primary_keys": [
-        "id"
-      ],
-      "first_fetched": "2026-01-21T12:06:13.758470",
-      "last_updated": "2026-01-26T22:12:43.387337",
-      "last_record_date": "2026-01-26T22:12:27",
-      "fetch_count": 3,
-      "description": "Market and economic news feeds",
-      "feeds": [
-        "CNBC Top News",
-        "Seeking Alpha Market News",
-        "Yahoo Finance"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2024-01-26T22:46:12+00:00",
-        "max": "2026-01-26T22:12:27+00:00",
-        "days": 730
-      },
-      "articles_by_feed": {
-        "CNBC Top News": 61,
-        "Seeking Alpha Market News": 17,
-        "Yahoo Finance": 87
-      },
-      "articles_by_day": {
-        "2024-01-26": 1,
-        "2024-03-25": 1,
-        "2024-06-06": 1,
-        "2024-10-03": 1,
-        "2024-10-04": 1,
-        "2025-04-22": 1,
-        "2025-05-14": 1,
-        "2025-06-04": 1,
-        "2025-07-02": 1,
-        "2026-01-20": 22,
-        "2026-01-21": 47,
-        "2026-01-22": 1,
-        "2026-01-25": 38,
-        "2026-01-26": 48
-      }
-    }
-  },
-  {
-    "name": "economics_news",
-    "type": "rss",
-    "description": "Economic analysis and policy coverage",
-    "meta": {
-      "name": "economics_news",
-      "source_id": "economics_news",
-      "location": "raw",
-      "file_path": "data/raw/economics_news.parquet",
-      "format": "parquet",
-      "record_count": 55,
-      "file_size_bytes": 61520,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "feed_name",
-        "feed_url",
-        "title",
-        "link",
-        "summary",
-        "author",
-        "published",
-        "id"
-      ],
-      "primary_keys": [
-        "id"
-      ],
-      "first_fetched": "2026-01-21T12:06:53.950911",
-      "last_updated": "2026-01-26T22:12:46.775306",
-      "last_record_date": "2026-01-26T18:26:45",
-      "fetch_count": 3,
-      "description": "Economic analysis and policy coverage",
-      "feeds": [
-        "Calculated Risk",
-        "Marginal Revolution"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2026-01-06T15:54:00+00:00",
-        "max": "2026-01-26T18:26:45+00:00",
-        "days": 20
-      },
-      "articles_by_feed": {
-        "Calculated Risk": 25,
-        "Marginal Revolution": 30
-      },
-      "articles_by_day": {
-        "2026-01-06": 2,
-        "2026-01-07": 6,
-        "2026-01-08": 5,
-        "2026-01-09": 7,
-        "2026-01-10": 2,
-        "2026-01-11": 1,
-        "2026-01-12": 2,
-        "2026-01-18": 3,
-        "2026-01-19": 5,
-        "2026-01-20": 5,
-        "2026-01-21": 2,
-        "2026-01-23": 2,
-        "2026-01-24": 4,
-        "2026-01-25": 4,
-        "2026-01-26": 5
-      }
-    }
-  },
-  {
     "name": "us_indices",
     "type": "ohlcv",
     "description": "Major US equity indices",
     "meta": {
       "name": "us_indices",
       "source_id": "us_indices",
-      "location": "raw",
-      "file_path": "data/raw/us_indices.parquet",
-      "format": "parquet",
-      "record_count": 65819,
-      "file_size_bytes": 2678441,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 1256,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -234,10 +22,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-21T16:47:09.482538",
-      "last_updated": "2026-01-26T22:05:28.183799",
-      "last_record_date": "2026-01-26T00:00:00-06:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:22.658383",
       "description": "Major US equity indices",
       "symbols": [
         "^DJI",
@@ -249,59 +34,59 @@
     },
     "stats": {
       "date_range": {
-        "min": "1927-12-30T05:00:00+00:00",
-        "max": "2026-01-26T06:00:00+00:00",
-        "days": 35822
+        "min": "2025-01-29T06:00:00+00:00",
+        "max": "2026-01-29T06:00:00+00:00",
+        "days": 365
       },
       "by_symbol": {
         "^DJI": {
-          "count": 8577,
-          "date_min": "1992-01-02T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 15950.5586,
-          "close_min": 3136.6001,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 44733.8531,
+          "close_min": 37645.5898,
           "close_max": 49590.1992,
-          "close_std": 10863.9374,
-          "volume_total": 1795813164222
+          "close_std": 2703.1256,
+          "volume_total": 138636784494
         },
         "^GSPC": {
-          "count": 24633,
-          "date_min": "1927-12-30T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 718.8698,
-          "close_min": 4.4,
-          "close_max": 6977.27,
-          "close_std": 1225.968,
-          "volume_total": 23754011229000
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 6288.3713,
+          "close_min": 4982.77,
+          "close_max": 6978.6001,
+          "close_std": 491.4641,
+          "volume_total": 1300821390000
         },
         "^IXIC": {
-          "count": 13859,
-          "date_min": "1971-02-05T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 3145.4849,
-          "close_min": 54.87,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 20798.2369,
+          "close_min": 15267.9102,
           "close_max": 23958.4707,
-          "close_std": 4622.7232,
-          "volume_total": 19697129951000
+          "close_std": 2263.3115,
+          "volume_total": 2319543941000
         },
         "^RUT": {
-          "count": 9667,
-          "date_min": "1987-09-10T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 843.8076,
-          "close_min": 106.08,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 2281.1544,
+          "close_min": 1760.71,
           "close_max": 2718.77,
-          "close_std": 634.2661,
-          "volume_total": 23479234120000
+          "close_std": 213.5976,
+          "volume_total": 1295493740000
         },
         "^VIX": {
-          "count": 9083,
-          "date_min": "1990-01-02T06:00:00+00:00",
-          "date_max": "2026-01-26T06:00:00+00:00",
-          "close_mean": 19.4494,
-          "close_min": 9.14,
-          "close_max": 82.69,
-          "close_std": 7.7798,
+          "count": 252,
+          "date_min": "2025-01-29T06:00:00+00:00",
+          "date_max": "2026-01-29T06:00:00+00:00",
+          "close_mean": 18.8796,
+          "close_min": 13.47,
+          "close_max": 52.33,
+          "close_std": 5.3306,
           "volume_total": 0
         }
       }
@@ -314,14 +99,10 @@
     "meta": {
       "name": "global_indices",
       "source_id": "global_indices",
-      "location": "raw",
-      "file_path": "data/raw/global_indices.parquet",
-      "format": "parquet",
-      "record_count": 69832,
-      "file_size_bytes": 3430825,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 2008,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -334,10 +115,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-21T16:47:44.758694",
-      "last_updated": "2026-01-26T22:12:29.084302",
-      "last_record_date": "2026-01-26T00:00:00-05:00",
-      "fetch_count": 3,
+      "fetched_at": "2026-01-29T21:55:23.702539",
       "description": "Major international equity indices",
       "symbols": [
         "EEM",
@@ -352,90 +130,90 @@
     },
     "stats": {
       "date_range": {
-        "min": "1965-01-04T15:00:00+00:00",
-        "max": "2026-01-26T05:00:00+00:00",
-        "days": 22301
+        "min": "2025-01-28T15:00:00+00:00",
+        "max": "2026-01-29T05:00:00+00:00",
+        "days": 365
       },
       "by_symbol": {
         "EEM": {
-          "count": 5733,
-          "date_min": "2003-04-14T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 31.1036,
-          "close_min": 7.2367,
-          "close_max": 59.17,
-          "close_std": 9.7056,
-          "volume_total": 269697673679
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 48.7864,
+          "close_min": 37.6122,
+          "close_max": 60.75,
+          "close_std": 5.1816,
+          "volume_total": 6849019697
         },
         "FXI": {
-          "count": 5358,
-          "date_min": "2004-10-08T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 28.7368,
-          "close_min": 10.5935,
-          "close_max": 48.6253,
-          "close_std": 7.4392,
-          "volume_total": 123512322044
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 37.0244,
+          "close_min": 28.8649,
+          "close_max": 41.3017,
+          "close_std": 2.7039,
+          "volume_total": 9646515869
         },
         "^FCHI": {
-          "count": 9118,
-          "date_min": "1990-02-28T23:00:00+00:00",
-          "date_max": "2026-01-25T23:00:00+00:00",
-          "close_mean": 4307.7151,
-          "close_min": 1441.0,
+          "count": 256,
+          "date_min": "2025-01-28T23:00:00+00:00",
+          "date_max": "2026-01-28T23:00:00+00:00",
+          "close_mean": 7903.6604,
+          "close_min": 6863.02,
           "close_max": 8362.0898,
-          "close_std": 1694.1369,
-          "volume_total": 585377832800
+          "close_std": 250.1988,
+          "volume_total": 16597457200
         },
         "^FTSE": {
-          "count": 10626,
-          "date_min": "1984-01-03T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "close_mean": 5009.984,
-          "close_min": 986.9,
+          "count": 254,
+          "date_min": "2025-01-29T00:00:00+00:00",
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "close_mean": 9128.6628,
+          "close_min": 7679.5,
           "close_max": 10238.9004,
-          "close_std": 2092.5818,
-          "volume_total": 7123095451100
+          "close_std": 540.8552,
+          "volume_total": 209769715600
         },
         "^GDAXI": {
-          "count": 9626,
-          "date_min": "1987-12-29T23:00:00+00:00",
-          "date_max": "2026-01-25T23:00:00+00:00",
-          "close_mean": 7357.693,
-          "close_min": 936.0,
+          "count": 254,
+          "date_min": "2025-01-28T23:00:00+00:00",
+          "date_max": "2026-01-28T23:00:00+00:00",
+          "close_mean": 23567.3538,
+          "close_min": 19670.8809,
           "close_max": 25420.6602,
-          "close_std": 5294.7352,
-          "volume_total": 656713065000
+          "close_std": 1015.5044,
+          "volume_total": 16061350300
         },
         "^HSI": {
-          "count": 9643,
-          "date_min": "1986-12-30T16:00:00+00:00",
-          "date_max": "2026-01-25T16:00:00+00:00",
-          "close_mean": 15916.1274,
-          "close_min": 1894.9,
-          "close_max": 33154.1211,
-          "close_std": 7957.676,
-          "volume_total": 10275221100000
+          "count": 247,
+          "date_min": "2025-02-02T16:00:00+00:00",
+          "date_max": "2026-01-28T16:00:00+00:00",
+          "close_mean": 24654.2814,
+          "close_min": 19828.3008,
+          "close_max": 27968.0898,
+          "close_std": 1695.3519,
+          "volume_total": 879906800000
         },
         "^N225": {
-          "count": 15011,
-          "date_min": "1965-01-04T15:00:00+00:00",
-          "date_max": "2026-01-25T15:00:00+00:00",
-          "close_mean": 14451.9327,
-          "close_min": 1020.49,
+          "count": 245,
+          "date_min": "2025-01-28T15:00:00+00:00",
+          "date_max": "2026-01-28T15:00:00+00:00",
+          "close_mean": 42787.6082,
+          "close_min": 31136.5801,
           "close_max": 54341.2305,
-          "close_std": 9715.9451,
-          "volume_total": 664692000000
+          "close_std": 5937.4672,
+          "volume_total": 32139700000
         },
         "^STOXX50E": {
-          "count": 4717,
-          "date_min": "2007-03-29T22:00:00+00:00",
-          "date_max": "2026-01-25T23:00:00+00:00",
-          "close_mean": 3486.2504,
-          "close_min": 1809.98,
+          "count": 250,
+          "date_min": "2025-01-28T23:00:00+00:00",
+          "date_max": "2026-01-28T23:00:00+00:00",
+          "close_mean": 5463.1454,
+          "close_min": 4622.1401,
           "close_max": 6041.1401,
-          "close_std": 823.0357,
-          "volume_total": 125694253100
+          "close_std": 242.4125,
+          "volume_total": 5775162900
         }
       }
     }
@@ -447,14 +225,10 @@
     "meta": {
       "name": "treasury_yields",
       "source_id": "treasury_yields",
-      "location": "raw",
-      "file_path": "data/raw/treasury_yields.parquet",
-      "format": "parquet",
-      "record_count": 60853,
-      "file_size_bytes": 1255761,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 1008,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -467,10 +241,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-21T16:48:03.109092",
-      "last_updated": "2026-01-26T22:05:31.421334",
-      "last_record_date": "2026-01-26T00:00:00-06:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:24.375764",
       "description": "Treasury yield curve data",
       "symbols": [
         "^FVX",
@@ -481,50 +252,50 @@
     },
     "stats": {
       "date_range": {
-        "min": "1960-01-04T06:00:00+00:00",
-        "max": "2026-01-26T06:00:00+00:00",
-        "days": 24129
+        "min": "2025-01-29T06:00:00+00:00",
+        "max": "2026-01-29T06:00:00+00:00",
+        "days": 365
       },
       "by_symbol": {
         "^FVX": {
-          "count": 16031,
-          "date_min": "1962-01-02T06:00:00+00:00",
-          "date_max": "2026-01-26T06:00:00+00:00",
-          "close_mean": 5.4831,
-          "close_min": 0.195,
-          "close_max": 16.27,
-          "close_std": 3.1369,
-          "volume_total": 6777600
+          "count": 252,
+          "date_min": "2025-01-29T06:00:00+00:00",
+          "date_max": "2026-01-29T06:00:00+00:00",
+          "close_mean": 3.8719,
+          "close_min": 3.55,
+          "close_max": 4.484,
+          "close_std": 0.2035,
+          "volume_total": 0
         },
         "^IRX": {
-          "count": 16530,
-          "date_min": "1960-01-04T06:00:00+00:00",
-          "date_max": "2026-01-26T06:00:00+00:00",
-          "close_mean": 4.3561,
-          "close_min": -0.105,
-          "close_max": 17.14,
-          "close_std": 3.1255,
-          "volume_total": 7020600
+          "count": 252,
+          "date_min": "2025-01-29T06:00:00+00:00",
+          "date_max": "2026-01-29T06:00:00+00:00",
+          "close_mean": 4.0032,
+          "close_min": 3.507,
+          "close_max": 4.285,
+          "close_std": 0.254,
+          "volume_total": 0
         },
         "^TNX": {
-          "count": 16031,
-          "date_min": "1962-01-02T06:00:00+00:00",
-          "date_max": "2026-01-26T06:00:00+00:00",
-          "close_mean": 5.8083,
-          "close_min": 0.499,
-          "close_max": 15.84,
-          "close_std": 2.9431,
-          "volume_total": 6546300
+          "count": 252,
+          "date_min": "2025-01-29T06:00:00+00:00",
+          "date_max": "2026-01-29T06:00:00+00:00",
+          "close_mean": 4.2561,
+          "close_min": 3.953,
+          "close_max": 4.637,
+          "close_std": 0.1522,
+          "volume_total": 0
         },
         "^TYX": {
-          "count": 12261,
-          "date_min": "1977-02-15T06:00:00+00:00",
-          "date_max": "2026-01-26T06:00:00+00:00",
-          "close_mean": 6.1543,
-          "close_min": 0.937,
-          "close_max": 15.21,
-          "close_std": 2.9905,
-          "volume_total": 6862200
+          "count": 252,
+          "date_min": "2025-01-29T06:00:00+00:00",
+          "date_max": "2026-01-29T06:00:00+00:00",
+          "close_mean": 4.7769,
+          "close_min": 4.388,
+          "close_max": 5.09,
+          "close_std": 0.1294,
+          "volume_total": 0
         }
       }
     }
@@ -536,14 +307,10 @@
     "meta": {
       "name": "bond_etfs",
       "source_id": "bond_etfs",
-      "location": "raw",
-      "file_path": "data/raw/bond_etfs.parquet",
-      "format": "parquet",
-      "record_count": 44183,
-      "file_size_bytes": 2325901,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 2008,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -556,10 +323,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-21T16:48:21.823915",
-      "last_updated": "2026-01-26T22:05:33.401743",
-      "last_record_date": "2026-01-26T00:00:00-05:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:25.770205",
       "description": "Fixed income ETFs across durations and types",
       "symbols": [
         "AGG",
@@ -574,90 +338,90 @@
     },
     "stats": {
       "date_range": {
-        "min": "2002-07-30T04:00:00+00:00",
-        "max": "2026-01-26T05:00:00+00:00",
-        "days": 8581
+        "min": "2025-01-30T05:00:00+00:00",
+        "max": "2026-01-29T05:00:00+00:00",
+        "days": 364
       },
       "by_symbol": {
         "AGG": {
-          "count": 5617,
-          "date_min": "2003-09-29T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 77.791,
-          "close_min": 49.5831,
-          "close_max": 102.3234,
-          "close_std": 15.5516,
-          "volume_total": 17591253452
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 97.3368,
+          "close_min": 93.3528,
+          "close_max": 100.35,
+          "close_std": 2.1185,
+          "volume_total": 2200897116
         },
         "HYG": {
-          "count": 4729,
-          "date_min": "2007-04-11T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 52.6467,
-          "close_min": 22.3156,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 77.9132,
+          "close_min": 72.5249,
           "close_max": 81.18,
-          "close_std": 13.8633,
-          "volume_total": 74860613724
+          "close_std": 2.1272,
+          "volume_total": 10199341961
         },
         "IEF": {
-          "count": 5911,
-          "date_min": "2002-07-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 75.8039,
-          "close_min": 41.2136,
-          "close_max": 107.7518,
-          "close_std": 18.4677,
-          "volume_total": 17227745146
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 93.8032,
+          "close_min": 89.092,
+          "close_max": 97.0665,
+          "close_std": 2.1208,
+          "volume_total": 2206866263
         },
         "LQD": {
-          "count": 5911,
-          "date_min": "2002-07-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 76.1203,
-          "close_min": 37.5228,
-          "close_max": 114.9729,
-          "close_std": 22.5521,
-          "volume_total": 41790041556
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 107.1584,
+          "close_min": 101.7271,
+          "close_max": 111.6556,
+          "close_std": 2.9593,
+          "volume_total": 7370776879
         },
         "MUB": {
-          "count": 4624,
-          "date_min": "2007-09-10T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 86.2875,
-          "close_min": 55.5115,
-          "close_max": 107.77,
-          "close_std": 13.6353,
-          "volume_total": 6226844614
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 104.0852,
+          "close_min": 99.8793,
+          "close_max": 107.81,
+          "close_std": 2.1548,
+          "volume_total": 1266430960
         },
         "SHY": {
-          "count": 5911,
-          "date_min": "2002-07-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 67.9066,
-          "close_min": 52.084,
-          "close_max": 82.9,
-          "close_std": 7.7133,
-          "volume_total": 11767266788
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 81.2571,
+          "close_min": 79.0796,
+          "close_max": 82.92,
+          "close_std": 1.1047,
+          "volume_total": 1005022220
         },
         "TIP": {
-          "count": 5569,
-          "date_min": "2003-12-05T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 82.6953,
-          "close_min": 50.5539,
-          "close_max": 111.7748,
-          "close_std": 17.2774,
-          "volume_total": 7927753836
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 108.2099,
+          "close_min": 104.1633,
+          "close_max": 111.1675,
+          "close_std": 1.9764,
+          "volume_total": 666572051
         },
         "TLT": {
-          "count": 5911,
-          "date_min": "2002-07-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 79.6736,
-          "close_min": 36.6483,
-          "close_max": 145.9354,
-          "close_std": 26.4759,
-          "volume_total": 64171421432
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 86.5541,
+          "close_min": 81.5226,
+          "close_max": 91.0479,
+          "close_std": 2.0849,
+          "volume_total": 9401139095
         }
       }
     }
@@ -669,14 +433,10 @@
     "meta": {
       "name": "currencies",
       "source_id": "currencies",
-      "location": "raw",
-      "file_path": "data/raw/currencies.parquet",
-      "format": "parquet",
-      "record_count": 39219,
-      "file_size_bytes": 1281138,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 1285,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -689,10 +449,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-21T16:48:37.704856",
-      "last_updated": "2026-01-26T22:05:34.660107",
-      "last_record_date": "2026-01-26T00:00:00-05:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:26.653960",
       "description": "Dollar strength and major currency pairs",
       "symbols": [
         "DX-Y.NYB",
@@ -704,59 +461,59 @@
     },
     "stats": {
       "date_range": {
-        "min": "1971-01-04T05:00:00+00:00",
-        "max": "2026-01-26T05:00:00+00:00",
-        "days": 20111
+        "min": "2025-01-29T00:00:00+00:00",
+        "max": "2026-01-29T05:00:00+00:00",
+        "days": 365
       },
       "by_symbol": {
         "DX-Y.NYB": {
-          "count": 13983,
-          "date_min": "1971-01-04T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 97.3958,
-          "close_min": 71.33,
-          "close_max": 164.72,
-          "close_std": 14.0852,
-          "volume_total": 23290000
+          "count": 253,
+          "date_min": "2025-01-29T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 100.0326,
+          "close_min": 96.164,
+          "close_max": 108.99,
+          "close_std": 2.9781,
+          "volume_total": 0
         },
         "EURUSD=X": {
-          "count": 5747,
-          "date_min": "2003-12-01T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "close_mean": 1.2247,
-          "close_min": 0.9596,
-          "close_max": 1.5988,
-          "close_std": 0.1271,
+          "count": 258,
+          "date_min": "2025-01-29T00:00:00+00:00",
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "close_mean": 1.1405,
+          "close_min": 1.0248,
+          "close_max": 1.2018,
+          "close_std": 0.0422,
           "volume_total": 0
         },
         "GBPUSD=X": {
-          "count": 5759,
-          "date_min": "2003-12-01T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "close_mean": 1.5175,
-          "close_min": 1.0728,
-          "close_max": 2.1082,
-          "close_std": 0.2384,
+          "count": 258,
+          "date_min": "2025-01-29T00:00:00+00:00",
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "close_mean": 1.3274,
+          "close_min": 1.2292,
+          "close_max": 1.3824,
+          "close_std": 0.032,
           "volume_total": 0
         },
         "USDCNY=X": {
-          "count": 6149,
-          "date_min": "2001-06-24T23:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "close_mean": 7.0127,
-          "close_min": 5.863,
-          "close_max": 8.2778,
-          "close_std": 0.6786,
+          "count": 258,
+          "date_min": "2025-01-29T00:00:00+00:00",
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "close_mean": 7.1613,
+          "close_min": 6.9475,
+          "close_max": 7.35,
+          "close_std": 0.0891,
           "volume_total": 0
         },
         "USDJPY=X": {
-          "count": 7581,
-          "date_min": "1996-10-30T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "close_mean": 113.4341,
-          "close_min": 75.74,
-          "close_max": 161.621,
-          "close_std": 17.7119,
+          "count": 258,
+          "date_min": "2025-01-29T00:00:00+00:00",
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "close_mean": 149.7011,
+          "close_min": 140.876,
+          "close_max": 159.179,
+          "close_std": 4.528,
           "volume_total": 0
         }
       }
@@ -769,14 +526,10 @@
     "meta": {
       "name": "commodities",
       "source_id": "commodities",
-      "location": "raw",
-      "file_path": "data/raw/commodities.parquet",
-      "format": "parquet",
-      "record_count": 36493,
-      "file_size_bytes": 1306502,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 1518,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -789,10 +542,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-22T02:22:21.839236",
-      "last_updated": "2026-01-26T22:05:36.053493",
-      "last_record_date": "2026-01-26T00:00:00-05:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:27.870387",
       "description": "Key commodity prices",
       "symbols": [
         "BZ=F",
@@ -805,70 +555,70 @@
     },
     "stats": {
       "date_range": {
-        "min": "2000-08-23T04:00:00+00:00",
-        "max": "2026-01-26T05:00:00+00:00",
-        "days": 9287
+        "min": "2025-01-29T05:00:00+00:00",
+        "max": "2026-01-29T05:00:00+00:00",
+        "days": 365
       },
       "by_symbol": {
         "BZ=F": {
-          "count": 4601,
-          "date_min": "2007-07-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 77.9979,
-          "close_min": 19.33,
-          "close_max": 146.08,
-          "close_std": 23.7772,
-          "volume_total": 91509958
+          "count": 253,
+          "date_min": "2025-01-29T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 67.0819,
+          "close_min": 58.92,
+          "close_max": 77.01,
+          "close_std": 4.2532,
+          "volume_total": 10691412
         },
         "CL=F": {
-          "count": 6383,
-          "date_min": "2000-08-23T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 64.6505,
-          "close_min": -37.63,
-          "close_max": 145.29,
-          "close_std": 24.5569,
-          "volume_total": 1930547485
+          "count": 253,
+          "date_min": "2025-01-29T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 63.617,
+          "close_min": 55.27,
+          "close_max": 75.14,
+          "close_std": 4.4806,
+          "volume_total": 68208037
         },
         "GC=F": {
-          "count": 6374,
-          "date_min": "2000-08-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 1260.1299,
-          "close_min": 255.1,
-          "close_max": 5003.7998,
-          "close_std": 747.8276,
-          "volume_total": 27664434
+          "count": 253,
+          "date_min": "2025-01-29T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 3596.6731,
+          "close_min": 2769.1001,
+          "close_max": 5418.8999,
+          "close_std": 550.6209,
+          "volume_total": 1637511
         },
         "HG=F": {
-          "count": 6379,
-          "date_min": "2000-08-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 2.8512,
-          "close_min": 0.604,
-          "close_max": 6.0105,
-          "close_std": 1.1805,
-          "volume_total": 8284285
+          "count": 253,
+          "date_min": "2025-01-29T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 4.9457,
+          "close_min": 4.1275,
+          "close_max": 6.271,
+          "close_std": 0.4442,
+          "volume_total": 558943
         },
         "NG=F": {
-          "count": 6380,
-          "date_min": "2000-08-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 4.3944,
-          "close_min": 1.482,
-          "close_max": 15.378,
-          "close_std": 2.2022,
-          "volume_total": 681406374
+          "count": 253,
+          "date_min": "2025-01-29T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 3.6547,
+          "close_min": 2.696,
+          "close_max": 7.46,
+          "close_std": 0.6778,
+          "volume_total": 42209783
         },
         "SI=F": {
-          "count": 6376,
-          "date_min": "2000-08-30T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 18.1334,
-          "close_min": 4.026,
-          "close_max": 103.88,
-          "close_std": 10.2647,
-          "volume_total": 9572562
+          "count": 253,
+          "date_min": "2025-01-29T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 44.6304,
+          "close_min": 29.116,
+          "close_max": 115.555,
+          "close_std": 16.7906,
+          "volume_total": 514427
         }
       }
     }
@@ -880,14 +630,10 @@
     "meta": {
       "name": "sector_etfs",
       "source_id": "sector_etfs",
-      "location": "raw",
-      "file_path": "data/raw/sector_etfs.parquet",
-      "format": "parquet",
-      "record_count": 63915,
-      "file_size_bytes": 3435310,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 2510,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -900,10 +646,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-22T02:22:44.806863",
-      "last_updated": "2026-01-26T22:05:38.340178",
-      "last_record_date": "2026-01-26T00:00:00-05:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:29.692703",
       "description": "S&P 500 sector performance",
       "symbols": [
         "XLB",
@@ -920,110 +663,110 @@
     },
     "stats": {
       "date_range": {
-        "min": "1998-12-22T05:00:00+00:00",
-        "max": "2026-01-26T05:00:00+00:00",
-        "days": 9897
+        "min": "2025-01-30T05:00:00+00:00",
+        "max": "2026-01-29T05:00:00+00:00",
+        "days": 364
       },
       "by_symbol": {
         "XLB": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 18.8123,
-          "close_min": 4.8723,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 43.8379,
+          "close_min": 36.5834,
           "close_max": 50.03,
-          "close_std": 11.96,
-          "volume_total": 76980362021
+          "close_std": 2.0834,
+          "volume_total": 3183292190
         },
         "XLE": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 20.5737,
-          "close_min": 5.2095,
-          "close_max": 49.22,
-          "close_std": 10.5893,
-          "volume_total": 216410205321
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 43.2129,
+          "close_min": 37.2731,
+          "close_max": 50.51,
+          "close_std": 2.2405,
+          "volume_total": 8735063223
         },
         "XLF": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 19.4889,
-          "close_min": 3.6993,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 51.5194,
+          "close_min": 43.4744,
           "close_max": 56.4,
-          "close_std": 10.7967,
-          "volume_total": 375581676547
+          "close_std": 2.3709,
+          "volume_total": 10761791779
         },
         "XLI": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 47.3686,
-          "close_min": 11.0654,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 145.4366,
+          "close_min": 115.1946,
           "close_max": 166.9,
-          "close_std": 35.7806,
-          "volume_total": 56294901564
+          "close_std": 11.0196,
+          "volume_total": 2675352393
         },
         "XLK": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 29.9602,
-          "close_min": 4.3139,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 127.3805,
+          "close_min": 89.4654,
           "close_max": 151.8347,
-          "close_std": 32.6736,
-          "volume_total": 91820943961
+          "close_std": 15.9389,
+          "volume_total": 3583962844
         },
         "XLP": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 33.2457,
-          "close_min": 9.9792,
-          "close_max": 82.91,
-          "close_std": 21.6469,
-          "volume_total": 48348899255
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 78.9787,
+          "close_min": 74.7136,
+          "close_max": 83.16,
+          "close_std": 1.6209,
+          "volume_total": 3749176142
         },
         "XLRE": {
-          "count": 2589,
-          "date_min": "2015-10-08T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 31.6621,
-          "close_min": 19.2998,
-          "close_max": 45.1453,
-          "close_std": 6.7773,
-          "volume_total": 12080362920
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 40.6631,
+          "close_min": 36.075,
+          "close_max": 42.278,
+          "close_std": 0.8276,
+          "volume_total": 1681395968
         },
         "XLU": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 15.7862,
-          "close_min": 3.3942,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 41.1422,
+          "close_min": 35.7823,
           "close_max": 46.1046,
-          "close_std": 10.2636,
-          "volume_total": 116178929183
+          "close_std": 2.3874,
+          "volume_total": 5541415203
         },
         "XLV": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 55.3342,
-          "close_min": 14.8478,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 141.2036,
+          "close_min": 127.0338,
           "close_max": 159.66,
-          "close_std": 42.0206,
-          "volume_total": 41440213661
+          "close_std": 8.7132,
+          "volume_total": 3014829640
         },
         "XLY": {
-          "count": 6814,
-          "date_min": "1998-12-22T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 35.4375,
-          "close_min": 6.5027,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 111.2502,
+          "close_min": 87.6543,
           "close_max": 124.52,
-          "close_std": 30.4615,
-          "volume_total": 56657078392
+          "close_std": 8.5772,
+          "volume_total": 2580109190
         }
       }
     }
@@ -1035,14 +778,10 @@
     "meta": {
       "name": "macro_proxies",
       "source_id": "macro_proxies",
-      "location": "raw",
-      "file_path": "data/raw/macro_proxies.parquet",
-      "format": "parquet",
-      "record_count": 39900,
-      "file_size_bytes": 2105571,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 1757,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "symbol",
         "date",
         "open",
@@ -1055,10 +794,7 @@
         "symbol",
         "date"
       ],
-      "first_fetched": "2026-01-22T02:23:06.362534",
-      "last_updated": "2026-01-26T22:05:40.038426",
-      "last_record_date": "2026-01-26T00:00:00-05:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:30.937522",
       "description": "ETFs that track macro themes",
       "symbols": [
         "DBA",
@@ -1072,203 +808,253 @@
     },
     "stats": {
       "date_range": {
-        "min": "1993-01-29T05:00:00+00:00",
-        "max": "2026-01-26T05:00:00+00:00",
-        "days": 12050
+        "min": "2025-01-30T05:00:00+00:00",
+        "max": "2026-01-29T05:00:00+00:00",
+        "days": 364
       },
       "by_symbol": {
         "DBA": {
-          "count": 4794,
-          "date_min": "2007-01-05T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 20.5918,
-          "close_min": 11.6129,
-          "close_max": 36.2526,
-          "close_std": 4.6413,
-          "volume_total": 4671556734
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 25.7732,
+          "close_min": 24.3904,
+          "close_max": 27.3921,
+          "close_std": 0.5518,
+          "volume_total": 68960864
         },
         "GLD": {
-          "count": 5329,
-          "date_min": "2004-11-18T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 137.0762,
-          "close_min": 41.26,
-          "close_max": 464.7,
-          "close_std": 61.7151,
-          "volume_total": 50827608676
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 331.7835,
+          "close_min": 258.05,
+          "close_max": 495.9,
+          "close_std": 50.5186,
+          "volume_total": 3284374374
         },
         "GOVT": {
-          "count": 3500,
-          "date_min": "2012-02-24T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 21.3328,
-          "close_min": 19.0551,
-          "close_max": 24.7775,
-          "close_std": 1.4219,
-          "volume_total": 15354992041
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 22.5648,
+          "close_min": 21.7244,
+          "close_max": 23.1596,
+          "close_std": 0.3973,
+          "volume_total": 2423486275
         },
         "IWM": {
-          "count": 6454,
-          "date_min": "2000-05-26T04:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 99.8518,
-          "close_min": 23.9386,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 225.1626,
+          "close_min": 173.2638,
           "close_max": 269.79,
-          "close_std": 61.059,
-          "volume_total": 228667639092
+          "close_std": 21.7876,
+          "volume_total": 9099237051
         },
         "QQQ": {
-          "count": 6762,
-          "date_min": "1999-03-10T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 136.4156,
-          "close_min": 16.9432,
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 555.3859,
+          "close_min": 414.5779,
           "close_max": 634.952,
-          "close_std": 144.6592,
-          "volume_total": 439109957119
+          "close_std": 55.9848,
+          "volume_total": 12568914367
         },
         "SPY": {
-          "count": 8304,
-          "date_min": "1993-01-29T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 165.9757,
-          "close_min": 23.9483,
-          "close_max": 695.16,
-          "close_std": 150.904,
-          "volume_total": 691599767418
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 623.5142,
+          "close_min": 492.1936,
+          "close_max": 695.49,
+          "close_std": 50.577,
+          "volume_total": 18714605004
         },
         "UUP": {
-          "count": 4757,
-          "date_min": "2007-03-01T05:00:00+00:00",
-          "date_max": "2026-01-26T05:00:00+00:00",
-          "close_mean": 21.3677,
-          "close_min": 17.4849,
-          "close_max": 28.8642,
-          "close_std": 2.6774,
-          "volume_total": 8411610397
+          "count": 251,
+          "date_min": "2025-01-30T05:00:00+00:00",
+          "date_max": "2026-01-29T05:00:00+00:00",
+          "close_mean": 26.9552,
+          "close_min": 25.9633,
+          "close_max": 28.6611,
+          "close_std": 0.5857,
+          "volume_total": 287263614
         }
       }
     }
   },
   {
-    "name": "fred_inflation",
-    "type": "fred",
-    "description": "Consumer and producer price indices",
+    "name": "fed_news",
+    "type": "rss",
+    "description": "Federal Reserve announcements and speeches",
     "meta": {
-      "name": "fred_inflation",
-      "source_id": "fred_inflation",
-      "location": "raw",
-      "file_path": "data/raw/fred_inflation.parquet",
-      "format": "parquet",
-      "record_count": 5307,
-      "file_size_bytes": 79335,
+      "name": "fed_news",
+      "source_id": "fed_news",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 35,
       "columns": [
-        "_source_id",
-        "_fetched_at",
-        "series_id",
-        "date",
-        "value",
+        "feed_name",
+        "feed_url",
         "title",
-        "units",
-        "frequency"
+        "link",
+        "summary",
+        "author",
+        "published",
+        "id"
       ],
       "primary_keys": [
-        "series_id",
-        "date"
+        "id"
       ],
-      "first_fetched": "2026-01-22T13:41:24.922814",
-      "last_updated": "2026-01-26T22:12:55.798729",
-      "last_record_date": "2025-12-01T00:00:00",
-      "fetch_count": 2,
-      "description": "Consumer and producer price indices",
-      "series": [
-        "CPIAUCSL",
-        "CPILFESL",
-        "MICH",
-        "PCEPI",
-        "PCEPILFE",
-        "PPIACO"
+      "fetched_at": "2026-01-29T21:55:31.601886",
+      "description": "Federal Reserve announcements and speeches",
+      "feeds": [
+        "Fed Speeches",
+        "Federal Reserve Press Releases"
       ]
     },
     "stats": {
       "date_range": {
-        "min": "1913-01-01T00:00:00+00:00",
-        "max": "2025-12-01T00:00:00+00:00",
-        "days": 41242
+        "min": "2025-11-12T03:25:00+00:00",
+        "max": "2026-01-29T18:30:00+00:00",
+        "days": 78
       },
-      "by_series": {
-        "CPIAUCSL": {
-          "title": "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average",
-          "units": "Index 1982-1984=100",
-          "frequency": "Monthly",
-          "count": 947,
-          "date_min": "1947-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 123.8484,
-          "value_min": 21.48,
-          "value_max": 326.03,
-          "value_latest": 326.03
-        },
-        "CPILFESL": {
-          "title": "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average",
-          "units": "Index 1982-1984=100",
-          "frequency": "Monthly",
-          "count": 827,
-          "date_min": "1957-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 141.8497,
-          "value_min": 28.5,
-          "value_max": 331.86,
-          "value_latest": 331.86
-        },
-        "MICH": {
-          "title": "University of Michigan: Inflation Expectation",
-          "units": "Percent",
-          "frequency": "Monthly",
-          "count": 576,
-          "date_min": "1978-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 3.6062,
-          "value_min": 0.4,
-          "value_max": 10.4,
-          "value_latest": 4.2
-        },
-        "PCEPI": {
-          "title": "Personal Consumption Expenditures: Chain-type Price Index",
-          "units": "Index 2017=100",
-          "frequency": "Monthly",
-          "count": 801,
-          "date_min": "1959-01-01T00:00:00+00:00",
-          "date_max": "2025-09-01T00:00:00+00:00",
-          "value_mean": 60.7282,
-          "value_min": 15.164,
-          "value_max": 127.626,
-          "value_latest": 127.626
-        },
-        "PCEPILFE": {
-          "title": "Personal Consumption Expenditures Excluding Food and Energy (Chain-Type Price Index)",
-          "units": "Index 2017=100",
-          "frequency": "Monthly",
-          "count": 801,
-          "date_min": "1959-01-01T00:00:00+00:00",
-          "date_max": "2025-09-01T00:00:00+00:00",
-          "value_mean": 60.8872,
-          "value_min": 15.501,
-          "value_max": 126.955,
-          "value_latest": 126.955
-        },
-        "PPIACO": {
-          "title": "Producer Price Index by Commodity: All Commodities",
-          "units": "Index 1982=100",
-          "frequency": "Monthly",
-          "count": 1355,
-          "date_min": "1913-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 79.545,
-          "value_min": 10.3,
-          "value_max": 280.251,
-          "value_latest": 261.556
-        }
+      "articles_by_feed": {
+        "Fed Speeches": 15,
+        "Federal Reserve Press Releases": 20
+      },
+      "articles_by_day": {
+        "2025-11-12": 1,
+        "2025-11-17": 2,
+        "2025-11-18": 1,
+        "2025-11-19": 1,
+        "2025-11-20": 1,
+        "2025-11-21": 2,
+        "2025-12-02": 1,
+        "2025-12-15": 2,
+        "2025-12-16": 1,
+        "2025-12-17": 1,
+        "2025-12-18": 1,
+        "2025-12-19": 2,
+        "2025-12-23": 1,
+        "2025-12-30": 2,
+        "2026-01-06": 2,
+        "2026-01-07": 1,
+        "2026-01-08": 1,
+        "2026-01-09": 1,
+        "2026-01-12": 2,
+        "2026-01-13": 1,
+        "2026-01-14": 1,
+        "2026-01-15": 1,
+        "2026-01-16": 3,
+        "2026-01-28": 2,
+        "2026-01-29": 1
+      }
+    }
+  },
+  {
+    "name": "financial_news",
+    "type": "rss",
+    "description": "Market and economic news feeds",
+    "meta": {
+      "name": "financial_news",
+      "source_id": "financial_news",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 80,
+      "columns": [
+        "feed_name",
+        "feed_url",
+        "title",
+        "link",
+        "summary",
+        "author",
+        "published",
+        "id"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "fetched_at": "2026-01-29T21:55:32.651220",
+      "description": "Market and economic news feeds",
+      "feeds": [
+        "CNBC Top News",
+        "Seeking Alpha Market News",
+        "Yahoo Finance"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2026-01-28T13:26:56+00:00",
+        "max": "2026-01-29T21:53:47+00:00",
+        "days": 1
+      },
+      "articles_by_feed": {
+        "CNBC Top News": 30,
+        "Seeking Alpha Market News": 7,
+        "Yahoo Finance": 43
+      },
+      "articles_by_day": {
+        "2026-01-28": 42,
+        "2026-01-29": 38
+      }
+    }
+  },
+  {
+    "name": "economics_news",
+    "type": "rss",
+    "description": "Economic analysis and policy coverage",
+    "meta": {
+      "name": "economics_news",
+      "source_id": "economics_news",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 40,
+      "columns": [
+        "feed_name",
+        "feed_url",
+        "title",
+        "link",
+        "summary",
+        "author",
+        "published",
+        "id"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "fetched_at": "2026-01-29T21:55:33.787250",
+      "description": "Economic analysis and policy coverage",
+      "feeds": [
+        "Calculated Risk",
+        "Marginal Revolution"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2026-01-06T15:54:00+00:00",
+        "max": "2026-01-29T19:20:58+00:00",
+        "days": 23
+      },
+      "articles_by_feed": {
+        "Calculated Risk": 25,
+        "Marginal Revolution": 15
+      },
+      "articles_by_day": {
+        "2026-01-06": 2,
+        "2026-01-07": 6,
+        "2026-01-08": 5,
+        "2026-01-09": 7,
+        "2026-01-10": 2,
+        "2026-01-11": 1,
+        "2026-01-12": 2,
+        "2026-01-26": 4,
+        "2026-01-27": 4,
+        "2026-01-28": 3,
+        "2026-01-29": 4
       }
     }
   },
@@ -1279,14 +1065,10 @@
     "meta": {
       "name": "fred_gdp",
       "source_id": "fred_gdp",
-      "location": "raw",
-      "file_path": "data/raw/fred_gdp.parquet",
-      "format": "parquet",
+      "location": "bridge",
+      "format": "dataframe",
       "record_count": 1259,
-      "file_size_bytes": 25098,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -1298,10 +1080,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-22T13:43:24.229075",
-      "last_updated": "2026-01-26T22:12:49.986748",
-      "last_record_date": "2025-07-01T00:00:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:37.667244",
       "description": "Gross Domestic Product and related measures",
       "series": [
         "A191RL1Q225SBEA",
@@ -1375,14 +1154,10 @@
     "meta": {
       "name": "fred_employment",
       "source_id": "fred_employment",
-      "location": "raw",
-      "file_path": "data/raw/fred_employment.parquet",
-      "format": "parquet",
-      "record_count": 5836,
-      "file_size_bytes": 92940,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 5837,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -1394,10 +1169,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-22T13:43:34.507086",
-      "last_updated": "2026-01-22T13:43:34.507086",
-      "last_record_date": "2026-01-17T00:00:00",
-      "fetch_count": 1,
+      "fetched_at": "2026-01-29T21:55:42.819465",
       "description": "Employment, unemployment, and labor market indicators",
       "series": [
         "AWHAETP",
@@ -1411,8 +1183,8 @@
     "stats": {
       "date_range": {
         "min": "1939-01-01T00:00:00+00:00",
-        "max": "2026-01-17T00:00:00+00:00",
-        "days": 31793
+        "max": "2026-01-24T00:00:00+00:00",
+        "days": 31800
       },
       "by_series": {
         "AWHAETP": {
@@ -1443,13 +1215,13 @@
           "title": "Initial Claims",
           "units": "Number",
           "frequency": "Weekly, Ending Saturday",
-          "count": 3081,
+          "count": 3082,
           "date_min": "1967-01-07T00:00:00+00:00",
-          "date_max": "2026-01-17T00:00:00+00:00",
-          "value_mean": 360804.9335,
+          "date_max": "2026-01-24T00:00:00+00:00",
+          "value_mean": 360758.9228,
           "value_min": 162000.0,
           "value_max": 6137000.0,
-          "value_latest": 200000.0
+          "value_latest": 209000.0
         },
         "JTSJOL": {
           "title": "Job Openings: Total Nonfarm",
@@ -1491,20 +1263,16 @@
     }
   },
   {
-    "name": "fred_rates",
+    "name": "fred_inflation",
     "type": "fred",
-    "description": "Federal Reserve rates and Treasury yields",
+    "description": "Consumer and producer price indices",
     "meta": {
-      "name": "fred_rates",
-      "source_id": "fred_rates",
-      "location": "raw",
-      "file_path": "data/raw/fred_rates.parquet",
-      "format": "parquet",
-      "record_count": 84998,
-      "file_size_bytes": 966174,
+      "name": "fred_inflation",
+      "source_id": "fred_inflation",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 5311,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -1516,10 +1284,122 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-22T13:44:06.040566",
-      "last_updated": "2026-01-26T22:13:04.175644",
-      "last_record_date": "2026-01-26T00:00:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:55:47.409406",
+      "description": "Consumer and producer price indices",
+      "series": [
+        "CPIAUCSL",
+        "CPILFESL",
+        "MICH",
+        "PCEPI",
+        "PCEPILFE",
+        "PPIACO"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "1913-01-01T00:00:00+00:00",
+        "max": "2025-12-01T00:00:00+00:00",
+        "days": 41242
+      },
+      "by_series": {
+        "CPIAUCSL": {
+          "title": "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average",
+          "units": "Index 1982-1984=100",
+          "frequency": "Monthly",
+          "count": 947,
+          "date_min": "1947-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 123.8484,
+          "value_min": 21.48,
+          "value_max": 326.03,
+          "value_latest": 326.03
+        },
+        "CPILFESL": {
+          "title": "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average",
+          "units": "Index 1982-1984=100",
+          "frequency": "Monthly",
+          "count": 827,
+          "date_min": "1957-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 141.8497,
+          "value_min": 28.5,
+          "value_max": 331.86,
+          "value_latest": 331.86
+        },
+        "MICH": {
+          "title": "University of Michigan: Inflation Expectation",
+          "units": "Percent",
+          "frequency": "Monthly",
+          "count": 576,
+          "date_min": "1978-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 3.6062,
+          "value_min": 0.4,
+          "value_max": 10.4,
+          "value_latest": 4.2
+        },
+        "PCEPI": {
+          "title": "Personal Consumption Expenditures: Chain-type Price Index",
+          "units": "Index 2017=100",
+          "frequency": "Monthly",
+          "count": 803,
+          "date_min": "1959-01-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 60.8957,
+          "value_min": 15.164,
+          "value_max": 128.093,
+          "value_latest": 128.093
+        },
+        "PCEPILFE": {
+          "title": "Personal Consumption Expenditures Excluding Food and Energy (Chain-Type Price Index)",
+          "units": "Index 2017=100",
+          "frequency": "Monthly",
+          "count": 803,
+          "date_min": "1959-01-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 61.0526,
+          "value_min": 15.501,
+          "value_max": 127.422,
+          "value_latest": 127.422
+        },
+        "PPIACO": {
+          "title": "Producer Price Index by Commodity: All Commodities",
+          "units": "Index 1982=100",
+          "frequency": "Monthly",
+          "count": 1355,
+          "date_min": "1913-01-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 79.545,
+          "value_min": 10.3,
+          "value_max": 280.251,
+          "value_latest": 261.556
+        }
+      }
+    }
+  },
+  {
+    "name": "fred_rates",
+    "type": "fred",
+    "description": "Federal Reserve rates and Treasury yields",
+    "meta": {
+      "name": "fred_rates",
+      "source_id": "fred_rates",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 85030,
+      "columns": [
+        "series_id",
+        "date",
+        "value",
+        "title",
+        "units",
+        "frequency"
+      ],
+      "primary_keys": [
+        "series_id",
+        "date"
+      ],
+      "fetched_at": "2026-01-29T21:56:05.862392",
       "description": "Federal Reserve rates and Treasury yields",
       "series": [
         "BAMLH0A0HYM2",
@@ -1536,30 +1416,30 @@
     "stats": {
       "date_range": {
         "min": "1954-07-01T00:00:00+00:00",
-        "max": "2026-01-26T00:00:00+00:00",
-        "days": 26142
+        "max": "2026-01-29T00:00:00+00:00",
+        "days": 26145
       },
       "by_series": {
         "BAMLH0A0HYM2": {
           "title": "ICE BofA US High Yield Index Option-Adjusted Spread",
           "units": "Percent",
           "frequency": "Daily, Close",
-          "count": 7586,
+          "count": 7591,
           "date_min": "1996-12-31T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 5.2108,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 5.2091,
           "value_min": 2.41,
           "value_max": 21.82,
-          "value_latest": 2.68
+          "value_latest": 2.72
         },
         "DFEDTARL": {
           "title": "Federal Funds Target Range - Lower Limit",
           "units": "Percent",
           "frequency": "Daily, 7-Day",
-          "count": 6251,
+          "count": 6254,
           "date_min": "2008-12-16T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "value_mean": 1.2325,
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "value_mean": 1.2336,
           "value_min": 0.0,
           "value_max": 5.25,
           "value_latest": 3.5
@@ -1568,10 +1448,10 @@
           "title": "Federal Funds Target Range - Upper Limit",
           "units": "Percent",
           "frequency": "Daily, 7-Day",
-          "count": 6251,
+          "count": 6254,
           "date_min": "2008-12-16T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "value_mean": 1.4825,
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "value_mean": 1.4836,
           "value_min": 0.25,
           "value_max": 5.5,
           "value_latest": 3.75
@@ -1580,37 +1460,37 @@
           "title": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 15997,
+          "count": 16002,
           "date_min": "1962-01-02T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 5.819,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 5.8185,
           "value_min": 0.52,
           "value_max": 15.84,
-          "value_latest": 4.24
+          "value_latest": 4.26
         },
         "DGS2": {
           "title": "Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity, Quoted on an Investment Basis",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 12405,
+          "count": 12410,
           "date_min": "1976-06-01T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 4.9656,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 4.965,
           "value_min": 0.09,
           "value_max": 16.95,
-          "value_latest": 3.6
+          "value_latest": 3.56
         },
         "DGS30": {
           "title": "Market Yield on U.S. Treasury Securities at 30-Year Constant Maturity, Quoted on an Investment Basis",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 12227,
+          "count": 12232,
           "date_min": "1977-02-15T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 6.1705,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 6.17,
           "value_min": 0.99,
           "value_max": 15.21,
-          "value_latest": 4.82
+          "value_latest": 4.85
         },
         "FEDFUNDS": {
           "title": "Federal Funds Effective Rate",
@@ -1628,25 +1508,25 @@
           "title": "10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 12407,
+          "count": 12410,
           "date_min": "1976-06-01T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
+          "date_max": "2026-01-28T00:00:00+00:00",
           "value_mean": 0.8498,
           "value_min": -2.41,
           "value_max": 2.91,
-          "value_latest": 0.66
+          "value_latest": 0.7
         },
         "T10Y3M": {
           "title": "10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 11016,
+          "count": 11019,
           "date_min": "1982-01-04T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
-          "value_mean": 1.5454,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 1.5452,
           "value_min": -1.89,
           "value_max": 5.18,
-          "value_latest": 0.55
+          "value_latest": 0.58
         }
       }
     }
@@ -1658,14 +1538,10 @@
     "meta": {
       "name": "fred_money",
       "source_id": "fred_money",
-      "location": "raw",
-      "file_path": "data/raw/fred_money.parquet",
-      "format": "parquet",
-      "record_count": 4610,
-      "file_size_bytes": 82794,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 4614,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -1677,10 +1553,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-22T13:46:30.307366",
-      "last_updated": "2026-01-26T22:13:06.394997",
-      "last_record_date": "2026-01-21T00:00:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:56:12.487974",
       "description": "Monetary aggregates and credit conditions",
       "series": [
         "M1SL",
@@ -1693,33 +1566,33 @@
     "stats": {
       "date_range": {
         "min": "1943-01-01T00:00:00+00:00",
-        "max": "2026-01-21T00:00:00+00:00",
-        "days": 30336
+        "max": "2026-01-28T00:00:00+00:00",
+        "days": 30343
       },
       "by_series": {
         "M1SL": {
           "title": "M1",
           "units": "Billions of Dollars",
           "frequency": "Monthly",
-          "count": 803,
+          "count": 804,
           "date_min": "1959-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 2527.456,
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 2548.0848,
           "value_min": 138.9,
           "value_max": 20727.2,
-          "value_latest": 19025.7
+          "value_latest": 19111.8
         },
         "M2SL": {
           "title": "M2",
           "units": "Billions of Dollars",
           "frequency": "Monthly",
-          "count": 803,
+          "count": 804,
           "date_min": "1959-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 5656.6413,
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 5677.4812,
           "value_min": 286.6,
-          "value_max": 22322.4,
-          "value_latest": 22322.4
+          "value_max": 22411.0,
+          "value_latest": 22411.0
         },
         "TOTALSL": {
           "title": "Total Consumer Credit Owned and Securitized",
@@ -1737,25 +1610,25 @@
           "title": "Reserves of Depository Institutions: Total",
           "units": "Billions of Dollars",
           "frequency": "Monthly",
-          "count": 803,
+          "count": 804,
           "date_min": "1959-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 636.1452,
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 639.0129,
           "value_min": 18.0,
           "value_max": 4193.2,
-          "value_latest": 2879.3
+          "value_latest": 2941.7
         },
         "WALCL": {
           "title": "Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level",
           "units": "Millions of U.S. Dollars",
           "frequency": "Weekly, As of Wednesday",
-          "count": 1206,
+          "count": 1207,
           "date_min": "2002-12-18T00:00:00+00:00",
-          "date_max": "2026-01-21T00:00:00+00:00",
-          "value_mean": 3920773.9718,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 3922983.4118,
           "value_min": 712809.0,
           "value_max": 8965487.0,
-          "value_latest": 6584580.0
+          "value_latest": 6587568.0
         }
       }
     }
@@ -1767,14 +1640,10 @@
     "meta": {
       "name": "fred_housing",
       "source_id": "fred_housing",
-      "location": "raw",
-      "file_path": "data/raw/fred_housing.parquet",
-      "format": "parquet",
-      "record_count": 5686,
-      "file_size_bytes": 91017,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 5688,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -1786,10 +1655,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-22T13:46:45.913583",
-      "last_updated": "2026-01-26T22:13:08.680061",
-      "last_record_date": "2026-01-22T00:00:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:56:17.343537",
       "description": "Housing market indicators",
       "series": [
         "CSUSHPINSA",
@@ -1803,21 +1669,21 @@
     "stats": {
       "date_range": {
         "min": "1959-01-01T00:00:00+00:00",
-        "max": "2026-01-22T00:00:00+00:00",
-        "days": 24493
+        "max": "2026-01-29T00:00:00+00:00",
+        "days": 24500
       },
       "by_series": {
         "CSUSHPINSA": {
           "title": "S&P Cotality Case-Shiller U.S. National Home Price Index",
           "units": "Index Jan 2000=100",
           "frequency": "Monthly",
-          "count": 466,
+          "count": 467,
           "date_min": "1987-01-01T00:00:00+00:00",
-          "date_max": "2025-10-01T00:00:00+00:00",
-          "value_mean": 151.6393,
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 152.0173,
           "value_min": 63.732,
-          "value_max": 331.627,
-          "value_latest": 328.442
+          "value_max": 331.619,
+          "value_latest": 328.149
         },
         "EXHOSLUSM495S": {
           "title": "Existing Home Sales",
@@ -1859,13 +1725,13 @@
           "title": "30-Year Fixed Rate Mortgage Average in the United States",
           "units": "Percent",
           "frequency": "Weekly, Ending Thursday",
-          "count": 2861,
+          "count": 2862,
           "date_min": "1971-04-02T00:00:00+00:00",
-          "date_max": "2026-01-22T00:00:00+00:00",
-          "value_mean": 7.6959,
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "value_mean": 7.6953,
           "value_min": 2.65,
           "value_max": 18.63,
-          "value_latest": 6.09
+          "value_latest": 6.1
         },
         "PERMIT": {
           "title": "New Privately-Owned Housing Units Authorized in Permit-Issuing Places: Total Units",
@@ -1874,10 +1740,10 @@
           "count": 790,
           "date_min": "1960-01-01T00:00:00+00:00",
           "date_max": "2025-10-01T00:00:00+00:00",
-          "value_mean": 1373.9253,
+          "value_mean": 1373.9241,
           "value_min": 513.0,
           "value_max": 2419.0,
-          "value_latest": 1412.0
+          "value_latest": 1411.0
         }
       }
     }
@@ -1889,14 +1755,10 @@
     "meta": {
       "name": "fred_consumer",
       "source_id": "fred_consumer",
-      "location": "raw",
-      "file_path": "data/raw/fred_consumer.parquet",
-      "format": "parquet",
-      "record_count": 3481,
-      "file_size_bytes": 52969,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 3484,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -1908,10 +1770,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-22T13:46:56.801589",
-      "last_updated": "2026-01-26T22:13:12.212318",
-      "last_record_date": "2025-12-01T00:00:00",
-      "fetch_count": 2,
+      "fetched_at": "2026-01-29T21:56:21.975507",
       "description": "Consumer spending and sentiment",
       "series": [
         "DSPIC96",
@@ -1932,10 +1791,10 @@
           "title": "Real Disposable Personal Income",
           "units": "Billions of Chained 2017 Dollars",
           "frequency": "Monthly",
-          "count": 802,
+          "count": 803,
           "date_min": "1959-01-01T00:00:00+00:00",
           "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 8551.0436,
+          "value_mean": 8562.8253,
           "value_min": 2318.4,
           "value_max": 20520.0,
           "value_latest": 18031.2
@@ -1944,10 +1803,10 @@
           "title": "Personal Consumption Expenditures",
           "units": "Billions of Dollars",
           "frequency": "Monthly",
-          "count": 802,
+          "count": 803,
           "date_min": "1959-01-01T00:00:00+00:00",
           "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 6003.7653,
+          "value_mean": 6022.8016,
           "value_min": 306.1,
           "value_max": 21409.7,
           "value_latest": 21409.7
@@ -1956,10 +1815,10 @@
           "title": "Personal Saving Rate",
           "units": "Percent",
           "frequency": "Monthly",
-          "count": 802,
+          "count": 803,
           "date_min": "1959-01-01T00:00:00+00:00",
           "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 8.4107,
+          "value_mean": 8.4049,
           "value_min": 1.4,
           "value_max": 31.8,
           "value_latest": 3.5
@@ -1992,458 +1851,16 @@
     }
   },
   {
-    "name": "bls_cpi",
-    "type": "bls",
-    "description": "CPI inflation measures from Bureau of Labor Statistics",
-    "meta": {
-      "name": "bls_cpi",
-      "source_id": "bls_cpi",
-      "location": "raw",
-      "file_path": "data/raw/bls_cpi.parquet",
-      "format": "parquet",
-      "record_count": 321,
-      "file_size_bytes": 11941,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "series_id",
-        "date",
-        "value",
-        "title",
-        "units",
-        "frequency",
-        "period",
-        "year"
-      ],
-      "primary_keys": [
-        "series_id",
-        "date"
-      ],
-      "first_fetched": "2026-01-23T15:54:29.470063",
-      "last_updated": "2026-01-23T15:54:29.470063",
-      "last_record_date": "2025-12-01T00:00:00",
-      "fetch_count": 1,
-      "description": "CPI inflation measures from Bureau of Labor Statistics",
-      "series": [
-        "CUSR0000SA0",
-        "CUSR0000SA0L1E",
-        "CUUR0000SA0"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2017-01-01T00:00:00+00:00",
-        "max": "2025-12-01T00:00:00+00:00",
-        "days": 3256
-      },
-      "by_series": {
-        "CUSR0000SA0": {
-          "title": "CPI All Items (Seasonally Adjusted)",
-          "units": "Index 1982-84=100",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 279.0139,
-          "value_min": 243.618,
-          "value_max": 326.03,
-          "value_latest": 326.03
-        },
-        "CUSR0000SA0L1E": {
-          "title": "CPI All Items Less Food and Energy",
-          "units": "Index 1982-84=100",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 284.8924,
-          "value_min": 250.467,
-          "value_max": 331.86,
-          "value_latest": 331.86
-        },
-        "CUUR0000SA0": {
-          "title": "CPI All Items (Not Seasonally Adjusted)",
-          "units": "Index 1982-84=100",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 279.0084,
-          "value_min": 242.839,
-          "value_max": 324.8,
-          "value_latest": 324.054
-        }
-      }
-    }
-  },
-  {
-    "name": "bls_employment",
-    "type": "bls",
-    "description": "Employment and unemployment from Bureau of Labor Statistics",
-    "meta": {
-      "name": "bls_employment",
-      "source_id": "bls_employment",
-      "location": "raw",
-      "file_path": "data/raw/bls_employment.parquet",
-      "format": "parquet",
-      "record_count": 430,
-      "file_size_bytes": 12627,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "series_id",
-        "date",
-        "value",
-        "title",
-        "units",
-        "frequency",
-        "period",
-        "year"
-      ],
-      "primary_keys": [
-        "series_id",
-        "date"
-      ],
-      "first_fetched": "2026-01-23T15:54:48.901447",
-      "last_updated": "2026-01-23T15:54:48.901447",
-      "last_record_date": "2025-12-01T00:00:00",
-      "fetch_count": 1,
-      "description": "Employment and unemployment from Bureau of Labor Statistics",
-      "series": [
-        "CES0000000001",
-        "CES0500000001",
-        "LNS11000000",
-        "LNS14000000"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2017-01-01T00:00:00+00:00",
-        "max": "2025-12-01T00:00:00+00:00",
-        "days": 3256
-      },
-      "by_series": {
-        "CES0000000001": {
-          "title": "Total Nonfarm Employment",
-          "units": "Thousands",
-          "frequency": "Monthly",
-          "count": 108,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 151180.5648,
-          "value_min": 130424.0,
-          "value_max": 159593.0,
-          "value_latest": 159526.0
-        },
-        "CES0500000001": {
-          "title": "Total Private Employment",
-          "units": "Thousands",
-          "frequency": "Monthly",
-          "count": 108,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 128595.6204,
-          "value_min": 108515.0,
-          "value_max": 136115.0,
-          "value_latest": 136115.0
-        },
-        "LNS11000000": {
-          "title": "Labor Force Participation Rate",
-          "units": "Percent",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 164189.1963,
-          "value_min": 156269.0,
-          "value_max": 171541.0,
-          "value_latest": 171495.0
-        },
-        "LNS14000000": {
-          "title": "Unemployment Rate",
-          "units": "Percent",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 4.5514,
-          "value_min": 3.4,
-          "value_max": 14.8,
-          "value_latest": 4.4
-        }
-      }
-    }
-  },
-  {
-    "name": "bls_wages",
-    "type": "bls",
-    "description": "Wage and earnings data from Bureau of Labor Statistics",
-    "meta": {
-      "name": "bls_wages",
-      "source_id": "bls_wages",
-      "location": "raw",
-      "file_path": "data/raw/bls_wages.parquet",
-      "format": "parquet",
-      "record_count": 216,
-      "file_size_bytes": 10134,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "series_id",
-        "date",
-        "value",
-        "title",
-        "units",
-        "frequency",
-        "period",
-        "year"
-      ],
-      "primary_keys": [
-        "series_id",
-        "date"
-      ],
-      "first_fetched": "2026-01-23T15:55:00.065768",
-      "last_updated": "2026-01-23T15:55:00.065768",
-      "last_record_date": "2025-12-01T00:00:00",
-      "fetch_count": 1,
-      "description": "Wage and earnings data from Bureau of Labor Statistics",
-      "series": [
-        "CES0500000003",
-        "CES0500000011"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2017-01-01T00:00:00+00:00",
-        "max": "2025-12-01T00:00:00+00:00",
-        "days": 3256
-      },
-      "by_series": {
-        "CES0500000003": {
-          "title": "Average Hourly Earnings (Private)",
-          "units": "Dollars",
-          "frequency": "Monthly",
-          "count": 108,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 30.9794,
-          "value_min": 26.0,
-          "value_max": 37.02,
-          "value_latest": 37.02
-        },
-        "CES0500000011": {
-          "title": "Average Weekly Earnings (Private)",
-          "units": "Dollars",
-          "frequency": "Monthly",
-          "count": 108,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-12-01T00:00:00+00:00",
-          "value_mean": 1067.2264,
-          "value_min": 894.2,
-          "value_max": 1266.08,
-          "value_latest": 1266.08
-        }
-      }
-    }
-  },
-  {
-    "name": "bls_ppi",
-    "type": "bls",
-    "description": "Producer prices from Bureau of Labor Statistics",
-    "meta": {
-      "name": "bls_ppi",
-      "source_id": "bls_ppi",
-      "location": "raw",
-      "file_path": "data/raw/bls_ppi.parquet",
-      "format": "parquet",
-      "record_count": 321,
-      "file_size_bytes": 11412,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "series_id",
-        "date",
-        "value",
-        "title",
-        "units",
-        "frequency",
-        "period",
-        "year"
-      ],
-      "primary_keys": [
-        "series_id",
-        "date"
-      ],
-      "first_fetched": "2026-01-23T15:55:08.675049",
-      "last_updated": "2026-01-23T15:55:08.675049",
-      "last_record_date": "2025-11-01T00:00:00",
-      "fetch_count": 1,
-      "description": "Producer prices from Bureau of Labor Statistics",
-      "series": [
-        "WPSFD4",
-        "WPUFD4",
-        "WPUFD49104"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2017-01-01T00:00:00+00:00",
-        "max": "2025-11-01T00:00:00+00:00",
-        "days": 3226
-      },
-      "by_series": {
-        "WPSFD4": {
-          "title": "PPI Finished Goods (Seasonally Adjusted)",
-          "units": "Index 1982=100",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 129.4538,
-          "value_min": 111.9,
-          "value_max": 150.705,
-          "value_latest": 150.705
-        },
-        "WPUFD4": {
-          "title": "PPI Finished Goods",
-          "units": "Index 1982=100",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 129.4563,
-          "value_min": 111.6,
-          "value_max": 150.389,
-          "value_latest": 150.303
-        },
-        "WPUFD49104": {
-          "title": "PPI Finished Core Goods",
-          "units": "Index 1982=100",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 128.1011,
-          "value_min": 111.2,
-          "value_max": 149.275,
-          "value_latest": 148.9
-        }
-      }
-    }
-  },
-  {
-    "name": "bls_jolts",
-    "type": "bls",
-    "description": "Job Openings and Labor Turnover Survey",
-    "meta": {
-      "name": "bls_jolts",
-      "source_id": "bls_jolts",
-      "location": "raw",
-      "file_path": "data/raw/bls_jolts.parquet",
-      "format": "parquet",
-      "record_count": 428,
-      "file_size_bytes": 12318,
-      "columns": [
-        "_source_id",
-        "_fetched_at",
-        "series_id",
-        "date",
-        "value",
-        "title",
-        "units",
-        "frequency",
-        "period",
-        "year"
-      ],
-      "primary_keys": [
-        "series_id",
-        "date"
-      ],
-      "first_fetched": "2026-01-23T15:55:17.876469",
-      "last_updated": "2026-01-23T15:55:17.876469",
-      "last_record_date": "2025-11-01T00:00:00",
-      "fetch_count": 1,
-      "description": "Job Openings and Labor Turnover Survey",
-      "series": [
-        "JTS000000000000000HIR",
-        "JTS000000000000000JOL",
-        "JTS000000000000000QUL",
-        "JTS000000000000000TSL"
-      ]
-    },
-    "stats": {
-      "date_range": {
-        "min": "2017-01-01T00:00:00+00:00",
-        "max": "2025-11-01T00:00:00+00:00",
-        "days": 3226
-      },
-      "by_series": {
-        "JTS000000000000000HIR": {
-          "title": "Hires Total Nonfarm",
-          "units": "Thousands",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 3.8692,
-          "value_min": 3.1,
-          "value_max": 6.1,
-          "value_latest": 3.2
-        },
-        "JTS000000000000000JOL": {
-          "title": "Job Openings Total Nonfarm",
-          "units": "Thousands",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 8046.1495,
-          "value_min": 4606.0,
-          "value_max": 12134.0,
-          "value_latest": 7146.0
-        },
-        "JTS000000000000000QUL": {
-          "title": "Quits Total Nonfarm",
-          "units": "Thousands",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 3483.2804,
-          "value_min": 1991.0,
-          "value_max": 4499.0,
-          "value_latest": 3161.0
-        },
-        "JTS000000000000000TSL": {
-          "title": "Total Separations Nonfarm",
-          "units": "Thousands",
-          "frequency": "Monthly",
-          "count": 107,
-          "date_min": "2017-01-01T00:00:00+00:00",
-          "date_max": "2025-11-01T00:00:00+00:00",
-          "value_mean": 5684.1776,
-          "value_min": 4718.0,
-          "value_max": 16275.0,
-          "value_latest": 5080.0
-        }
-      }
-    }
-  },
-  {
     "name": "fred_banking",
     "type": "fred",
     "description": "H.8 commercial banking data and credit conditions",
     "meta": {
       "name": "fred_banking",
       "source_id": "fred_banking",
-      "location": "raw",
-      "file_path": "data/raw/fred_banking.parquet",
-      "format": "parquet",
+      "location": "bridge",
+      "format": "dataframe",
       "record_count": 10200,
-      "file_size_bytes": 190065,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -2455,10 +1872,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-26T22:13:18.631502",
-      "last_updated": "2026-01-26T22:13:18.631502",
-      "last_record_date": "2026-01-14T00:00:00",
-      "fetch_count": 1,
+      "fetched_at": "2026-01-29T21:56:28.171458",
       "description": "H.8 commercial banking data and credit conditions",
       "series": [
         "BUSLOANS",
@@ -2545,14 +1959,10 @@
     "meta": {
       "name": "fred_stress_index",
       "source_id": "fred_stress_index",
-      "location": "raw",
-      "file_path": "data/raw/fred_stress_index.parquet",
-      "format": "parquet",
-      "record_count": 13325,
-      "file_size_bytes": 218964,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 13326,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -2564,10 +1974,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-26T22:13:22.871612",
-      "last_updated": "2026-01-26T22:13:22.871612",
-      "last_record_date": "2026-01-16T00:00:00",
-      "fetch_count": 1,
+      "fetched_at": "2026-01-29T21:56:32.324028",
       "description": "Composite financial stress and conditions indicators",
       "series": [
         "CFSI",
@@ -2578,8 +1985,8 @@
     "stats": {
       "date_range": {
         "min": "1971-01-08T00:00:00+00:00",
-        "max": "2026-01-16T00:00:00+00:00",
-        "days": 20097
+        "max": "2026-01-23T00:00:00+00:00",
+        "days": 20104
       },
       "by_series": {
         "CFSI": {
@@ -2598,13 +2005,13 @@
           "title": "Chicago Fed National Financial Conditions Index",
           "units": "Index",
           "frequency": "Weekly, Ending Friday",
-          "count": 2872,
+          "count": 2873,
           "date_min": "1971-01-08T00:00:00+00:00",
-          "date_max": "2026-01-16T00:00:00+00:00",
-          "value_mean": 0.0,
-          "value_min": -1.0992,
-          "value_max": 5.1872,
-          "value_latest": -0.5903
+          "date_max": "2026-01-23T00:00:00+00:00",
+          "value_mean": -0.0,
+          "value_min": -1.0998,
+          "value_max": 5.1887,
+          "value_latest": -0.6003
         },
         "STLFSI2": {
           "title": "St. Louis Fed Financial Stress Index (DISCONTINUED)",
@@ -2628,14 +2035,10 @@
     "meta": {
       "name": "fred_mev",
       "source_id": "fred_mev",
-      "location": "raw",
-      "file_path": "data/raw/fred_mev.parquet",
-      "format": "parquet",
-      "record_count": 35659,
-      "file_size_bytes": 512859,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 35667,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -2647,10 +2050,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-26T22:13:35.201907",
-      "last_updated": "2026-01-26T22:13:35.201907",
-      "last_record_date": "2026-01-23T00:00:00",
-      "fetch_count": 1,
+      "fetched_at": "2026-01-29T21:56:42.920055",
       "description": "Key macroeconomic variables used in stress test scenario design",
       "series": [
         "CPIAUCSL",
@@ -2666,8 +2066,8 @@
     "stats": {
       "date_range": {
         "min": "1947-01-01T00:00:00+00:00",
-        "max": "2026-01-23T00:00:00+00:00",
-        "days": 28877
+        "max": "2026-01-29T00:00:00+00:00",
+        "days": 28883
       },
       "by_series": {
         "CPIAUCSL": {
@@ -2686,25 +2086,25 @@
           "title": "S&P Cotality Case-Shiller U.S. National Home Price Index",
           "units": "Index Jan 2000=100",
           "frequency": "Monthly",
-          "count": 466,
+          "count": 467,
           "date_min": "1987-01-01T00:00:00+00:00",
-          "date_max": "2025-10-01T00:00:00+00:00",
-          "value_mean": 151.6393,
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 152.0173,
           "value_min": 63.732,
-          "value_max": 331.627,
-          "value_latest": 328.442
+          "value_max": 331.619,
+          "value_latest": 328.149
         },
         "DGS10": {
           "title": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 15999,
+          "count": 16002,
           "date_min": "1962-01-02T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 5.8188,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 5.8185,
           "value_min": 0.52,
           "value_max": 15.84,
-          "value_latest": 4.24
+          "value_latest": 4.26
         },
         "DTWEXBGS": {
           "title": "Nominal Broad U.S. Dollar Index",
@@ -2734,13 +2134,13 @@
           "title": "30-Year Fixed Rate Mortgage Average in the United States",
           "units": "Percent",
           "frequency": "Weekly, Ending Thursday",
-          "count": 2861,
+          "count": 2862,
           "date_min": "1971-04-02T00:00:00+00:00",
-          "date_max": "2026-01-22T00:00:00+00:00",
-          "value_mean": 7.6959,
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "value_mean": 7.6953,
           "value_min": 2.65,
           "value_max": 18.63,
-          "value_latest": 6.09
+          "value_latest": 6.1
         },
         "UNRATE": {
           "title": "Unemployment Rate",
@@ -2758,13 +2158,13 @@
           "title": "CBOE Volatility Index: VIX",
           "units": "Index",
           "frequency": "Daily, Close",
-          "count": 9108,
+          "count": 9111,
           "date_min": "1990-01-02T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 19.4432,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 19.4422,
           "value_min": 9.14,
           "value_max": 82.69,
-          "value_latest": 16.09
+          "value_latest": 16.35
         }
       }
     }
@@ -2776,14 +2176,10 @@
     "meta": {
       "name": "fred_market",
       "source_id": "fred_market",
-      "location": "raw",
-      "file_path": "data/raw/fred_market.parquet",
-      "format": "parquet",
-      "record_count": 46448,
-      "file_size_bytes": 594571,
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 46458,
       "columns": [
-        "_source_id",
-        "_fetched_at",
         "series_id",
         "date",
         "value",
@@ -2795,10 +2191,7 @@
         "series_id",
         "date"
       ],
-      "first_fetched": "2026-01-26T22:13:48.019200",
-      "last_updated": "2026-01-26T22:13:48.019200",
-      "last_record_date": "2026-01-26T00:00:00",
-      "fetch_count": 1,
+      "fetched_at": "2026-01-29T21:56:56.397903",
       "description": "Broad market indicators and risk measures",
       "series": [
         "BAMLC0A0CM",
@@ -2813,18 +2206,18 @@
     "stats": {
       "date_range": {
         "min": "1986-01-02T00:00:00+00:00",
-        "max": "2026-01-26T00:00:00+00:00",
-        "days": 14634
+        "max": "2026-01-28T00:00:00+00:00",
+        "days": 14636
       },
       "by_series": {
         "BAMLC0A0CM": {
           "title": "ICE BofA US Corporate Index Option-Adjusted Spread",
           "units": "Percent",
           "frequency": "Daily, Close",
-          "count": 7587,
+          "count": 7590,
           "date_min": "1996-12-31T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 1.4704,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 1.4701,
           "value_min": 0.53,
           "value_max": 6.56,
           "value_latest": 0.73
@@ -2833,13 +2226,13 @@
           "title": "ICE BofA US High Yield Index Option-Adjusted Spread",
           "units": "Percent",
           "frequency": "Daily, Close",
-          "count": 7588,
+          "count": 7591,
           "date_min": "1996-12-31T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 5.2101,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 5.2091,
           "value_min": 2.41,
           "value_max": 21.82,
-          "value_latest": 2.68
+          "value_latest": 2.72
         },
         "DTWEXBGS": {
           "title": "Nominal Broad U.S. Dollar Index",
@@ -2857,25 +2250,25 @@
           "title": "S&P 500",
           "units": "Index",
           "frequency": "Daily, Close",
-          "count": 2515,
-          "date_min": "2016-01-25T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 3799.4655,
+          "count": 2514,
+          "date_min": "2016-01-29T00:00:00+00:00",
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 3806.287,
           "value_min": 1829.08,
-          "value_max": 6977.27,
-          "value_latest": 6915.61
+          "value_max": 6978.6,
+          "value_latest": 6978.03
         },
         "T10YIE": {
           "title": "10-Year Breakeven Inflation Rate",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 5769,
+          "count": 5771,
           "date_min": "2003-01-02T00:00:00+00:00",
-          "date_max": "2026-01-26T00:00:00+00:00",
+          "date_max": "2026-01-28T00:00:00+00:00",
           "value_mean": 2.1027,
           "value_min": 0.04,
           "value_max": 3.02,
-          "value_latest": 2.32
+          "value_latest": 2.36
         },
         "TEDRATE": {
           "title": "TED Spread (DISCONTINUED)",
@@ -2893,15 +2286,504 @@
           "title": "CBOE Volatility Index: VIX",
           "units": "Index",
           "frequency": "Daily, Close",
-          "count": 9108,
+          "count": 9111,
           "date_min": "1990-01-02T00:00:00+00:00",
-          "date_max": "2026-01-23T00:00:00+00:00",
-          "value_mean": 19.4432,
+          "date_max": "2026-01-28T00:00:00+00:00",
+          "value_mean": 19.4422,
           "value_min": 9.14,
           "value_max": 82.69,
-          "value_latest": 16.09
+          "value_latest": 16.35
         }
       }
+    }
+  },
+  {
+    "name": "bls_cpi",
+    "type": "bls",
+    "description": "CPI inflation measures from Bureau of Labor Statistics",
+    "meta": {
+      "name": "bls_cpi",
+      "source_id": "bls_cpi",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 681,
+      "columns": [
+        "series_id",
+        "date",
+        "value",
+        "title",
+        "units",
+        "frequency",
+        "period",
+        "year"
+      ],
+      "primary_keys": [
+        "series_id",
+        "date"
+      ],
+      "fetched_at": "2026-01-29T21:56:58.559600",
+      "description": "CPI inflation measures from Bureau of Labor Statistics",
+      "series": [
+        "CUSR0000SA0",
+        "CUSR0000SA0L1E",
+        "CUUR0000SA0"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2007-01-01T00:00:00+00:00",
+        "max": "2025-12-01T00:00:00+00:00",
+        "days": 6909
+      },
+      "by_series": {
+        "CUSR0000SA0": {
+          "title": "CPI All Items (Seasonally Adjusted)",
+          "units": "Index 1982-84=100",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 250.7998,
+          "value_min": 203.437,
+          "value_max": 326.03,
+          "value_latest": 326.03
+        },
+        "CUSR0000SA0L1E": {
+          "title": "CPI All Items Less Food and Energy",
+          "units": "Index 1982-84=100",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 254.9863,
+          "value_min": 208.6,
+          "value_max": 331.86,
+          "value_latest": 331.86
+        },
+        "CUUR0000SA0": {
+          "title": "CPI All Items (Not Seasonally Adjusted)",
+          "units": "Index 1982-84=100",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 250.8007,
+          "value_min": 202.416,
+          "value_max": 324.8,
+          "value_latest": 324.054
+        }
+      }
+    }
+  },
+  {
+    "name": "bls_employment",
+    "type": "bls",
+    "description": "Employment and unemployment from Bureau of Labor Statistics",
+    "meta": {
+      "name": "bls_employment",
+      "source_id": "bls_employment",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 910,
+      "columns": [
+        "series_id",
+        "date",
+        "value",
+        "title",
+        "units",
+        "frequency",
+        "period",
+        "year"
+      ],
+      "primary_keys": [
+        "series_id",
+        "date"
+      ],
+      "fetched_at": "2026-01-29T21:56:59.280575",
+      "description": "Employment and unemployment from Bureau of Labor Statistics",
+      "series": [
+        "CES0000000001",
+        "CES0500000001",
+        "LNS11000000",
+        "LNS14000000"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2007-01-01T00:00:00+00:00",
+        "max": "2025-12-01T00:00:00+00:00",
+        "days": 6909
+      },
+      "by_series": {
+        "CES0000000001": {
+          "title": "Total Nonfarm Employment",
+          "units": "Thousands",
+          "frequency": "Monthly",
+          "count": 228,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 143418.0526,
+          "value_min": 129705.0,
+          "value_max": 159593.0,
+          "value_latest": 159526.0
+        },
+        "CES0500000001": {
+          "title": "Total Private Employment",
+          "units": "Thousands",
+          "frequency": "Monthly",
+          "count": 228,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 121048.5044,
+          "value_min": 107229.0,
+          "value_max": 136115.0,
+          "value_latest": 136115.0
+        },
+        "LNS11000000": {
+          "title": "Labor Force Participation Rate",
+          "units": "Percent",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 159424.4714,
+          "value_min": 152435.0,
+          "value_max": 171541.0,
+          "value_latest": 171495.0
+        },
+        "LNS14000000": {
+          "title": "Unemployment Rate",
+          "units": "Percent",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 5.8449,
+          "value_min": 3.4,
+          "value_max": 14.8,
+          "value_latest": 4.4
+        }
+      }
+    }
+  },
+  {
+    "name": "bls_wages",
+    "type": "bls",
+    "description": "Wage and earnings data from Bureau of Labor Statistics",
+    "meta": {
+      "name": "bls_wages",
+      "source_id": "bls_wages",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 456,
+      "columns": [
+        "series_id",
+        "date",
+        "value",
+        "title",
+        "units",
+        "frequency",
+        "period",
+        "year"
+      ],
+      "primary_keys": [
+        "series_id",
+        "date"
+      ],
+      "fetched_at": "2026-01-29T21:56:59.931365",
+      "description": "Wage and earnings data from Bureau of Labor Statistics",
+      "series": [
+        "CES0500000003",
+        "CES0500000011"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2007-01-01T00:00:00+00:00",
+        "max": "2025-12-01T00:00:00+00:00",
+        "days": 6909
+      },
+      "by_series": {
+        "CES0500000003": {
+          "title": "Average Hourly Earnings (Private)",
+          "units": "Dollars",
+          "frequency": "Monthly",
+          "count": 228,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 26.9274,
+          "value_min": 20.59,
+          "value_max": 37.02,
+          "value_latest": 37.02
+        },
+        "CES0500000011": {
+          "title": "Average Weekly Earnings (Private)",
+          "units": "Dollars",
+          "frequency": "Monthly",
+          "count": 228,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-12-01T00:00:00+00:00",
+          "value_mean": 926.2915,
+          "value_min": 706.24,
+          "value_max": 1266.08,
+          "value_latest": 1266.08
+        }
+      }
+    }
+  },
+  {
+    "name": "bls_ppi",
+    "type": "bls",
+    "description": "Producer prices from Bureau of Labor Statistics",
+    "meta": {
+      "name": "bls_ppi",
+      "source_id": "bls_ppi",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 574,
+      "columns": [
+        "series_id",
+        "date",
+        "value",
+        "title",
+        "units",
+        "frequency",
+        "period",
+        "year"
+      ],
+      "primary_keys": [
+        "series_id",
+        "date"
+      ],
+      "fetched_at": "2026-01-29T21:57:00.506625",
+      "description": "Producer prices from Bureau of Labor Statistics",
+      "series": [
+        "WPSFD4",
+        "WPUFD4",
+        "WPUFD49104"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2009-11-01T00:00:00+00:00",
+        "max": "2025-11-01T00:00:00+00:00",
+        "days": 5844
+      },
+      "by_series": {
+        "WPSFD4": {
+          "title": "PPI Finished Goods (Seasonally Adjusted)",
+          "units": "Index 1982=100",
+          "frequency": "Monthly",
+          "count": 193,
+          "date_min": "2009-11-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 119.7853,
+          "value_min": 100.2,
+          "value_max": 150.705,
+          "value_latest": 150.705
+        },
+        "WPUFD4": {
+          "title": "PPI Finished Goods",
+          "units": "Index 1982=100",
+          "frequency": "Monthly",
+          "count": 193,
+          "date_min": "2009-11-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 119.7871,
+          "value_min": 99.9,
+          "value_max": 150.389,
+          "value_latest": 150.303
+        },
+        "WPUFD49104": {
+          "title": "PPI Finished Core Goods",
+          "units": "Index 1982=100",
+          "frequency": "Monthly",
+          "count": 188,
+          "date_min": "2010-04-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 118.6118,
+          "value_min": 100.0,
+          "value_max": 149.275,
+          "value_latest": 148.9
+        }
+      }
+    }
+  },
+  {
+    "name": "bls_jolts",
+    "type": "bls",
+    "description": "Job Openings and Labor Turnover Survey",
+    "meta": {
+      "name": "bls_jolts",
+      "source_id": "bls_jolts",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 908,
+      "columns": [
+        "series_id",
+        "date",
+        "value",
+        "title",
+        "units",
+        "frequency",
+        "period",
+        "year"
+      ],
+      "primary_keys": [
+        "series_id",
+        "date"
+      ],
+      "fetched_at": "2026-01-29T21:57:01.280122",
+      "description": "Job Openings and Labor Turnover Survey",
+      "series": [
+        "JTS000000000000000HIR",
+        "JTS000000000000000JOL",
+        "JTS000000000000000QUL",
+        "JTS000000000000000TSL"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "2007-01-01T00:00:00+00:00",
+        "max": "2025-11-01T00:00:00+00:00",
+        "days": 6879
+      },
+      "by_series": {
+        "JTS000000000000000HIR": {
+          "title": "Hires Total Nonfarm",
+          "units": "Thousands",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 3.6366,
+          "value_min": 2.8,
+          "value_max": 6.1,
+          "value_latest": 3.2
+        },
+        "JTS000000000000000JOL": {
+          "title": "Job Openings Total Nonfarm",
+          "units": "Thousands",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 5986.0308,
+          "value_min": 2232.0,
+          "value_max": 12134.0,
+          "value_latest": 7146.0
+        },
+        "JTS000000000000000QUL": {
+          "title": "Quits Total Nonfarm",
+          "units": "Thousands",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 2895.5947,
+          "value_min": 1555.0,
+          "value_max": 4499.0,
+          "value_latest": 3161.0
+        },
+        "JTS000000000000000TSL": {
+          "title": "Total Separations Nonfarm",
+          "units": "Thousands",
+          "frequency": "Monthly",
+          "count": 227,
+          "date_min": "2007-01-01T00:00:00+00:00",
+          "date_max": "2025-11-01T00:00:00+00:00",
+          "value_mean": 5119.0,
+          "value_min": 3884.0,
+          "value_max": 16275.0,
+          "value_latest": 5080.0
+        }
+      }
+    }
+  },
+  {
+    "name": "fed_stress_scenarios",
+    "type": "fed_stress",
+    "description": "Federal Reserve DFAST supervisory stress test scenarios (baseline & severely adverse)",
+    "meta": {
+      "name": "fed_stress_scenarios",
+      "source_id": "fed_stress_scenarios",
+      "location": "bridge",
+      "format": "dataframe",
+      "record_count": 880,
+      "columns": [
+        "year",
+        "table",
+        "region",
+        "scenario_name",
+        "date",
+        "real_gdp_growth",
+        "nominal_gdp_growth",
+        "real_disposable_income_growth",
+        "nominal_disposable_income_growth",
+        "unemployment_rate",
+        "cpi_inflation_rate",
+        "3_month_treasury_rate",
+        "5_year_treasury_yield",
+        "10_year_treasury_yield",
+        "bbb_corporate_yield",
+        "mortgage_rate",
+        "prime_rate",
+        "dow_jones_total_stock_market_index",
+        "house_price_index",
+        "commercial_real_estate_price_index",
+        "market_volatility_index",
+        "euro_area_real_gdp_growth",
+        "euro_area_inflation",
+        "euro_area_bilateral_dollar_exchange_rate",
+        "developing_asia_real_gdp_growth",
+        "developing_asia_inflation",
+        "developing_asia_bilateral_dollar_exchange_rate",
+        "japan_real_gdp_growth",
+        "japan_inflation",
+        "japan_bilateral_dollar_exchange_rate",
+        "uk_real_gdp_growth",
+        "uk_inflation",
+        "uk_bilateral_dollar_exchange_rate"
+      ],
+      "primary_keys": [
+        "year",
+        "table",
+        "date"
+      ],
+      "fetched_at": "2026-01-29T21:57:03.890714",
+      "description": "Federal Reserve DFAST supervisory stress test scenarios (baseline & severely adverse)",
+      "years": [
+        2024,
+        2025
+      ],
+      "scenarios": [
+        "baseline_domestic",
+        "baseline_international",
+        "historic_domestic",
+        "historic_international",
+        "severely_adverse_domestic",
+        "severely_adverse_international"
+      ]
+    },
+    "stats": {
+      "date_range": {
+        "min": "1976 Q1",
+        "max": "2028 Q1",
+        "days": 0
+      },
+      "years": [
+        2024,
+        2025
+      ],
+      "scenarios": [
+        "baseline_domestic",
+        "baseline_international",
+        "historic_domestic",
+        "historic_international",
+        "severely_adverse_domestic",
+        "severely_adverse_international"
+      ],
+      "record_count": 880
     }
   }
 ]
