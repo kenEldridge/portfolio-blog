@@ -209,6 +209,28 @@ class CDataBridge:
         )
 
     # ===================
+    # FFIEC CALL REPORTS
+    # ===================
+
+    def fetch_ffiec_data(self, source_id: str, products: list) -> pd.DataFrame:
+        """
+        Fetch FFIEC Call Report data.
+
+        Args:
+            source_id: Dataset identifier (e.g., "ffiec_call_reports")
+            products: List of product types (e.g., ["call_single"])
+
+        Returns:
+            DataFrame with call report data
+        """
+        return self._fetch_with_config(
+            source_id=source_id,
+            source_type="ffiec",
+            config={"products": products},
+            primary_keys=["product", "schedule", "IDRSSD", "reporting_period"]
+        )
+
+    # ===================
     # FED STRESS TESTS
     # ===================
 

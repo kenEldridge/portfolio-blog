@@ -381,6 +381,18 @@ DATASETS = {
                 "historic_international"
             ]
         }
+    },
+
+    # ===================
+    # FFIEC CALL REPORTS
+    # ===================
+    "ffiec_call_reports": {
+        "type": "ffiec",
+        "description": "Quarterly bank call report bulk data from FFIEC Central Data Repository",
+        "primary_keys": ["product", "schedule", "IDRSSD", "reporting_period"],
+        "config": {
+            "products": ["call_single"]  # Single-period call report schedules
+        }
     }
 }
 
@@ -406,4 +418,8 @@ BLS_DATASETS = {
 
 FED_STRESS_DATASETS = {
     "fed_stress_scenarios"
+}
+
+FFIEC_DATASETS = {
+    "ffiec_call_reports"
 }

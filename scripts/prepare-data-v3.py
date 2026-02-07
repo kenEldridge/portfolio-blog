@@ -22,7 +22,7 @@ import pandas as pd
 from dotenv import load_dotenv
 
 # Import our bridge and config modules
-from dataset_config import DATASETS, OHLCV_DATASETS, RSS_DATASETS, FRED_DATASETS, BLS_DATASETS, FED_STRESS_DATASETS
+from dataset_config import DATASETS, OHLCV_DATASETS, RSS_DATASETS, FRED_DATASETS, BLS_DATASETS, FED_STRESS_DATASETS, FFIEC_DATASETS
 from cdata_bridge import get_bridge
 
 # Paths
@@ -408,6 +408,79 @@ def prepare_fed_stress_dataset(name: str, df: pd.DataFrame, config: dict) -> dic
     }
 
 
+def prepare_ffiec_dataset(name: str, df: pd.DataFrame, config: dict) -> dict:
+    """Process FFIEC Call Report datasets."""
+    df = df.copy()
+
+    # Remove cdata internal columns
+    df = df[[c for c in df.columns if not c.startswith('_')]]
+
+    # Handle empty DataFrame
+    if len(df) == 0:
+        return {
+            "name": name,
+            "type": "ffiec",
+            "description": config.get("description", ""),
+            "meta": {
+                "name": name,
+                "source_id": name,
+                "location": "bridge",
+                "format": "dataframe",
+                "record_count": 0,
+                "columns": list(df.columns) if len(df.columns) > 0 else [],
+                "primary_keys": config.get("primary_keys", []),
+                "fetched_at": datetime.utcnow().isoformat(),
+                "description": config.get("description", ""),
+                "products": [],
+                "reporting_periods": [],
+            },
+            "stats": {
+                "record_count": 0,
+                "products": [],
+                "reporting_periods": [],
+                "banks_count": 0,
+            },
+            "data": [],
+        }
+
+    # Get unique values
+    products = sorted(df['product'].unique().tolist()) if 'product' in df.columns else []
+    reporting_periods = sorted(df['reporting_period'].unique().tolist()) if 'reporting_period' in df.columns else []
+    banks_count = df['IDRSSD'].nunique() if 'IDRSSD' in df.columns else 0
+
+    # Sample data (limit to reasonable size for JSON)
+    sample_df = df.head(1000)
+
+    # Create metadata
+    meta = {
+        "name": name,
+        "source_id": name,
+        "location": "bridge",
+        "format": "dataframe",
+        "record_count": len(df),
+        "columns": list(df.columns),
+        "primary_keys": config.get("primary_keys", []),
+        "fetched_at": datetime.utcnow().isoformat(),
+        "description": config.get("description", ""),
+        "products": products,
+        "reporting_periods": reporting_periods,
+    }
+
+    return {
+        "name": name,
+        "type": "ffiec",
+        "description": config.get("description", ""),
+        "meta": meta,
+        "stats": {
+            "record_count": len(df),
+            "products": products,
+            "reporting_periods": reporting_periods,
+            "banks_count": banks_count,
+        },
+        "data": sample_df.to_dict(orient='records'),
+    }
+
+
 def main():
     print("Preparing data for the-derple-dex using cdata bridge pattern...")
     print()
@@ -474,6 +547,11 @@ def main():
                     years=config_params["years"],
                     scenarios=config_params["scenarios"]
                 )
+            elif source_type == "ffiec":
+                df = bridge.fetch_ffiec_data(
+                    source_id=name,
+                    products=config_params["products"]
+                )
             else:
                 print(f"    Unknown source type: {source_type}, skipping")
                 continue
@@ -491,6 +569,8 @@ def main():
                 dataset = prepare_fred_dataset(name, df, dataset_config, data_type="bls")
             elif name in FED_STRESS_DATASETS:
                 dataset = prepare_fed_stress_dataset(name, df, dataset_config)
+            elif name in FFIEC_DATASETS:
+                dataset = prepare_ffiec_dataset(name, df, dataset_config)
             else:
                 print(f"    Unknown dataset category for {name}, skipping")
                 continue

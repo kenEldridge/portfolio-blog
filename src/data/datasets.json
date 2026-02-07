@@ -22,7 +22,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:22.658383",
+      "fetched_at": "2026-01-30T00:24:11.276092",
       "description": "Major US equity indices",
       "symbols": [
         "^DJI",
@@ -67,7 +67,7 @@
           "close_min": 15267.9102,
           "close_max": 23958.4707,
           "close_std": 2263.3115,
-          "volume_total": 2319543941000
+          "volume_total": 2319589613000
         },
         "^RUT": {
           "count": 251,
@@ -101,7 +101,7 @@
       "source_id": "global_indices",
       "location": "bridge",
       "format": "dataframe",
-      "record_count": 2008,
+      "record_count": 2007,
       "columns": [
         "symbol",
         "date",
@@ -115,7 +115,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:23.702539",
+      "fetched_at": "2026-01-30T00:24:12.320077",
       "description": "Major international equity indices",
       "symbols": [
         "EEM",
@@ -130,8 +130,8 @@
     },
     "stats": {
       "date_range": {
-        "min": "2025-01-28T15:00:00+00:00",
-        "max": "2026-01-29T05:00:00+00:00",
+        "min": "2025-01-28T23:00:00+00:00",
+        "max": "2026-01-29T15:00:00+00:00",
         "days": 365
       },
       "by_symbol": {
@@ -153,7 +153,7 @@
           "close_min": 28.8649,
           "close_max": 41.3017,
           "close_std": 2.7039,
-          "volume_total": 9646515869
+          "volume_total": 9646530032
         },
         "^FCHI": {
           "count": 256,
@@ -196,14 +196,14 @@
           "volume_total": 879906800000
         },
         "^N225": {
-          "count": 245,
-          "date_min": "2025-01-28T15:00:00+00:00",
-          "date_max": "2026-01-28T15:00:00+00:00",
-          "close_mean": 42787.6082,
+          "count": 244,
+          "date_min": "2025-01-29T15:00:00+00:00",
+          "date_max": "2026-01-29T15:00:00+00:00",
+          "close_mean": 42801.3308,
           "close_min": 31136.5801,
           "close_max": 54341.2305,
-          "close_std": 5937.4672,
-          "volume_total": 32139700000
+          "close_std": 5945.5408,
+          "volume_total": 32031100000
         },
         "^STOXX50E": {
           "count": 250,
@@ -241,7 +241,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:24.375764",
+      "fetched_at": "2026-01-30T00:24:12.804861",
       "description": "Treasury yield curve data",
       "symbols": [
         "^FVX",
@@ -323,7 +323,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:25.770205",
+      "fetched_at": "2026-01-30T00:24:13.973619",
       "description": "Fixed income ETFs across durations and types",
       "symbols": [
         "AGG",
@@ -361,7 +361,7 @@
           "close_min": 72.5249,
           "close_max": 81.18,
           "close_std": 2.1272,
-          "volume_total": 10199341961
+          "volume_total": 10201446111
         },
         "IEF": {
           "count": 251,
@@ -391,7 +391,7 @@
           "close_min": 99.8793,
           "close_max": 107.81,
           "close_std": 2.1548,
-          "volume_total": 1266430960
+          "volume_total": 1266460762
         },
         "SHY": {
           "count": 251,
@@ -401,14 +401,14 @@
           "close_min": 79.0796,
           "close_max": 82.92,
           "close_std": 1.1047,
-          "volume_total": 1005022220
+          "volume_total": 1005137922
         },
         "TIP": {
           "count": 251,
           "date_min": "2025-01-30T05:00:00+00:00",
           "date_max": "2026-01-29T05:00:00+00:00",
           "close_mean": 108.2099,
-          "close_min": 104.1633,
+          "close_min": 104.1634,
           "close_max": 111.1675,
           "close_std": 1.9764,
           "volume_total": 666572051
@@ -435,7 +435,7 @@
       "source_id": "currencies",
       "location": "bridge",
       "format": "dataframe",
-      "record_count": 1285,
+      "record_count": 1284,
       "columns": [
         "symbol",
         "date",
@@ -449,7 +449,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:26.653960",
+      "fetched_at": "2026-01-30T00:24:14.632370",
       "description": "Dollar strength and major currency pairs",
       "symbols": [
         "DX-Y.NYB",
@@ -461,8 +461,8 @@
     },
     "stats": {
       "date_range": {
-        "min": "2025-01-29T00:00:00+00:00",
-        "max": "2026-01-29T05:00:00+00:00",
+        "min": "2025-01-29T05:00:00+00:00",
+        "max": "2026-01-30T00:00:00+00:00",
         "days": 365
       },
       "by_symbol": {
@@ -478,29 +478,29 @@
         },
         "EURUSD=X": {
           "count": 258,
-          "date_min": "2025-01-29T00:00:00+00:00",
-          "date_max": "2026-01-29T00:00:00+00:00",
-          "close_mean": 1.1405,
+          "date_min": "2025-01-30T00:00:00+00:00",
+          "date_max": "2026-01-30T00:00:00+00:00",
+          "close_mean": 1.1411,
           "close_min": 1.0248,
           "close_max": 1.2018,
-          "close_std": 0.0422,
+          "close_std": 0.0419,
           "volume_total": 0
         },
         "GBPUSD=X": {
           "count": 258,
-          "date_min": "2025-01-29T00:00:00+00:00",
-          "date_max": "2026-01-29T00:00:00+00:00",
-          "close_mean": 1.3274,
+          "date_min": "2025-01-30T00:00:00+00:00",
+          "date_max": "2026-01-30T00:00:00+00:00",
+          "close_mean": 1.328,
           "close_min": 1.2292,
-          "close_max": 1.3824,
-          "close_std": 0.032,
+          "close_max": 1.3825,
+          "close_std": 0.0318,
           "volume_total": 0
         },
         "USDCNY=X": {
-          "count": 258,
-          "date_min": "2025-01-29T00:00:00+00:00",
+          "count": 257,
+          "date_min": "2025-01-30T00:00:00+00:00",
           "date_max": "2026-01-29T00:00:00+00:00",
-          "close_mean": 7.1613,
+          "close_mean": 7.161,
           "close_min": 6.9475,
           "close_max": 7.35,
           "close_std": 0.0891,
@@ -508,12 +508,12 @@
         },
         "USDJPY=X": {
           "count": 258,
-          "date_min": "2025-01-29T00:00:00+00:00",
-          "date_max": "2026-01-29T00:00:00+00:00",
-          "close_mean": 149.7011,
+          "date_min": "2025-01-30T00:00:00+00:00",
+          "date_max": "2026-01-30T00:00:00+00:00",
+          "close_mean": 149.6926,
           "close_min": 140.876,
           "close_max": 159.179,
-          "close_std": 4.528,
+          "close_std": 4.5191,
           "volume_total": 0
         }
       }
@@ -542,7 +542,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:27.870387",
+      "fetched_at": "2026-01-30T00:24:15.288773",
       "description": "Key commodity prices",
       "symbols": [
         "BZ=F",
@@ -564,41 +564,41 @@
           "count": 253,
           "date_min": "2025-01-29T05:00:00+00:00",
           "date_max": "2026-01-29T05:00:00+00:00",
-          "close_mean": 67.0819,
+          "close_mean": 67.0826,
           "close_min": 58.92,
           "close_max": 77.01,
-          "close_std": 4.2532,
-          "volume_total": 10691412
+          "close_std": 4.2536,
+          "volume_total": 10581000
         },
         "CL=F": {
           "count": 253,
           "date_min": "2025-01-29T05:00:00+00:00",
           "date_max": "2026-01-29T05:00:00+00:00",
-          "close_mean": 63.617,
+          "close_mean": 63.6181,
           "close_min": 55.27,
           "close_max": 75.14,
-          "close_std": 4.4806,
-          "volume_total": 68208037
+          "close_std": 4.4811,
+          "volume_total": 67685995
         },
         "GC=F": {
           "count": 253,
           "date_min": "2025-01-29T05:00:00+00:00",
           "date_max": "2026-01-29T05:00:00+00:00",
-          "close_mean": 3596.6731,
+          "close_mean": 3596.9004,
           "close_min": 2769.1001,
-          "close_max": 5418.8999,
-          "close_std": 550.6209,
-          "volume_total": 1637511
+          "close_max": 5476.3999,
+          "close_std": 551.3873,
+          "volume_total": 1094808
         },
         "HG=F": {
           "count": 253,
           "date_min": "2025-01-29T05:00:00+00:00",
           "date_max": "2026-01-29T05:00:00+00:00",
-          "close_mean": 4.9457,
+          "close_mean": 4.9461,
           "close_min": 4.1275,
-          "close_max": 6.271,
-          "close_std": 0.4442,
-          "volume_total": 558943
+          "close_max": 6.3715,
+          "close_std": 0.4454,
+          "volume_total": 367657
         },
         "NG=F": {
           "count": 253,
@@ -608,17 +608,17 @@
           "close_min": 2.696,
           "close_max": 7.46,
           "close_std": 0.6778,
-          "volume_total": 42209783
+          "volume_total": 42000342
         },
         "SI=F": {
           "count": 253,
           "date_min": "2025-01-29T05:00:00+00:00",
           "date_max": "2026-01-29T05:00:00+00:00",
-          "close_mean": 44.6304,
+          "close_mean": 44.6408,
           "close_min": 29.116,
-          "close_max": 115.555,
-          "close_std": 16.7906,
-          "volume_total": 514427
+          "close_max": 118.195,
+          "close_std": 16.8356,
+          "volume_total": 327973
         }
       }
     }
@@ -646,7 +646,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:29.692703",
+      "fetched_at": "2026-01-30T00:24:16.727148",
       "description": "S&P 500 sector performance",
       "symbols": [
         "XLB",
@@ -686,7 +686,7 @@
           "close_min": 37.2731,
           "close_max": 50.51,
           "close_std": 2.2405,
-          "volume_total": 8735063223
+          "volume_total": 8735257145
         },
         "XLF": {
           "count": 251,
@@ -713,7 +713,7 @@
           "date_min": "2025-01-30T05:00:00+00:00",
           "date_max": "2026-01-29T05:00:00+00:00",
           "close_mean": 127.3805,
-          "close_min": 89.4654,
+          "close_min": 89.4655,
           "close_max": 151.8347,
           "close_std": 15.9389,
           "volume_total": 3583962844
@@ -726,7 +726,7 @@
           "close_min": 74.7136,
           "close_max": 83.16,
           "close_std": 1.6209,
-          "volume_total": 3749176142
+          "volume_total": 3749181666
         },
         "XLRE": {
           "count": 251,
@@ -794,7 +794,7 @@
         "symbol",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:30.937522",
+      "fetched_at": "2026-01-30T00:24:17.732640",
       "description": "ETFs that track macro themes",
       "symbols": [
         "DBA",
@@ -831,7 +831,7 @@
           "close_min": 258.05,
           "close_max": 495.9,
           "close_std": 50.5186,
-          "volume_total": 3284374374
+          "volume_total": 3285465226
         },
         "GOVT": {
           "count": 251,
@@ -841,7 +841,7 @@
           "close_min": 21.7244,
           "close_max": 23.1596,
           "close_std": 0.3973,
-          "volume_total": 2423486275
+          "volume_total": 2423542564
         },
         "IWM": {
           "count": 251,
@@ -861,7 +861,7 @@
           "close_min": 414.5779,
           "close_max": 634.952,
           "close_std": 55.9848,
-          "volume_total": 12568914367
+          "volume_total": 12573563615
         },
         "SPY": {
           "count": 251,
@@ -871,7 +871,7 @@
           "close_min": 492.1936,
           "close_max": 695.49,
           "close_std": 50.577,
-          "volume_total": 18714605004
+          "volume_total": 18719727638
         },
         "UUP": {
           "count": 251,
@@ -909,7 +909,7 @@
       "primary_keys": [
         "id"
       ],
-      "fetched_at": "2026-01-29T21:55:31.601886",
+      "fetched_at": "2026-01-30T00:24:18.608681",
       "description": "Federal Reserve announcements and speeches",
       "feeds": [
         "Fed Speeches",
@@ -978,7 +978,7 @@
       "primary_keys": [
         "id"
       ],
-      "fetched_at": "2026-01-29T21:55:32.651220",
+      "fetched_at": "2026-01-30T00:24:19.488610",
       "description": "Market and economic news feeds",
       "feeds": [
         "CNBC Top News",
@@ -988,9 +988,9 @@
     },
     "stats": {
       "date_range": {
-        "min": "2026-01-28T13:26:56+00:00",
-        "max": "2026-01-29T21:53:47+00:00",
-        "days": 1
+        "min": "2025-05-05T13:00:32+00:00",
+        "max": "2026-01-30T00:11:57+00:00",
+        "days": 269
       },
       "articles_by_feed": {
         "CNBC Top News": 30,
@@ -998,8 +998,10 @@
         "Yahoo Finance": 43
       },
       "articles_by_day": {
-        "2026-01-28": 42,
-        "2026-01-29": 38
+        "2025-05-05": 1,
+        "2026-01-28": 41,
+        "2026-01-29": 35,
+        "2026-01-30": 3
       }
     }
   },
@@ -1026,7 +1028,7 @@
       "primary_keys": [
         "id"
       ],
-      "fetched_at": "2026-01-29T21:55:33.787250",
+      "fetched_at": "2026-01-30T00:24:20.800047",
       "description": "Economic analysis and policy coverage",
       "feeds": [
         "Calculated Risk",
@@ -1080,7 +1082,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:37.667244",
+      "fetched_at": "2026-01-30T00:24:23.479032",
       "description": "Gross Domestic Product and related measures",
       "series": [
         "A191RL1Q225SBEA",
@@ -1169,7 +1171,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:42.819465",
+      "fetched_at": "2026-01-30T00:24:27.794217",
       "description": "Employment, unemployment, and labor market indicators",
       "series": [
         "AWHAETP",
@@ -1284,7 +1286,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:55:47.409406",
+      "fetched_at": "2026-01-30T00:24:32.267378",
       "description": "Consumer and producer price indices",
       "series": [
         "CPIAUCSL",
@@ -1386,7 +1388,7 @@
       "source_id": "fred_rates",
       "location": "bridge",
       "format": "dataframe",
-      "record_count": 85030,
+      "record_count": 85032,
       "columns": [
         "series_id",
         "date",
@@ -1399,7 +1401,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:05.862392",
+      "fetched_at": "2026-01-30T00:24:45.653442",
       "description": "Federal Reserve rates and Treasury yields",
       "series": [
         "BAMLH0A0HYM2",
@@ -1508,25 +1510,25 @@
           "title": "10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 12410,
+          "count": 12411,
           "date_min": "1976-06-01T00:00:00+00:00",
-          "date_max": "2026-01-28T00:00:00+00:00",
-          "value_mean": 0.8498,
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "value_mean": 0.8497,
           "value_min": -2.41,
           "value_max": 2.91,
-          "value_latest": 0.7
+          "value_latest": 0.71
         },
         "T10Y3M": {
           "title": "10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 11019,
+          "count": 11020,
           "date_min": "1982-01-04T00:00:00+00:00",
-          "date_max": "2026-01-28T00:00:00+00:00",
-          "value_mean": 1.5452,
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "value_mean": 1.5451,
           "value_min": -1.89,
           "value_max": 5.18,
-          "value_latest": 0.58
+          "value_latest": 0.57
         }
       }
     }
@@ -1553,7 +1555,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:12.487974",
+      "fetched_at": "2026-01-30T00:24:51.156563",
       "description": "Monetary aggregates and credit conditions",
       "series": [
         "M1SL",
@@ -1655,7 +1657,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:17.343537",
+      "fetched_at": "2026-01-30T00:24:55.470193",
       "description": "Housing market indicators",
       "series": [
         "CSUSHPINSA",
@@ -1770,7 +1772,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:21.975507",
+      "fetched_at": "2026-01-30T00:24:59.098877",
       "description": "Consumer spending and sentiment",
       "series": [
         "DSPIC96",
@@ -1872,7 +1874,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:28.171458",
+      "fetched_at": "2026-01-30T00:25:04.244400",
       "description": "H.8 commercial banking data and credit conditions",
       "series": [
         "BUSLOANS",
@@ -1974,7 +1976,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:32.324028",
+      "fetched_at": "2026-01-30T00:25:07.610825",
       "description": "Composite financial stress and conditions indicators",
       "series": [
         "CFSI",
@@ -2050,7 +2052,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:42.920055",
+      "fetched_at": "2026-01-30T00:25:16.427927",
       "description": "Key macroeconomic variables used in stress test scenario design",
       "series": [
         "CPIAUCSL",
@@ -2178,7 +2180,7 @@
       "source_id": "fred_market",
       "location": "bridge",
       "format": "dataframe",
-      "record_count": 46458,
+      "record_count": 46459,
       "columns": [
         "series_id",
         "date",
@@ -2191,7 +2193,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:56.397903",
+      "fetched_at": "2026-01-30T00:25:27.035669",
       "description": "Broad market indicators and risk measures",
       "series": [
         "BAMLC0A0CM",
@@ -2206,8 +2208,8 @@
     "stats": {
       "date_range": {
         "min": "1986-01-02T00:00:00+00:00",
-        "max": "2026-01-28T00:00:00+00:00",
-        "days": 14636
+        "max": "2026-01-29T00:00:00+00:00",
+        "days": 14637
       },
       "by_series": {
         "BAMLC0A0CM": {
@@ -2262,13 +2264,13 @@
           "title": "10-Year Breakeven Inflation Rate",
           "units": "Percent",
           "frequency": "Daily",
-          "count": 5771,
+          "count": 5772,
           "date_min": "2003-01-02T00:00:00+00:00",
-          "date_max": "2026-01-28T00:00:00+00:00",
-          "value_mean": 2.1027,
+          "date_max": "2026-01-29T00:00:00+00:00",
+          "value_mean": 2.1028,
           "value_min": 0.04,
           "value_max": 3.02,
-          "value_latest": 2.36
+          "value_latest": 2.35
         },
         "TEDRATE": {
           "title": "TED Spread (DISCONTINUED)",
@@ -2321,7 +2323,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:58.559600",
+      "fetched_at": "2026-01-30T00:25:28.730293",
       "description": "CPI inflation measures from Bureau of Labor Statistics",
       "series": [
         "CUSR0000SA0",
@@ -2399,7 +2401,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:59.280575",
+      "fetched_at": "2026-01-30T00:25:29.343244",
       "description": "Employment and unemployment from Bureau of Labor Statistics",
       "series": [
         "CES0000000001",
@@ -2490,7 +2492,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:56:59.931365",
+      "fetched_at": "2026-01-30T00:25:29.872549",
       "description": "Wage and earnings data from Bureau of Labor Statistics",
       "series": [
         "CES0500000003",
@@ -2555,7 +2557,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:57:00.506625",
+      "fetched_at": "2026-01-30T00:25:30.475212",
       "description": "Producer prices from Bureau of Labor Statistics",
       "series": [
         "WPSFD4",
@@ -2633,7 +2635,7 @@
         "series_id",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:57:01.280122",
+      "fetched_at": "2026-01-30T00:25:31.070047",
       "description": "Job Openings and Labor Turnover Survey",
       "series": [
         "JTS000000000000000HIR",
@@ -2750,7 +2752,7 @@
         "table",
         "date"
       ],
-      "fetched_at": "2026-01-29T21:57:03.890714",
+      "fetched_at": "2026-01-30T00:25:32.799397",
       "description": "Federal Reserve DFAST supervisory stress test scenarios (baseline & severely adverse)",
       "years": [
         2024,
